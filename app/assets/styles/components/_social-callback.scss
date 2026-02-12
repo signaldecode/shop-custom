@@ -1,0 +1,23 @@
+@use '../tokens/colors' as *;
+@use '../tokens/typography' as *;
+
+.social-callback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  &__inner {
+    text-align: center;
+  }
+
+  &__message {
+    font-family: $Body-body-1-Font-family;
+    font-size: $Body-body-1-Font-size;
+    color: $Text-Primary-text-color;
+
+    &--error {
+      color: $Error-color;
+    }
+  }
+}

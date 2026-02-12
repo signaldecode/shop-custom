@@ -1,0 +1,124 @@
+// ============================================
+// Page Styles - Signup Done (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-signup-done {
+  background: $Primary-white-color;
+}
+
+.signup-done-page {
+  padding-top: 180px;
+  padding-bottom: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-done-page__inner {
+  width: 100%;
+  max-width: 551px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+
+  @include mobile {
+    padding: 0 $padding-4;
+    gap: 60px;
+  }
+}
+
+.signup-done-page__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.signup-done-page__title {
+  @include typo-headline-1;
+  margin: 0;
+  text-align: center;
+  color: $Text-Primary-text-color;
+}
+
+.signup-done-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.signup-done-content__image {
+  width: 443px;
+  height: 337px;
+  object-fit: contain;
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    max-width: 443px;
+  }
+}
+
+.signup-done-content__copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.signup-done-content__headline {
+  // Figma: display 2
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: -1.3px;
+  margin: 0;
+  color: $Text-Primary-text-color;
+
+  @include mobile {
+    font-size: 34px;
+    line-height: 44px;
+    letter-spacing: -0.85px;
+  }
+}
+
+.signup-done-content__sub {
+  @include typo-title-4;
+  margin: 0;
+  color: $Text-Thirty-text-color;
+}
+
+.signup-done-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.signup-done-actions__btn {
+  width: 200px;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+@include mobile {
+  .signup-done-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+

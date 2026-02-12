@@ -1,0 +1,140 @@
+// ============================================
+// Base Star Rating Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-star-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $padding-2;
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+  }
+
+  &__star {
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: $Text-Disabled-color;
+    transition: color 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      transform: scale(1.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    &--active {
+      color: #FBBF24; // Star yellow color
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__description {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    min-height: 1.5em;
+  }
+
+  // Sizes
+  &--sm {
+    .base-star-rating__stars {
+      gap: 2px;
+    }
+  }
+
+  &--md {
+    .base-star-rating__stars {
+      gap: $padding-1;
+    }
+  }
+
+  &--lg {
+    .base-star-rating__stars {
+      gap: $padding-2;
+    }
+
+    .base-star-rating__description {
+      @include typo-body-1;
+    }
+  }
+
+  &--xl {
+    .base-star-rating__stars {
+      gap: $padding-2;
+    }
+
+    .base-star-rating__description {
+      @include typo-title-5;
+      color: $Primary-color;
+      font-weight: 500;
+    }
+  }
+
+  // States
+  &--disabled {
+    .base-star-rating__star {
+      opacity: 0.5;
+    }
+  }
+
+  &--readonly {
+    .base-star-rating__star {
+      cursor: default;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  // Mobile optimization
+  @include mobile {
+    gap: $padding-1;
+
+    &__stars {
+      gap: 2px;
+    }
+
+    &__star {
+      svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+    }
+
+    &__description {
+      @include typo-body-4;
+    }
+
+    &--xl {
+      .base-star-rating__star svg {
+        width: 28px !important;
+        height: 28px !important;
+      }
+
+      .base-star-rating__description {
+        @include typo-body-3;
+      }
+    }
+  }
+}

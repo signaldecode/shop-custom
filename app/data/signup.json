@@ -1,0 +1,208 @@
+{
+  "common": {
+    "pageTitle": "회원가입",
+    "stepsAriaLabel": "회원가입 단계",
+    "steps": [
+      { "label": "약관동의", "value": "terms" },
+      { "label": "정보입력", "value": "info" },
+      { "label": "가입완료", "value": "done" }
+    ]
+  },
+  "index": {
+    "seo": {
+      "title": "회원가입 | 쇼핑몰",
+      "description": "회원가입 방법을 선택하세요."
+    },
+    "title": "회원가입을 시작해 볼까요?",
+    "subtitle": "회원가입으로 구매시 40% 할인을 할수 있습니다!",
+    "buttons": {
+      "kakao": "카카오로 3초만에 가입하기",
+      "naver": "네이버로 3초만에 가입하기",
+      "general": "일반 회원가입"
+    },
+    "messages": {
+      "kakaoPreparing": "카카오 회원가입은 준비 중입니다.",
+      "naverPreparing": "네이버 회원가입은 준비 중입니다."
+    }
+  },
+  "terms": {
+    "seo": {
+      "title": "회원가입 | 약관동의",
+      "description": "회원가입을 위해 약관에 동의해주세요."
+    },
+    "sectionAriaLabel": "약관 동의",
+    "agreements": {
+      "all": {
+        "label": "전체동의"
+      },
+      "privacy": {
+        "label": "개인정보 수집 및 이용 동의",
+        "required": "[필수]",
+        "article": "제 1조(목적)",
+        "text": "본 약관은 회사가 제공하는 쇼핑몰 서비스의 이용과 관련하여 회원과 회사 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.",
+        "note": "* 필수 항목에 동의하셔야 회원가입 및 서비스 이용이 가능합니다."
+      },
+      "test": {
+        "label": "테스트 내용",
+        "required": "[필수]",
+        "article": "제 2조(목적)",
+        "list": [
+          "필수 동의 항목을 체크하지 않을 경우 회원가입이 제한될 수 있습니다.",
+          "선택 동의 항목은 서비스 이용에 영향을 미치지 않습니다.",
+          "자세한 내용은 각 약관 전문을 통해 확인하실 수 있습니다.",
+          "이벤트, 할인 혜택, 신상품 안내 등의 마케팅 정보를 제공합니다."
+        ]
+      },
+      "marketing": {
+        "label": "마케팅 정보 수신 동의",
+        "required": "[필수]",
+        "sms": {
+          "label": "SMS 수신 동의"
+        },
+        "email": {
+          "label": "이메일 수신 동의"
+        },
+        "note": "할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한 쇼핑정보를 SMS나 이메일로 받아보실수 있습니다. 단 주문/거래 정보 및 주요 정책과 관련된 내용은 수신동의 여부와 관계없이 발송됩니다."
+      }
+    },
+    "buttons": {
+      "cancel": "취소",
+      "next": "다음",
+      "socialComplete": "가입완료"
+    },
+    "messages": {
+      "requiredAlert": "필수 약관에 동의해주세요.",
+      "socialSignupFailed": "회원가입에 실패했습니다. 다시 시도해주세요.",
+      "contentLoading": "약관 내용을 불러오는 중...",
+      "contentError": "약관 내용을 받아오지 못했습니다.",
+      "retry": "다시 시도"
+    }
+  },
+  "info": {
+    "seo": {
+      "title": "회원가입 | 정보입력",
+      "description": "회원가입 정보입력 단계입니다."
+    },
+    "sections": {
+      "basic": {
+        "title": "회원정보",
+        "required": "*필수입력사항"
+      },
+      "additional": {
+        "title": "회원정보",
+        "required": "*필수입력사항"
+      }
+    },
+    "fields": {
+      "id": {
+        "label": "아이디",
+        "placeholder": "아이디를 입력해주세요"
+      },
+      "password": {
+        "label": "비밀번호",
+        "placeholder": "비밀번호를 입력해주세요",
+        "help": "(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자 ~ 16자)"
+      },
+      "passwordConfirm": {
+        "label": "비밀번호 확인",
+        "placeholder": "비밀번호를 입력해주세요"
+      },
+      "name": {
+        "label": "이름",
+        "placeholder": "이름을 입력해주세요"
+      },
+      "tel": {
+        "label": "일반전화"
+      },
+      "mobile": {
+        "label": "휴대전화"
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "이메일을 입력해주세요",
+        "codePlaceholder": "인증코드 6자리 입력"
+      },
+      "address": {
+        "label": "주소",
+        "placeholder": "우편번호",
+        "addressPlaceholder": "주소를 검색해주세요",
+        "detailPlaceholder": "상세주소를 입력해주세요"
+      },
+      "gender": {
+        "label": "성별",
+        "options": [
+          { "label": "남자", "value": "male" },
+          { "label": "여자", "value": "female" }
+        ]
+      },
+      "birth": {
+        "label": "생년월일",
+        "year": "년",
+        "month": "월",
+        "day": "일"
+      },
+      "signupPath": {
+        "label": "가입경로",
+        "placeholder": "이름을 입력해주세요"
+      }
+    },
+    "options": {
+      "telArea": [
+        { "label": "02", "value": "02" },
+        { "label": "031", "value": "031" },
+        { "label": "032", "value": "032" }
+      ],
+      "mobilePrefix": [
+        { "label": "010", "value": "010" },
+        { "label": "011", "value": "011" },
+        { "label": "016", "value": "016" }
+      ],
+      "emailDomain": [
+        { "label": "직접입력", "value": "" },
+        { "label": "gmail.com", "value": "gmail.com" },
+        { "label": "naver.com", "value": "naver.com" },
+        { "label": "daum.net", "value": "daum.net" }
+      ]
+    },
+    "buttons": {
+      "sendCode": "인증코드 발송",
+      "verifyCode": "확인",
+      "searchZip": "우편번호 찾기",
+      "complete": "가입완료"
+    },
+    "messages": {
+      "emailRequired": "이메일을 입력해주세요.",
+      "emailInvalid": "이메일 형식이 올바르지 않습니다.",
+      "codeRequired": "인증코드를 입력해주세요.",
+      "codeSent": "인증 코드를 발송했습니다.",
+      "codeSendFailed": "인증코드 발송에 실패했습니다.",
+      "codeVerified": "인증번호 확인이 완료되었습니다.",
+      "codeVerifyFailed": "확인에 실패했습니다.",
+      "emailNotVerified": "이메일 인증을 완료해주세요.",
+      "zipPreparing": "우편번호 찾기는 준비 중입니다."
+    },
+    "socialExist": {
+      "modalTitle": "소셜 계정 안내",
+      "messagePre": "이미 ",
+      "messagePost": "로 가입된 계정입니다. 소셜 로그인을 이용해주세요.",
+      "loginButton": "로그인하기",
+      "cancelButton": "취소"
+    }
+  },
+  "done": {
+    "seo": {
+      "title": "회원가입 | 가입완료",
+      "description": "회원가입이 완료되었습니다."
+    },
+    "image": {
+      "src": "/images/signup/signup-complete.png",
+      "alt": "회원가입 완료 이미지"
+    },
+    "headline": "회원가입이 완료되었습니다!",
+    "sub": "로그인하고 다양한 서비스를 이용해 보세요.",
+    "buttons": {
+      "edit": "회원정보 수정",
+      "shop": "쇼핑하러가기"
+    }
+  }
+}

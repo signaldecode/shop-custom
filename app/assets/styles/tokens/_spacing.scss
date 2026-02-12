@@ -1,0 +1,86 @@
+// ============================================
+// Design Tokens - Spacing (Figma Sync)
+// ============================================
+
+// --------------------------------------------
+// Figma Variables (Export Variables 플러그인)
+// --------------------------------------------
+
+/* Padding - Mode 1 */
+$padding-1: 4px;
+$padding-2: 8px;
+$padding-3: 12px;
+$padding-4: 16px;
+$padding-5: 20px;
+$padding-6: 24px;
+$padding-7: 28px;
+$padding-8: 32px;
+$padding-9: 36px;
+$padding-10: 40px;
+$padding-11: 60px;
+$padding-12: 100px;
+$padding-13: 160px;
+$padding-hero-arrow: 68px;
+$padding-section: 80px;
+
+// Component-specific sizes (Figma Sync)
+$size-grade-summary-width: 420px;
+$size-grade-icon-sm: 33px;
+$size-grade-icon-lg: 68px;
+$size-grade-ribbon: 31px;
+$size-grade-progress-height: 12px;
+$size-grade-table-header: 80px;
+$size-grade-badge: 52px;
+$size-grade-badge-padding: 10px;
+
+// --------------------------------------------
+// Helper Functions & Mixins
+// --------------------------------------------
+
+@use 'sass:map';
+
+// Spacing map (Figma 변수 참조)
+$spacing-scale: (
+  4: $padding-1,
+  8: $padding-2,
+  12: $padding-3,
+  16: $padding-4,
+  20: $padding-5,
+  24: $padding-6,
+  28: $padding-7,
+  32: $padding-8,
+  36: $padding-9,
+  40: $padding-10,
+  60: $padding-11,
+  68: $padding-hero-arrow,
+  100: $padding-12,
+  160: $padding-13
+);
+
+@function space($key) {
+  @return map.get($spacing-scale, $key);
+}
+
+@mixin padding-x($key) {
+  padding-left: space($key);
+  padding-right: space($key);
+}
+
+@mixin padding-y($key) {
+  padding-top: space($key);
+  padding-bottom: space($key);
+}
+
+@mixin margin-x($key) {
+  margin-left: space($key);
+  margin-right: space($key);
+}
+
+@mixin margin-y($key) {
+  margin-top: space($key);
+  margin-bottom: space($key);
+}
+
+@mixin gap($key) {
+  gap: space($key);
+}

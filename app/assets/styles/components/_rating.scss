@@ -1,0 +1,87 @@
+// ============================================
+// 평점 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+
+.base-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: $padding-1;
+
+  // Stars container (for full variant)
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__value {
+    color: $Text-Primary-text-color;
+    font-weight: 500;
+  }
+
+  &__divider {
+    color: $Border-Border-line-100;
+    margin: 0 $padding-1;
+  }
+
+  &__count {
+    color: $Text-Thirty-text-color;
+  }
+
+  // --------------------------------------------
+  // Size Variants
+  // --------------------------------------------
+
+  &--size-sm {
+    gap: 2px;
+
+    .base-rating__value {
+      @include typo-body-3;
+    }
+
+    .base-rating__count {
+      @include typo-body-3;
+    }
+  }
+
+  &--size-md {
+    gap: $padding-1;
+
+    .base-rating__value {
+      @include typo-body-2;
+    }
+
+    .base-rating__count {
+      @include typo-body-2;
+    }
+  }
+
+  &--size-lg {
+    gap: $padding-2;
+
+    .base-rating__value {
+      @include typo-body-1;
+    }
+
+    .base-rating__count {
+      @include typo-body-1;
+    }
+  }
+
+  // --------------------------------------------
+  // Variant Styles
+  // --------------------------------------------
+
+  &--simple {
+    // 기본 스타일 사용
+  }
+
+  &--full {
+    .base-rating__stars {
+      margin-right: $padding-1;
+    }
+  }
+}

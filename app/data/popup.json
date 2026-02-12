@@ -1,0 +1,10 @@
+{
+  "center": {
+    "closeDay": "오늘 하루 안보기",
+    "closeWeek": "일주일간 안보기",
+    "close": "닫기"
+  },
+  "floating": {
+    "close": "닫기"
+  }
+}

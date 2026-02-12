@@ -1,0 +1,271 @@
+// ============================================
+// Pages - Q&A (리뷰 페이지와 동일 레이아웃)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.qna-page {
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $padding-6;
+    margin-bottom: $padding-9;
+
+    @include mobile {
+      // flex-direction: column;
+      align-items: stretch;
+      gap: $padding-4;
+      margin-bottom: $padding-4;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: $padding-5;
+    align-items: center;
+
+    @include mobile {
+      // width: 100%;
+      justify-content: flex-end;
+      > * {
+        // flex: 1;
+      }
+    }
+  }
+
+  &__select {
+    // min-width: 100px;
+
+    @include mobile {
+      // width: 100%;
+    }
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  &__list {
+    border-top: 2px solid $Text-Primary-text-color;
+  }
+
+  &__pagination {
+    margin-top: $padding-9;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Q&A 아이템 (아코디언)
+.qna-item {
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &--open {
+    .qna-item__arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+    width: 100%;
+    padding: $padding-5 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: -2px;
+    }
+
+    @include mobile {
+      padding: $padding-4 0;
+      gap: $padding-3;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $padding-4;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: $padding-2;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    flex-shrink: 0;
+  }
+
+  &__type {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    padding: $padding-1 $padding-2;
+    background: $Bg-Primary-bg-color;
+    border-radius: 4px;
+  }
+
+  &__status {
+    @include typo-body-3;
+    font-weight: 500;
+    padding: $padding-1 $padding-2;
+    border-radius: 4px;
+
+    &--answered {
+      background: var(--theme-primary-50);
+      color: $Primary-color;
+    }
+
+    &--waiting {
+      background: $Bg-Primary-bg-color;
+      color: $Text-Thirty-text-color;
+    }
+  }
+
+  &__title {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__secret-icon {
+    color: $Text-Thirty-text-color;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    flex-shrink: 0;
+
+    @include mobile {
+      gap: $padding-2;
+    }
+  }
+
+  &__date {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__arrow {
+    color: $Text-Thirty-text-color;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  // 아코디언 본문
+  &__body {
+    padding: 0 0 $padding-6;
+
+    @include mobile {
+      padding: 0 0 $padding-4;
+    }
+  }
+
+  &__question {
+    padding: $padding-10 $padding-2;
+    // background: $Bg-Secondary-bg-color;
+    margin-bottom: $padding-4;
+    border-top: 1px solid $Border-Border-line-100;
+
+    @include mobile {
+      padding: $padding-5 0;
+    }
+  }
+
+  &__content {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.6;
+  }
+
+  // 답변 영역
+  &__answer {
+    padding: $padding-4;
+    // background: $Green-Primary-green-50;
+    border-left: 4px solid $Primary-color;
+  }
+
+  &__answer-header {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    margin-bottom: $padding-3;
+  }
+
+  &__answer-badge {
+    @include typo-body-3;
+    font-weight: 600;
+    color: $Primary-color;
+    padding: $padding-1 $padding-2;
+    background: $Primary-white-color;
+    border-radius: 4px;
+  }
+
+  &__answer-date {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__answer-content {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $padding-4;
+  }
+
+  &__delete-btn {
+    @include typo-body-3;
+    padding: $padding-2 $padding-4;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    background: $Primary-white-color;
+    color: $Text-Secondary-text-color;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $Primary-color;
+      color: $Primary-color;
+    }
+  }
+}

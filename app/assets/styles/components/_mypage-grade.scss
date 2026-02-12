@@ -1,0 +1,324 @@
+// ============================================
+// Components - MyPage Grade
+// ============================================
+
+@use "../tokens/colors" as *;
+@use "../tokens/spacing" as *;
+@use "../tokens/typography" as *;
+@use "../tokens/breakpoints" as *;
+
+// grade 페이지 전용 레이아웃 오버라이드
+.mypage-layout__content:has(.mypage-grade) {
+  width: 100%;
+  flex: 1 1 100%;
+}
+
+.mypage-grade {
+
+  &__title {
+    @include typo-headline-2;
+    letter-spacing: -0.8px;
+    margin-bottom: $padding-6;
+  }
+
+  &__top {
+    display: flex;
+    gap: $padding-6;
+    margin-bottom: $padding-11;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+    }
+  }
+
+  // 좌측: 적립금 요약
+  &__summary {
+    flex: 1;
+    padding: $padding-8;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+  }
+
+  &__summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-3;
+  }
+
+  &__summary-balance {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    padding-bottom: $padding-9;
+
+    svg {
+      width: $size-grade-icon-sm;
+      height: $size-grade-icon-sm;
+      flex-shrink: 0;
+      color: $Primary-color;
+    }
+  }
+
+  &__summary-amount {
+    @include typo-headline-2;
+    color: $Primary-color;
+    letter-spacing: -0.8px;
+  }
+
+  &__summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: $padding-3;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__summary-label {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    letter-spacing: -0.35px;
+  }
+
+  &__summary-value {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.35px;
+  }
+
+  // 우측: 현재 등급
+  &__current {
+    flex: 1;
+    padding: $padding-8;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+  }
+
+  &__current-header {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    margin-bottom: $padding-7;
+  }
+
+  &__current-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-grade-icon-lg;
+    height: $size-grade-icon-lg;
+    flex-shrink: 0;
+    border-radius: calc($size-grade-icon-lg / 2);
+    background-color: $Bg-Primary-bg-color;
+
+    svg {
+      width: $size-grade-ribbon;
+      height: $size-grade-ribbon;
+    }
+  }
+
+  &__current-info {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+  }
+
+  &__current-name {
+    @include typo-title-3;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.5px;
+  }
+
+  &__current-text {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    letter-spacing: -0.35px;
+  }
+
+  &__current-highlight {
+    color: $Primary-color;
+    letter-spacing: -0.35px;
+  }
+
+  &__progress {
+    margin-top: $padding-4;
+  }
+
+  &__progress-text {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.35px;
+    margin-bottom: $padding-3;
+  }
+
+  &__progress-bar {
+    width: 100%;
+    height: $size-grade-progress-height;
+    background-color: $Bg-Primary-bg-color;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, $Primary-color 0%, rgba(var(--theme-primary-rgb), 0.3) 100%);
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+  }
+
+  &__progress-labels {
+    display: flex;
+    justify-content: space-between;
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    letter-spacing: -0.35px;
+    margin-top: $padding-1;
+  }
+
+  // 혜택 테이블
+  &__benefits {
+    margin-bottom: $padding-6;
+  }
+
+  &__benefits-title {
+    @include typo-headline-2;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.8px;
+    margin-bottom: $padding-5;
+  }
+
+  &__table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    @include typo-body-4;
+
+    th,
+    td {
+      text-align: center;
+      border-right: 1px solid $Border-Border-line-100;
+      border-bottom: 1px solid $Border-Border-line-100;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    td {
+      padding: $padding-4 $padding-3;
+      background-color: $Primary-white-color;
+      vertical-align: middle;
+      @include typo-body-3;
+      color: $Text-Secondary-text-color;
+      letter-spacing: -0.35px;
+    }
+
+    th {
+      height: $size-grade-table-header;
+      padding: $padding-3;
+      font-weight: 500;
+      background-color: $Bg-Primary-bg-color;
+      vertical-align: middle;
+    }
+
+    th:first-child {
+      @include typo-body-3;
+      color: $Text-Secondary-text-color;
+      letter-spacing: -0.35px;
+      border-radius: 10px 0 0 0;
+    }
+
+    th:last-child {
+      border-right: none;
+      border-radius: 0 10px 0 0;
+    }
+
+
+    tr:last-child td:first-child {
+      border-radius: 0 0 0 10px;
+    }
+
+    tr:last-child td:last-child {
+      border-radius: 0 0 10px 0;
+    }
+
+    td.mypage-grade__table-cell--highlight {
+      @include typo-title-6;
+      color: $Primary-color;
+      letter-spacing: -0.35px;
+    }
+  }
+
+  &__table-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: $size-grade-badge;
+    height: $size-grade-badge;
+    padding: $size-grade-badge-padding;
+    flex-shrink: 0;
+    border-radius: 50%;
+    font-weight: 700;
+    @include typo-title-4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: $breakpoint-md) {
+      width: $padding-10;
+      height: $padding-10;
+      padding: $padding-2;
+      @include typo-body-3;
+    }
+
+    &--family {
+      background-color: $Grade-family-color;
+      color: $Primary-white-color;
+    }
+
+    &--silver {
+      background: linear-gradient(
+        145deg,
+        $Grade-silver-start 0%,
+        $Grade-silver-end 100%
+      );
+      color: $Primary-white-color;
+    }
+
+    &--gold {
+      background: linear-gradient(
+        145deg,
+        rgba($Grade-gold-start, 0.8) 18.04%,
+        $Grade-gold-end 87.96%
+      );
+      color: $Primary-white-color;
+    }
+
+    &--vip {
+      background: linear-gradient(
+        145deg,
+        $Grade-vip-start 18.04%,
+        $Grade-vip-end 87.96%
+      );
+      color: $Primary-white-color;
+    }
+
+    &--active {
+      box-shadow: 0 0 0 3px rgba(var(--theme-primary-rgb), 0.3);
+    }
+  }
+
+  // 안내문
+  &__notice {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    letter-spacing: -0.35px;
+    margin-top: $padding-4;
+  }
+}

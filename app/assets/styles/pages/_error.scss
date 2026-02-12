@@ -1,0 +1,65 @@
+// ============================================
+// Page Styles - Error Pages (404, 500)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $padding-8;
+  text-align: center;
+
+  &__image {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin-bottom: $padding-8;
+
+    @include mobile {
+      max-width: 240px;
+      margin-bottom: $padding-6;
+    }
+  }
+
+  &__title {
+    @include typo-title-2;
+    color: $Primary-color;
+    margin: 0 0 $padding-4;
+
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  &__description {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+    margin: 0 0 $padding-8;
+    max-width: 400px;
+    line-height: 1.6;
+    white-space: pre-line;
+
+    @include mobile {
+      @include typo-body-3;
+      margin-bottom: $padding-6;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $padding-3;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+}

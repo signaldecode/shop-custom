@@ -1,0 +1,50 @@
+{
+  "seo": {
+    "title": "고객센터",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "고객센터 페이지입니다. 전화, 이메일, SNS로 문의하실 수 있습니다."
+  },
+  "header": {
+    "title": "고객센터",
+    "subtitle": "무엇을 도와드릴까요?"
+  },
+  "shopInfo": {
+    "title": "상점 정보",
+    "shopNameLabel": "상호명",
+    "businessNumberLabel": "사업자등록번호",
+    "addressLabel": "주소",
+    "privacyOfficerLabel": "개인정보관리책임자",
+    "privacyEmailLabel": "개인정보 문의"
+  },
+  "contact": {
+    "title": "문의하기",
+    "phone": {
+      "label": "전화 문의"
+    },
+    "email": {
+      "label": "이메일 문의"
+    },
+    "operatingHoursLabel": "영업시간"
+  },
+  "sns": {
+    "title": "SNS",
+    "description": "SNS를 통해 소통하세요"
+  },
+  "links": {
+    "title": "바로가기",
+    "items": [
+      {
+        "icon": "qna",
+        "title": "Q&A",
+        "description": "상품 및 서비스에 대해 문의하세요",
+        "href": "/qna"
+      },
+      {
+        "icon": "order",
+        "title": "주문/배송 조회",
+        "description": "주문 내역과 배송 현황을 확인하세요",
+        "href": "/mypage/orders"
+      }
+    ]
+  }
+}

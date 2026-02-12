@@ -1,0 +1,35 @@
+{
+  "labels": {
+    "zip": "우편번호",
+    "address": "주소",
+    "detail": "상세주소"
+  },
+  "placeholders": {
+    "zip": "우편번호",
+    "address": "주소를 검색해주세요",
+    "detail": "상세주소를 입력해주세요"
+  },
+  "buttons": {
+    "search": "우편번호 찾기"
+  },
+  "ariaLabels": {
+    "search": "우편번호 검색 버튼",
+    "closePostcode": "우편번호 검색 닫기"
+  },
+  "postcode": {
+    "title": "우편번호 검색"
+  },
+  "modal": {
+    "title": "배송지 선택",
+    "empty": "저장된 배송지가 없습니다.",
+    "addNew": "새 배송지 추가",
+    "defaultBadge": "기본 배송지",
+    "setDefault": "기본 배송지로 설정",
+    "select": "선택",
+    "edit": "수정",
+    "delete": "삭제",
+    "deleteConfirm": "이 배송지를 삭제하시겠습니까?",
+    "loading": "배송지 목록을 불러오는 중...",
+    "error": "배송지 목록을 불러오는데 실패했습니다."
+  }
+}

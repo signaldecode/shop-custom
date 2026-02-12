@@ -1,0 +1,41 @@
+// ============================================
+// Components - Address Form Modal
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+
+.address-form-modal {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-5;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__label {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    font-weight: 600;
+  }
+
+  &__error {
+    @include typo-body-4;
+    color: $Error-color;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $padding-3;
+    margin-top: $padding-3;
+
+    > * {
+      flex: 1;
+    }
+  }
+}

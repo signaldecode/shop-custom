@@ -1,0 +1,77 @@
+{
+  "seo": {
+    "title": "리뷰 작성",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "상품 리뷰를 작성해주세요."
+  },
+  "page": {
+    "title": "리뷰 작성",
+    "editTitle": "리뷰 수정",
+    "subtitle": "구매하신 상품의 리뷰를 작성해주세요."
+  },
+  "product": {
+    "label": "리뷰 상품"
+  },
+  "rating": {
+    "label": "별점",
+    "required": true,
+    "placeholder": "별점을 선택해주세요",
+    "descriptions": [
+      "별점을 선택해주세요",
+      "별로예요",
+      "그저 그래요",
+      "보통이에요",
+      "좋아요",
+      "최고예요!"
+    ]
+  },
+  "title": {
+    "label": "리뷰 제목",
+    "required": false,
+    "optional": "(선택)",
+    "placeholder": "리뷰 제목을 입력해주세요",
+    "maxLength": 100
+  },
+  "content": {
+    "label": "리뷰 내용",
+    "required": true,
+    "placeholder": "상품에 대한 솔직한 리뷰를 작성해주세요. (최소 10자 이상)",
+    "minLength": 10,
+    "maxLength": 1000,
+    "countFormat": "{count}/{max}"
+  },
+  "images": {
+    "label": "사진 첨부",
+    "optional": "(선택)",
+    "maxCount": 5,
+    "maxSizeMB": 10,
+    "acceptTypes": "image/jpeg, image/png, image/webp",
+    "placeholder": "사진 추가",
+    "helpText": "최대 5장까지 첨부 가능 (JPG, PNG, WEBP / 장당 10MB 이하)",
+    "deleteLabel": "삭제"
+  },
+  "submit": {
+    "label": "리뷰 등록하기",
+    "editLabel": "리뷰 수정하기",
+    "submittingLabel": "등록 중...",
+    "editSubmittingLabel": "수정 중..."
+  },
+  "cancel": {
+    "label": "취소"
+  },
+  "messages": {
+    "ratingRequired": "별점을 선택해주세요.",
+    "contentRequired": "리뷰 내용을 입력해주세요.",
+    "contentMinLength": "리뷰는 최소 10자 이상 작성해주세요.",
+    "submitSuccess": "리뷰가 등록되었습니다.",
+    "submitError": "리뷰 등록에 실패했습니다.",
+    "updateSuccess": "리뷰가 수정되었습니다.",
+    "updateError": "리뷰 수정에 실패했습니다."
+  },
+  "modal": {
+    "confirmTitle": "리뷰 작성 취소",
+    "confirmMessage": "작성 중인 내용이 사라집니다. 취소하시겠습니까?",
+    "confirmLabel": "취소하기",
+    "cancelLabel": "계속 작성"
+  }
+}

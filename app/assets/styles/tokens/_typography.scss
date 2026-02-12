@@ -1,0 +1,268 @@
+// ============================================
+// Design Tokens - Typography (Figma Sync)
+// ============================================
+
+// --------------------------------------------
+// Figma Variables (Export Variables 플러그인)
+// --------------------------------------------
+
+/* Typography - Mode 1 */
+
+// Display
+$Display-display-1-Font-family: 'Pretendard Variable', Pretendard;
+$Display-display-1-Font-size: 60px;
+$Display-display-1-Font-weight: Bold;
+$Display-display-1-Line-height: 76px;
+
+$Display-display-2-Font-family: 'Pretendard Variable', Pretendard;
+$Display-display-2-Font-size: 52px;
+$Display-display-2-Font-weight: Bold;
+$Display-display-2-Line-height: 64px;
+
+// Headline
+$Headline-headline-1-Font-family: 'Pretendard Variable', Pretendard;
+$Headline-headline-1-Font-size: 44px;
+$Headline-headline-1-Font-weight: Bold;
+$Headline-headline-1-Line-height: 44px;
+
+$Headline-headline-2-Font-family: 'Pretendard Variable', Pretendard;
+$Headline-headline-2-Font-size: 32px;
+$Headline-headline-2-Font-weight: Bold;
+$Headline-headline-2-Line-height: 44px;
+
+$Headline-headline-3-Font-family: 'Pretendard Variable', Pretendard;
+$Headline-headline-3-Font-size: 26px;
+$Headline-headline-3-Font-weight: Bold;
+$Headline-headline-3-Line-height: 36px;
+
+// Title
+$Title-title-1-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-1-Font-size: 26px;
+$Title-title-1-Font-weight: Medium;
+$Title-title-1-Line-height: 38px;
+
+$Title-title-2-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-2-Font-size: 24px;
+$Title-title-2-Font-weight: Medium;
+$Title-title-2-Line-height: 34px;
+
+$Title-title-3-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-3-Font-size: 20px;
+$Title-title-3-Font-weight: Medium;
+$Title-title-3-Line-height: 30px;
+
+$Title-title-4-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-4-Font-size: 18px;
+$Title-title-4-Font-weight: Medium;
+$Title-title-4-Line-height: 26px;
+
+$Title-title-5-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-5-Font-size: 16px;
+$Title-title-5-Font-weight: Medium;
+$Title-title-5-Line-height: 24px;
+
+$Title-title-6-Font-family: 'Pretendard Variable', Pretendard;
+$Title-title-6-Font-size: 14px;
+$Title-title-6-Font-weight: Medium;
+$Title-title-6-Line-height: 20px;
+
+// Body
+$Body-body-1-Font-family: 'Pretendard Variable', Pretendard;
+$Body-body-1-Font-size: 18px;
+$Body-body-1-Font-weight: Light;
+$Body-body-1-Line-height: 26px;
+
+$Body-body-2-Font-family: 'Pretendard Variable', Pretendard;
+$Body-body-2-Font-size: 16px;
+$Body-body-2-Font-weight: Light;
+$Body-body-2-Line-height: 24px;
+
+$Body-body-3-Font-family: 'Pretendard Variable', Pretendard;
+$Body-body-3-Font-size: 14px;
+$Body-body-3-Font-weight: Light;
+$Body-body-3-Line-height: 20px;
+
+$Body-body-4-Font-family: 'Pretendard Variable', Pretendard;
+$Body-body-4-Font-size: 12px;
+$Body-body-4-Font-weight: Light;
+$Body-body-4-Line-height: 16px;
+
+$Body-body-5-Font-family: 'Pretendard Variable', Pretendard;
+$Body-body-5-Font-size: 10px;
+$Body-body-5-Font-weight: Light;
+$Body-body-5-Line-height: 14px;
+
+// Button
+$Button-button-1-Font-family: 'Pretendard Variable', Pretendard;
+$Button-button-1-Font-size: 16px;
+$Button-button-1-Font-weight: Medium;
+$Button-button-1-Line-height: 24px;
+
+$Button-button-2-Font-family: 'Pretendard Variable', Pretendard;
+$Button-button-2-Font-size: 14px;
+$Button-button-2-Font-weight: Medium;
+$Button-button-2-Line-height: 20px;
+
+// --------------------------------------------
+// Font Weight Map
+// --------------------------------------------
+
+@use 'sass:map';
+
+$font-weight-map: (
+  'Light': 300,
+  'Regular': 400,
+  'Medium': 500,
+  'SemiBold': 600,
+  'Bold': 700,
+);
+
+@function get-weight($name) {
+  @return map.get($font-weight-map, $name);
+}
+
+// --------------------------------------------
+// Typography Mixins (Figma 변수 참조)
+// --------------------------------------------
+
+@mixin typo-display-1 {
+  font-family: $Display-display-1-Font-family, sans-serif;
+  font-size: $Display-display-1-Font-size;
+  font-weight: get-weight($Display-display-1-Font-weight);
+  line-height: $Display-display-1-Line-height;
+}
+
+@mixin typo-display-2 {
+  font-family: $Display-display-2-Font-family, sans-serif;
+  font-size: $Display-display-2-Font-size;
+  font-weight: get-weight($Display-display-2-Font-weight);
+  line-height: $Display-display-2-Line-height;
+}
+
+@mixin typo-headline-1 {
+  font-family: $Headline-headline-1-Font-family, sans-serif;
+  font-size: $Headline-headline-1-Font-size;
+  font-weight: get-weight($Headline-headline-1-Font-weight);
+  line-height: $Headline-headline-1-Line-height;
+  letter-spacing: -0.025em;
+}
+
+@mixin typo-headline-2 {
+  font-family: $Headline-headline-2-Font-family, sans-serif;
+  font-size: $Headline-headline-2-Font-size;
+  font-weight: get-weight($Headline-headline-2-Font-weight);
+  line-height: $Headline-headline-2-Line-height;
+}
+
+@mixin typo-headline-3 {
+  font-family: $Headline-headline-3-Font-family, sans-serif;
+  font-size: $Headline-headline-3-Font-size;
+  font-weight: get-weight($Headline-headline-3-Font-weight);
+  line-height: $Headline-headline-3-Line-height;
+}
+
+// Responsive headline variants
+@mixin typo-headline-4 {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
+@mixin typo-headline-5 {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+@mixin typo-title-1 {
+  font-family: $Title-title-1-Font-family, sans-serif;
+  font-size: $Title-title-1-Font-size;
+  font-weight: get-weight($Title-title-1-Font-weight);
+  line-height: $Title-title-1-Line-height;
+}
+
+@mixin typo-title-2 {
+  font-family: $Title-title-2-Font-family, sans-serif;
+  font-size: $Title-title-2-Font-size;
+  font-weight: get-weight($Title-title-2-Font-weight);
+  line-height: $Title-title-2-Line-height;
+}
+
+@mixin typo-title-3 {
+  font-family: $Title-title-3-Font-family, sans-serif;
+  font-size: $Title-title-3-Font-size;
+  font-weight: get-weight($Title-title-3-Font-weight);
+  line-height: $Title-title-3-Line-height;
+}
+
+@mixin typo-title-4 {
+  font-family: $Title-title-4-Font-family, sans-serif;
+  font-size: $Title-title-4-Font-size;
+  font-weight: get-weight($Title-title-4-Font-weight);
+  line-height: $Title-title-4-Line-height;
+}
+
+@mixin typo-title-5 {
+  font-family: $Title-title-5-Font-family, sans-serif;
+  font-size: $Title-title-5-Font-size;
+  font-weight: get-weight($Title-title-5-Font-weight);
+  line-height: $Title-title-5-Line-height;
+}
+
+@mixin typo-title-6 {
+  font-family: $Title-title-6-Font-family, sans-serif;
+  font-size: $Title-title-6-Font-size;
+  font-weight: get-weight($Title-title-6-Font-weight);
+  line-height: $Title-title-6-Line-height;
+}
+
+@mixin typo-body-1 {
+  font-family: $Body-body-1-Font-family, sans-serif;
+  font-size: $Body-body-1-Font-size;
+  font-weight: get-weight($Body-body-1-Font-weight);
+  line-height: $Body-body-1-Line-height;
+}
+
+@mixin typo-body-2 {
+  font-family: $Body-body-2-Font-family, sans-serif;
+  font-size: $Body-body-2-Font-size;
+  font-weight: get-weight($Body-body-2-Font-weight);
+  line-height: $Body-body-2-Line-height;
+}
+
+@mixin typo-body-3 {
+  font-family: $Body-body-3-Font-family, sans-serif;
+  font-size: $Body-body-3-Font-size;
+  font-weight: get-weight($Body-body-3-Font-weight);
+  line-height: $Body-body-3-Line-height;
+}
+
+@mixin typo-body-4 {
+  font-family: $Body-body-4-Font-family, sans-serif;
+  font-size: $Body-body-4-Font-size;
+  font-weight: get-weight($Body-body-4-Font-weight);
+  line-height: $Body-body-4-Line-height;
+}
+
+@mixin typo-body-5 {
+  font-family: $Body-body-5-Font-family, sans-serif;
+  font-size: $Body-body-5-Font-size;
+  font-weight: get-weight($Body-body-5-Font-weight);
+  line-height: $Body-body-5-Line-height;
+}
+
+@mixin typo-button-1 {
+  font-family: $Button-button-1-Font-family, sans-serif;
+  font-size: $Button-button-1-Font-size;
+  font-weight: get-weight($Button-button-1-Font-weight);
+  line-height: $Button-button-1-Line-height;
+}
+
+@mixin typo-button-2 {
+  font-family: $Button-button-2-Font-family, sans-serif;
+  font-size: $Button-button-2-Font-size;
+  font-weight: get-weight($Button-button-2-Font-weight);
+  line-height: $Button-button-2-Line-height;
+}

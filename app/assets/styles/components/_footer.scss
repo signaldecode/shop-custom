@@ -1,0 +1,299 @@
+// ============================================
+// 풋터 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.footer {
+  background: $Black-Primary-black-900;
+  color: $Primary-white-color;
+  margin-top: $padding-section;
+
+  &__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: $padding-12 $container-padding;
+
+    @include tablet {
+      padding: $padding-10 $padding-6;
+    }
+
+    @include mobile {
+      padding: $padding-6;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $padding-10;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $padding-4;
+      margin-bottom: $padding-4;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5;
+
+    @include mobile {
+      gap: $padding-3;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+  }
+
+  &__logo-image {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  &__logo-text {
+    font-size: 30px;
+    line-height: 1.2;
+    color: $Primary-white-color;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    @include mobile {
+      @include typo-title-6;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__nav {
+    margin-top: $padding-2;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $padding-6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mobile {
+      gap: $padding-4;
+    }
+  }
+
+  &__nav-link {
+    @include typo-title-3;
+    color: $Primary-white-color;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+
+    &:hover {
+      color: $Black-Primary-black-300;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+    margin-top: $padding-2;
+  }
+
+  &__info-line {
+    @include typo-body-2;
+    color: $Black-Primary-black-400;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    span {
+      &:not(:last-child)::after {
+        content: '|';
+        margin: 0 $padding-2;
+        color: $Black-Primary-black-600;
+      }
+    }
+
+    @include mobile {
+      @include typo-body-4;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $padding-1;
+
+      span:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    // 첫 번째 info-line: 모바일에서도 row 유지
+    &--primary {
+      @include mobile {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0;
+
+        span:not(:last-child)::after {
+          display: inline;
+          content: '|';
+          margin: 0 $padding-2;
+          color: $Black-Primary-black-600;
+        }
+      }
+    }
+  }
+
+  // 모바일 토글 버튼
+  &__info-toggle {
+    display: none;
+    align-items: center;
+    gap: $padding-1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    @include typo-body-2;
+    color: $Black-Primary-black-400;
+    padding: 0;
+    margin-top: $padding-2;
+
+    .base-icon {
+      color: $Black-Primary-black-400;
+      transition: transform 0.3s ease;
+    }
+
+    &[aria-expanded="true"] .base-icon {
+      transform: rotate(180deg);
+    }
+
+    @include mobile {
+      display: inline-flex;
+      @include typo-body-4;
+    }
+  }
+
+  // 토글 상세 영역
+  &__info-detail {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+
+    @include mobile {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+
+      &--open {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: $padding-2;
+      }
+    }
+  }
+
+  &__phone-link {
+    color: $Black-Primary-black-400;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $Primary-white-color;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    flex-shrink: 0;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: $Black-Primary-black-700;
+    color: $Primary-white-color;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $Black-Primary-black-600;
+    }
+
+    .icon-social {
+      width: 18px;
+      height: 18px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__copyright {
+    @include typo-body-2;
+    color: $Black-Primary-black-500;
+    margin: 0;
+    padding-top: $padding-6;
+
+    @include mobile {
+      @include typo-body-5;
+      padding-top: 0;
+    }
+  }
+}
+
+// Icon Social base styles
+.icon-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--md {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--lg {
+    width: 24px;
+    height: 24px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

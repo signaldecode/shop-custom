@@ -1,0 +1,361 @@
+// ============================================
+// Page Styles - Signup Terms (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-signup-terms {
+  background: $Primary-white-color;
+}
+
+.signup-terms-page {
+  padding-top: 180px;
+  padding-bottom: 160px;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+}
+
+.signup-terms-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+
+  @include mobile {
+    gap: 60px;
+  }
+}
+
+.signup-terms-page__header {
+  width: 549px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  @include mobile {
+    width: 100%;
+    padding: 0 $padding-4;
+  }
+}
+
+.signup-terms-page__title {
+  @include typo-headline-1;
+  margin: 0;
+  text-align: center;
+  color: $Text-Primary-text-color;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+// --------------------------------------------
+// Steps
+// --------------------------------------------
+
+.signup-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.signup-steps__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.signup-steps__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: calc(100% - 46px);
+  height: 3px;
+  background: $Border-Border-line-100;
+  border-radius: 9999px;
+  transform: translateX(23px);
+}
+
+.signup-steps__item--active:not(:last-child)::after,
+.signup-steps__item--done:not(:last-child)::after {
+  background: $Primary-color;
+}
+
+.signup-steps__circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+  border: 2px solid $Black-Primary-black-400;
+  background: $Primary-white-color;
+  position: relative;
+
+  @include mobile {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.signup-steps__circle--active,
+.signup-steps__circle--done {
+  border-color: $Primary-color;
+  background: $Primary-color;
+}
+
+.signup-steps__circle--active::after,
+.signup-steps__circle--done::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 18px;
+  border: solid $Primary-white-color;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -58%) rotate(45deg);
+}
+
+.signup-steps__label {
+  @include typo-title-5;
+  color: $Text-Secondary-text-color;
+
+  @include mobile {
+    @include typo-body-4;
+  }
+}
+
+// --------------------------------------------
+// Terms cards
+// --------------------------------------------
+
+.signup-terms {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.signup-terms__stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-terms-card {
+  width: 100%;
+  border: 1px solid $Border-Border-line-100;
+  border-radius: 10px;
+  padding: $padding-6;
+  background: $Primary-white-color;
+
+  @include mobile {
+    padding: $padding-4;
+    border-radius: 8px;
+  }
+}
+
+.signup-terms-card--all {
+  border: none;
+  background: $Bg-Primary-bg-color;
+}
+
+.signup-terms-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup-terms-card__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $padding-3;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.signup-terms-card__required {
+  @include typo-title-4;
+  color: $Primary-color;
+  margin-left: auto;
+
+  @include mobile {
+    @include typo-title-6;
+  }
+}
+
+.signup-terms-card__body {
+  padding-left: $padding-4;
+  padding-right: $padding-4;
+  margin-top: $padding-6;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-3;
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.signup-terms-card__article {
+  @include typo-title-4;
+  color: $Text-Primary-text-color;
+  margin: 0;
+
+  @include mobile {
+    @include typo-body-4;
+  }
+}
+
+.signup-terms-card__text {
+  @include typo-title-5;
+  color: $Text-Secondary-text-color;
+  margin: 0;
+  border-radius: 8px;
+  padding: $padding-5;
+  max-height: 200px;
+  overflow-y: auto;
+
+  @include mobile {
+    padding: 0;
+  }
+
+  h2 {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-3 0;
+
+    &:not(:first-child) {
+      margin-top: $padding-5;
+    }
+
+    @include mobile {
+      @include typo-title-6;
+      margin: 0;
+    }
+  }
+
+  p {
+    @include typo-title-5;
+    color: $Text-Secondary-text-color;
+    margin: 0 0 $padding-2 0;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  strong {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    font-weight: 400;
+
+    @include mobile {
+      @include typo-body-5;
+    }
+  }
+
+  ul {
+    margin: 0 0 $padding-3 0;
+    padding-left: 24px;
+
+    li {
+      @include typo-title-5;
+      color: $Text-Secondary-text-color;
+      margin: 0;
+      padding: 0;
+
+      @include mobile {
+        @include typo-body-3;
+      }
+    }
+  }
+}
+
+.signup-terms-card__note {
+  @include typo-body-3;
+  color: $Text-Thirty-text-color;
+  margin: 0;
+}
+
+.signup-terms-card__loading {
+  @include typo-body-2;
+  color: $Text-Thirty-text-color;
+  background: $Bg-Primary-bg-color;
+  border-radius: 8px;
+  padding: $padding-5;
+  text-align: center;
+}
+
+.signup-terms-card__error {
+  @include typo-body-2;
+  color: $Text-Thirty-text-color;
+  background: $Bg-Primary-bg-color;
+  border-radius: 8px;
+  padding: $padding-5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $padding-3;
+}
+
+.signup-terms-card__list {
+  @include typo-title-5;
+  color: $Text-Secondary-text-color;
+  margin: 0;
+  padding-left: 24px;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.signup-terms-card__choices {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+// --------------------------------------------
+// Actions
+// --------------------------------------------
+
+.signup-terms-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.signup-terms-actions__btn {
+  width: 200px;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+

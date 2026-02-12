@@ -1,0 +1,877 @@
+// ============================================
+// 주문 페이지 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Order Page Layout
+// --------------------------------------------
+
+$header-height: 80px;
+
+.order-page {
+  @include container;
+  padding-top: calc(#{$header-height} + #{$padding-11});
+  padding-bottom: $padding-12;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 408px;
+    gap: $padding-12;
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-11;
+
+    @include mobile {
+      gap: $padding-8;
+    }
+  }
+}
+
+// --------------------------------------------
+// Order Section
+// --------------------------------------------
+
+.order-section {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $padding-4;
+    border-bottom: 1px solid $Text-Primary-text-color;
+    margin-bottom: $padding-6;
+    @include mobile {
+      margin-bottom: $padding-3;
+    }
+  }
+
+  &__title {
+    @include typo-title-1;
+    color: $Text-Primary-text-color;
+
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $padding-4;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__row--full {
+    grid-template-columns: 1fr;
+  }
+
+  &__row--address {
+    grid-template-columns: 120px 1fr auto;
+    gap: $padding-3;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__address-detail {
+    grid-column: 2 / -1;
+
+    @include mobile {
+      grid-column: 1;
+    }
+  }
+
+  &__note {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin-top: $padding-2;
+  }
+}
+
+// --------------------------------------------
+// Order Product Card
+// --------------------------------------------
+
+.order-product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $padding-6;
+  padding: $padding-5 0;
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    padding: $padding-3 0;
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: $Bg-Primary-bg-color;
+
+    @include mobile {
+      width: 70px;
+      height: 70px;
+      grid-row: 1 / 4;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+
+    @include mobile {
+      grid-column: 2;
+      gap: 0;
+    }
+  }
+
+  &__name {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+  }
+
+  &__option {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__meta {
+    display: contents;
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      gap: $padding-4;
+      grid-column: 2;
+      justify-content: flex-end;
+    }
+  }
+
+  &__price {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    flex-shrink: 0;
+    min-width: 100px;
+    text-align: right;
+
+    @include mobile {
+      @include typo-body-4;
+      min-width: auto;
+      text-align: left;
+    }
+  }
+
+  &__quantity {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    flex-shrink: 0;
+    min-width: 60px;
+    text-align: center;
+
+    @include mobile {
+      @include typo-body-4;
+      min-width: auto;
+      text-align: left;
+    }
+  }
+
+  &__total-price {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    flex-shrink: 0;
+    min-width: 120px;
+    text-align: right;
+
+    @include mobile {
+      @include typo-title-6;
+      grid-column: 2;
+      min-width: auto;
+      text-align: right;
+    }
+  }
+}
+
+// --------------------------------------------
+// Order Product List
+// --------------------------------------------
+
+.order-products {
+  display: flex;
+  flex-direction: column;
+}
+
+// --------------------------------------------
+// Order Summary Aside
+// --------------------------------------------
+
+.order-summary-aside {
+  position: sticky;
+  top: calc(#{$header-height} + #{$padding-6});
+  width: 408px;
+  padding: $padding-9;
+  background: $Bg-Primary-bg-color;
+  border-radius: 8px;
+
+  @include tablet {
+    position: static;
+    width: 100%;
+  }
+
+  @include mobile {
+    display: none;
+  }
+
+  &__title {
+    @include typo-title-1;
+    font-weight: 500;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-4;
+    padding-bottom: $padding-4;
+    border-bottom: 1px solid $Border-Border-line-200;
+  }
+
+  &__content {
+    margin-bottom: $padding-4;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    dt {
+      @include typo-body-2;
+      color: $Text-Secondary-text-color;
+    }
+
+    dd {
+      @include typo-body-2;
+      color: $Text-Primary-text-color;
+      margin: 0;
+    }
+
+    &--discount {
+      dd {
+        color: $Primary-color;
+      }
+    }
+  }
+
+  &__free {
+    color: $Primary-color !important;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $padding-4;
+    margin-top: $padding-4;
+    border-top: 1px solid $Border-Border-line-100;
+  }
+
+  &__total-label {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+  }
+
+  &__total-price {
+    @include typo-headline-3;
+    color: $Text-Primary-text-color;
+  }
+
+  &__currency {
+    @include typo-title-4;
+    font-weight: 500;
+  }
+
+  &__agreements {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+    margin-top: $padding-4;
+  }
+
+  &__divider {
+    height: 1px;
+    background: $Border-Border-line-200;
+  }
+
+  &__agreement-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__agreement-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__agreement-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__required {
+    color: $Primary-color;
+    margin-left: $padding-1;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $Text-Secondary-text-color;
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__agreement-content {
+    margin-top: $padding-3;
+    padding: $padding-3;
+    background: $Primary-white-color;
+    border-radius: 4px;
+
+    p {
+      @include typo-body-3;
+      color: $Text-Thirty-text-color;
+      margin: 0;
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+  }
+}
+
+// --------------------------------------------
+// Order Payment Methods
+// --------------------------------------------
+
+.order-payment {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-4;
+
+  &__card-options {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+  }
+}
+
+// --------------------------------------------
+// Order Coupon & Point
+// --------------------------------------------
+
+// --------------------------------------------
+// Order Section Address Input (커스텀 스타일)
+// --------------------------------------------
+
+.order-section {
+  .address-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $padding-4;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    // 우편번호 + 버튼 row: 전체 너비
+    &__row {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: $padding-3;
+      align-items: center;
+
+      @include mobile {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    &__zip {
+      width: 140px;
+      flex-shrink: 0;
+
+      @include mobile {
+        width: 100%;
+      }
+
+      .base-input__input {
+        background-color: $Bg-Primary-bg-color;
+        text-align: center;
+      }
+    }
+
+    &__btn {
+      width: auto;
+      height: 44px;
+      padding: 0 $padding-5;
+      flex-shrink: 0;
+      @include typo-body-3;
+
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    // 주소 입력 필드들
+    .base-input__input {
+      height: 44px;
+      border: 1px solid $Border-Border-line-100;
+      border-radius: 4px;
+      padding: 0 $padding-4;
+      @include typo-body-2;
+
+      &:focus {
+        border-color: $Primary-color;
+        outline: none;
+      }
+
+      &:disabled {
+        background-color: $Bg-Primary-bg-color;
+        color: $Text-Secondary-text-color;
+      }
+    }
+  }
+}
+
+.order-coupon {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-4;
+
+  &__row {
+    display: flex;
+    gap: $padding-3;
+    align-items: flex-end;
+  }
+
+  &__input-wrapper {
+    flex: 1;
+  }
+
+  &__apply-btn {
+    flex-shrink: 0;
+  }
+
+  &__select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    padding: 0 $padding-4;
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: $Border-Border-line-200;
+    }
+
+    svg {
+      flex-shrink: 0;
+      color: $Text-Secondary-text-color;
+    }
+  }
+
+  &__placeholder {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__selected-name {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__selected-discount {
+    @include typo-body-2;
+    color: $Primary-color;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  &__available {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+
+    strong {
+      color: $Primary-color;
+      font-weight: 500;
+    }
+  }
+}
+
+// --------------------------------------------
+// Order Complete Page
+// --------------------------------------------
+
+.order-complete-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  padding-top: calc(#{$header-height} + #{$padding-11});
+  padding-bottom: $padding-12;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+    padding-left: $padding-5;
+    padding-right: $padding-5;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: $padding-10;
+    margin-bottom: $padding-10;
+    // border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__icon {
+    color: $Primary-color;
+    margin-bottom: $padding-6;
+  }
+
+  &__title {
+    @include typo-headline-2;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-3;
+
+    @include mobile {
+      font-size: $Title-title-3-Font-size;
+    }
+  }
+
+  &__description {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0 0 $padding-6;
+
+    @include mobile {
+      font-size: $Body-body-3-Font-size;
+      margin: 0 0 $padding-4;
+    }
+  }
+
+  &__order-number {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    padding: $padding-4 $padding-6;
+    background: $Bg-Primary-bg-color;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: $Bg-Secondary-bg-color;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $padding-2;
+    }
+  }
+
+  &__order-number-hint {
+    @include typo-body-4;
+    color: $Text-Disabled-color;
+
+    @include mobile {
+      font-size: $Body-body-5-Font-size;
+    }
+  }
+
+  &__order-number-label {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    @include mobile {
+      font-size: $Body-body-3-Font-size;
+    }
+  }
+
+  &__order-number-value {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    @include mobile {
+      font-size: $Title-title-5-Font-size;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-10;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: $padding-4;
+    margin-top: $padding-10;
+    padding-top: $padding-10;
+    border-top: 1px solid $Border-Border-line-100;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+}
+
+// --------------------------------------------
+// Order Info Section (공통 정보 섹션)
+// --------------------------------------------
+
+.order-info-section {
+  &__title {
+    @include typo-title-3;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-5;
+    padding-bottom: $padding-4;
+    border-bottom: 2px solid $Text-Primary-text-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: $padding-4;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $padding-1;
+    }
+
+    &--highlight {
+      justify-content: space-between;
+      padding-top: $padding-4;
+      margin-top: $padding-2;
+      border-top: 1px solid $Border-Border-line-100;
+
+      .order-info-section__label {
+        @include typo-title-4;
+        color: $Text-Primary-text-color;
+      }
+
+      .order-info-section__value {
+        @include typo-title-3;
+        color: $Primary-color;
+      }
+    }
+  }
+
+  &__label {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+
+  &__value {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    word-break: keep-all;
+  }
+}
+
+// --------------------------------------------
+// Payment Result Page (승인/실패)
+// --------------------------------------------
+
+.payment-result {
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  padding-top: calc(#{$header-height} + #{$padding-11});
+  padding-bottom: $padding-12;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+    padding-left: $padding-5;
+    padding-right: $padding-5;
+  }
+
+  &__loading,
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $padding-4;
+  }
+
+  &__icon {
+    color: $Text-Thirty-text-color;
+    margin-bottom: $padding-4;
+  }
+
+  &__title {
+    @include typo-headline-3;
+    color: $Text-Primary-text-color;
+    margin: $padding-4 0 0;
+
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  &__description {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+  &__reason {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: $padding-2 0 0;
+    padding: $padding-3 $padding-5;
+    background: $Bg-Primary-bg-color;
+    border-radius: 4px;
+  }
+
+  &__reason-label {
+    color: $Text-Secondary-text-color;
+    font-weight: 600;
+    margin-right: $padding-2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $padding-4;
+    margin-top: $padding-8;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

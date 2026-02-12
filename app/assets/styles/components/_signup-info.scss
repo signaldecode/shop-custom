@@ -1,0 +1,319 @@
+// ============================================
+// Page Styles - Signup Info (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-signup-info {
+  background: $Primary-white-color;
+}
+
+.signup-info-page {
+  padding-top: 180px;
+  padding-bottom: 160px;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+}
+
+.signup-info-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+}
+
+.signup-info-page__header {
+  width: 549px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.signup-info-page__title {
+  @include typo-headline-1;
+  margin: 0;
+  text-align: center;
+  color: $Text-Primary-text-color;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+.signup-info-sections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.signup-info-section {
+  width: 100%;
+  border-bottom: 1px solid $Border-Border-line-100;
+  padding-bottom: $padding-5;
+}
+
+.signup-info-section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: $padding-5;
+}
+
+.signup-info-section__title {
+  @include typo-headline-2;
+  margin: 0;
+  color: $Text-Primary-text-color;
+  @include mobile {
+    @include typo-title-4;
+  }
+}
+
+.signup-info-section__required {
+  @include typo-body-3;
+  margin: 0;
+  color: $Primary-color;
+}
+
+.signup-info-section__body {
+  width: 100%;
+  border-top: 1px solid $Border-Border-line-200;
+  padding: $padding-10 0;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-8;
+}
+
+.signup-info-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+  gap: 0;
+}
+
+.signup-info-row__label {
+  @include typo-title-6;
+  color: $Text-Primary-text-color;
+  padding-top: 10px;
+}
+
+.signup-info-row__star {
+  color: $Primary-color;
+  margin-left: 2px;
+}
+
+.signup-info-row__field {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-1;
+
+  &--inline {
+    width: 600px;
+  }
+}
+
+.signup-info-row__help {
+  @include typo-body-3;
+  margin: 0;
+
+  &--danger {
+    color: #dc0000;
+  }
+}
+
+.signup-info-split {
+  display: flex;
+  align-items: center;
+  gap: $padding-1;
+}
+
+.signup-info-split__w150 {
+  width: 150px;
+}
+
+.signup-info-split__dash {
+  width: 7px;
+  height: 1px;
+  background: $Border-Border-line-200;
+}
+
+.signup-info-email {
+  display: flex;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.signup-info-email__w212 {
+  width: 212px;
+}
+
+.signup-info-email__w140 {
+  width: 140px;
+}
+
+.signup-info-email__at {
+  @include typo-body-3;
+  color: $Text-Secondary-text-color;
+  width: 12px;
+  text-align: center;
+}
+
+// 이메일 인증
+.signup-info-email-verify {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+}
+
+.signup-info-email-verify__top {
+  display: flex;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.signup-info-email-verify__input {
+  flex: 1;
+}
+
+.signup-info-email-verify__btn {
+  width: 140px;
+}
+
+.signup-info-email-verify__message {
+  @include typo-body-3;
+  margin: 0;
+  color: $Primary-color;
+
+  &--error {
+    color: #dc0000;
+  }
+}
+
+.signup-info-email-verify__code {
+  display: flex;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.signup-info-email-verify__code-input {
+  width: 200px;
+}
+
+.signup-info-email-verify__code-btn {
+  width: 80px;
+}
+
+.signup-info-address {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+}
+
+.signup-info-address__top {
+  display: flex;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.signup-info-address__zip {
+  width: 260px;
+}
+
+.signup-info-address__btn {
+  width: 140px;
+}
+
+.signup-info-gender {
+  display: inline-flex;
+  align-items: center;
+  gap: $padding-6;
+}
+
+.signup-info-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.signup-info-actions__btn {
+  width: 200px;
+}
+
+@include mobile {
+  .signup-info-page__inner {
+    gap: 60px;
+  }
+
+  .signup-info-section__body {
+    padding: $padding-8 0;
+  }
+
+  .signup-info-row {
+    grid-template-columns: 1fr;
+    gap: $padding-2;
+  }
+
+  .signup-info-row__field,
+  .signup-info-row__field--inline,
+  .signup-info-address {
+    width: 100%;
+  }
+
+  .signup-info-split__w150,
+  .signup-info-email__w212,
+  .signup-info-email__w140,
+  .signup-info-address__zip,
+  .signup-info-address__btn,
+  .signup-info-actions__btn {
+    width: 100%;
+  }
+
+  .signup-info-email {
+    flex-wrap: wrap;
+  }
+
+  .signup-info-email__at {
+    width: auto;
+  }
+
+  .signup-info-address__top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .signup-info-email-verify {
+    width: 100%;
+  }
+
+  .signup-info-email-verify__top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .signup-info-email-verify__btn,
+  .signup-info-email-verify__code-input,
+  .signup-info-email-verify__code-btn {
+    width: 100%;
+  }
+
+  .signup-info-email-verify__code {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

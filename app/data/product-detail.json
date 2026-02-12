@@ -1,0 +1,98 @@
+{
+  "seo": {
+    "titleSuffix": " - Brand Name",
+    "ogImage": "/images/og-product.jpg"
+  },
+  "hero": {
+    "prevLabel": "이전 이미지",
+    "nextLabel": "다음 이미지",
+    "shareLabel": "공유하기",
+    "reviewUnit": "건",
+    "priceLabel": "판매가",
+    "shippingLabel": "배송비",
+    "deliveryLabel": "배송예정",
+    "optionLabel": "옵션 선택",
+    "quantityLabel": "수량",
+    "totalLabel": "총 상품금액",
+    "wishlistLabel": "찜하기",
+    "cartLabel": "장바구니",
+    "buyLabel": "바로 구매",
+    "removeLabel": "옵션 삭제",
+    "promotionEndSuffix": "까지"
+  },
+  "tabs": [
+    { "label": "상세정보", "value": "detail" },
+    { "label": "상품정보고시", "value": "info" },
+    { "label": "리뷰", "value": "reviews" },
+    { "label": "Q&A", "value": "qna" }
+  ],
+  "tabsAriaLabel": "상품 상세 탭",
+  "content": {
+    "moreLabel": "상세정보 더보기",
+    "lessLabel": "상세정보 접기"
+  },
+  "info": {
+    "title": "상품정보고시",
+    "specs": [
+      { "label": "제조사", "value": "theon" },
+      { "label": "제조국", "value": "한국" },
+      { "label": "주의사항", "value": "염소계 표백제 주의" },
+      { "label": "색상", "value": "블랙 / 화이트" }
+    ]
+  },
+  "reviews": {
+    "title": "상품리뷰",
+    "writeLabel": "리뷰 작성",
+    "avgLabel": "사용자가 준 평점은?",
+    "totalLabel": "사용자가 쓴 평점은?",
+    "totalUnit": "개",
+    "distLabel": "사용자가 쓴 평점은?",
+    "tabs": [
+      { "label": "전체", "value": "all" },
+      { "label": "포토", "value": "photo" },
+      { "label": "추천순", "value": "best" }
+    ],
+    "sortOptions": [
+      { "label": "최신순", "value": "latest" },
+      { "label": "평점 높은순", "value": "rating_desc" },
+      { "label": "평점 낮은순", "value": "rating_asc" }
+    ],
+    "emptyMessage": "아직 작성된 리뷰가 없습니다.",
+    "pagination": {
+      "prevLabel": "이전 페이지",
+      "nextLabel": "다음 페이지"
+    }
+  },
+  "qna": {
+    "title": "Q&A",
+    "writeLabel": "문의하기",
+    "emptyMessage": "아직 작성된 문의가 없습니다.",
+    "answerLabel": "답변완료",
+    "waitingLabel": "답변대기",
+    "secretLabel": "비밀글입니다.",
+    "questionLabel": "문의내용",
+    "answerContentLabel": "답변",
+    "noAnswerMessage": "아직 답변이 등록되지 않았습니다.",
+    "pagination": {
+      "prevLabel": "이전 페이지",
+      "nextLabel": "다음 페이지"
+    }
+  },
+  "guide": {
+    "title": "상품구매안내",
+    "sections": [
+      {
+        "title": "배송 안내",
+        "content": "- 배송비: 3,000원 (50,000원 이상 구매 시 무료)\n- 배송기간: 결제 완료 후 1~3일 이내 출고\n- 도서산간 지역은 추가 배송비가 발생할 수 있습니다."
+      },
+      {
+        "title": "교환/반품 안내",
+        "content": "- 교환/반품 신청 기간: 상품 수령 후 7일 이내\n- 고객 변심에 의한 교환/반품 시 배송비는 고객 부담\n- 상품 하자 시 무료 교환/반품 가능"
+      },
+      {
+        "title": "환불 안내",
+        "content": "- 환불은 교환/반품 상품 입고 확인 후 3영업일 이내 처리\n- 카드 결제 시 카드사 정책에 따라 취소 처리"
+      }
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+// ============================================
+// Popup Floating Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.popup-floating-wrap {
+  position: fixed;
+  bottom: space(24);
+  right: space(24);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  gap: space(12);
+  pointer-events: none;
+
+  @include mobile {
+    bottom: space(16);
+    right: space(16);
+  }
+}
+
+.popup-floating {
+  position: relative;
+  width: 200px;
+  pointer-events: auto;
+  border-radius: space(8);
+  box-shadow: 0 space(4) space(16) rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  background-color: $Primary-white-color;
+
+  @include mobile {
+    width: 160px;
+  }
+
+  &__close {
+    position: absolute;
+    top: space(8);
+    right: space(8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: space(24);
+    height: space(24);
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: $Primary-white-color;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Transition
+.popup-floating-enter-active,
+.popup-floating-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popup-floating-enter-from {
+  opacity: 0;
+  transform: translateX(space(20));
+}
+
+.popup-floating-leave-to {
+  opacity: 0;
+  transform: translateX(space(20));
+}
+
+.popup-floating-move {
+  transition: transform 0.3s ease;
+}

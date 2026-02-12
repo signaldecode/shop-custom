@@ -1,0 +1,46 @@
+{
+  "seo": {
+    "title": "Q&A",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "고객님들의 문의와 답변을 확인하세요."
+  },
+  "page": {
+    "title": "Q&A",
+    "subtitle": "고객님들의 문의와 답변을 확인하세요"
+  },
+  "buttons": {
+    "write": "문의하기"
+  },
+  "filters": {
+    "type": {
+      "placeholder": "전체",
+      "options": [
+        { "label": "전체", "value": "" },
+        { "label": "상품문의", "value": "PRODUCT" },
+        { "label": "주문문의", "value": "ORDER" },
+        { "label": "배송문의", "value": "SHIPPING" },
+        { "label": "결제문의", "value": "PAYMENT" },
+        { "label": "회원문의", "value": "MEMBERSHIP" },
+        { "label": "일반문의", "value": "GENERAL" }
+      ]
+    },
+    "sort": {
+      "options": [
+        { "label": "최신순", "value": "createdAt,DESC" },
+        { "label": "오래된순", "value": "createdAt,ASC" }
+      ]
+    }
+  },
+  "list": {
+    "answeredLabel": "답변완료",
+    "waitingLabel": "답변대기",
+    "answerTitle": "답변"
+  },
+  "empty": {
+    "message": "등록된 문의가 없습니다."
+  },
+  "pagination": {
+    "prevLabel": "이전",
+    "nextLabel": "다음"
+  }
+}

@@ -1,0 +1,211 @@
+// ============================================
+// Layout Styles - Cart Page
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+@use '../tokens/layout' as *;
+
+.cart-page {
+  @include container;
+  padding-top: calc(80px + #{$padding-11}); // header + spacing (order page와 동일)
+  padding-bottom: $padding-12;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: $padding-12; // 100
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5; // 20
+  }
+}
+
+.cart-section {
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 44px;
+    margin-bottom: $padding-5; // 20
+    @include mobile {
+      height: 32px;
+      margin-bottom: $padding-2;
+    }
+  }
+
+  &__title {
+    font-size: $Headline-headline-1-Font-size;
+    margin: 0;
+    color: $Text-Primary-text-color;
+
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+}
+
+.cart-products {
+  border-top: 1px solid $Border-Border-line-200;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-empty {
+  @include typo-body-2;
+  color: $Text-Thirty-text-color;
+  padding: $padding-6 0;
+  margin: 0;
+  @include mobile {
+    @include typo-body-3;
+  }
+}
+
+.cart-reco {
+  margin-top: $padding-12; // 100
+
+  @include mobile {
+    margin-top: $padding-10;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: $padding-8; // 32
+
+    @include mobile {
+      margin-bottom: $padding-5;
+    }
+  }
+
+  &__title {
+    @include typo-headline-1;
+    margin: 0;
+    color: $Text-Primary-text-color;
+
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $padding-7;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: $padding-4;
+      padding-bottom: $padding-3;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > * {
+        flex: 0 0 60%;
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+    }
+  }
+
+  &__loading {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin-top: $padding-4;
+  }
+}
+
+// 비회원 주문 모달
+.guest-order-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $padding-4 0;
+
+  &__message {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-5;
+    white-space: pre-line;
+  }
+
+  &__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__benefit {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    position: relative;
+    padding-left: $padding-5;
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: $Primary-color;
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+    width: 100%;
+  }
+}
+
+// 로그인 필요 모달
+.login-required-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $padding-4 0;
+
+  &__message {
+    @include typo-body-1;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: $padding-3;
+    width: 100%;
+  }
+}
+

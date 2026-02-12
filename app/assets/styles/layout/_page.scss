@@ -1,0 +1,62 @@
+// ============================================
+// Layout Styles - Page (공통 페이지 레이아웃)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+@use '../tokens/layout' as *;
+
+.layout-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding-top: 80px;
+
+    @include mobile {
+      padding-top: 60px;
+    }
+  }
+
+  &__inner {
+    @include layout-container('1340');
+    padding-top: $padding-12;
+    padding-bottom: $padding-13;
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+
+    @include tablet {
+      padding-top: $padding-10;
+      padding-bottom: $padding-10;
+    }
+
+    @include mobile {
+      padding-top: 0;
+      padding-bottom: $padding-8;
+      padding-left: $padding-4;
+      padding-right: $padding-4;
+    }
+  }
+
+  &__header {
+    margin-bottom: $padding-8;
+
+    @include mobile {
+      margin-bottom: $padding-1;
+    }
+  }
+
+  &__title {
+    @include typo-display-1;
+    color: $Text-Primary-text-color;
+    margin: 0;
+
+    @include mobile {
+      font-size: $Title-title-3-Font-size;
+    }
+  }
+}

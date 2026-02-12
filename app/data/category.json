@@ -1,0 +1,32 @@
+{
+  "seo": {
+    "title": "CATEGORY",
+    "description": "카테고리별 다양한 제품을 만나보세요.",
+    "ogImage": "/images/og-category.jpg"
+  },
+  "page": {
+    "title": "CATEGORY",
+    "totalLabel": "총",
+    "totalUnit": "개",
+    "totalSuffix": "의 상품",
+    "tabsAriaLabel": "카테고리 탭",
+    "tabs": [
+      { "label": "전체", "value": "all" },
+      { "label": "스킨케어", "value": "skincare" },
+      { "label": "메이크업", "value": "makeup" },
+      { "label": "앰플·세럼", "value": "ampoule" },
+      { "label": "클렌징", "value": "cleansing" }
+    ],
+    "sortOptions": [
+      { "label": "최신순", "value": "latest" },
+      { "label": "인기순", "value": "popular" },
+      { "label": "낮은 가격순", "value": "price_asc" },
+      { "label": "높은 가격순", "value": "price_desc" }
+    ],
+    "pagination": {
+      "prevLabel": "이전 페이지",
+      "nextLabel": "다음 페이지"
+    },
+    "emptyMessage": "상품이 없습니다."
+  }
+}

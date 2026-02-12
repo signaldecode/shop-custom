@@ -1,0 +1,243 @@
+{
+  "seo": {
+    "title": "주문서 작성",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "주문 정보를 입력하고 결제를 진행해주세요.",
+    "ogImage": "/og-order.png"
+  },
+  "page": {
+    "title": "주문서 작성"
+  },
+  "sections": {
+    "products": {
+      "title": "구매 상품",
+      "labels": {
+        "currency": "원",
+        "quantityPrefix": "/ ",
+        "quantitySuffix": "개",
+        "totalLabel": "상품금액"
+      }
+    },
+    "orderer": {
+      "title": "주문자 정보",
+      "fields": {
+        "name": {
+          "label": "이름",
+          "placeholder": "이름을 입력해주세요"
+        },
+        "phone": {
+          "label": "휴대폰 번호",
+          "placeholder": "'-' 없이 입력해주세요"
+        },
+        "email": {
+          "label": "이메일",
+          "placeholder": "이메일 주소를 입력해주세요"
+        }
+      }
+    },
+    "shipping": {
+      "title": "배송지 정보",
+      "sameAsOrderer": "주문자 정보와 동일",
+      "fields": {
+        "recipient": {
+          "label": "수령인",
+          "placeholder": "수령인 이름을 입력해주세요"
+        },
+        "phone": {
+          "label": "연락처",
+          "placeholder": "'-' 없이 입력해주세요"
+        },
+        "zipcode": {
+          "label": "우편번호",
+          "placeholder": "우편번호"
+        },
+        "address": {
+          "label": "기본주소",
+          "placeholder": "주소를 검색해주세요"
+        },
+        "addressDetail": {
+          "label": "상세주소",
+          "placeholder": "상세주소를 입력해주세요"
+        },
+        "memo": {
+          "label": "배송 메모",
+          "placeholder": "배송 메모를 선택해주세요",
+          "options": [
+            { "label": "배송 메모를 선택해주세요", "value": "" },
+            { "label": "문 앞에 놓아주세요", "value": "문 앞에 놓아주세요" },
+            { "label": "경비실에 맡겨주세요", "value": "경비실에 맡겨주세요" },
+            { "label": "부재 시 연락 부탁드립니다", "value": "부재 시 연락 부탁드립니다" },
+            { "label": "직접 입력", "value": "custom" }
+          ]
+        },
+        "customMemo": {
+          "placeholder": "배송 메모를 직접 입력해주세요"
+        }
+      },
+      "searchAddress": "주소 검색",
+      "selectAddress": "배송지 선택"
+    },
+    "guestPassword": {
+      "title": "비회원 주문조회 비밀번호",
+      "description": "비회원 주문조회 시 사용할 비밀번호를 입력해주세요.",
+      "fields": {
+        "password": {
+          "label": "비밀번호",
+          "placeholder": "비밀번호를 입력해주세요 (4~16자)"
+        },
+        "passwordConfirm": {
+          "label": "비밀번호 확인",
+          "placeholder": "비밀번호를 다시 입력해주세요"
+        }
+      },
+      "error": {
+        "mismatch": "비밀번호가 일치하지 않습니다."
+      }
+    },
+    "coupon": {
+      "title": "할인 / 쿠폰",
+      "currency": "원",
+      "coupon": {
+        "label": "쿠폰 적용",
+        "placeholder": "쿠폰을 선택해주세요",
+        "apply": "적용"
+      },
+      "point": {
+        "label": "포인트 사용",
+        "placeholder": "사용할 포인트를 입력해주세요",
+        "apply": "전액 사용",
+        "available": "사용 가능 포인트",
+        "unit": "P"
+      }
+    },
+    "payment": {
+      "title": "결제 수단",
+      "methods": [
+        { "label": "신용카드", "value": "card" },
+        { "label": "무통장입금", "value": "bank" },
+        { "label": "카카오페이", "value": "kakaopay" },
+        { "label": "네이버페이", "value": "naverpay" }
+      ],
+      "card": {
+        "company": {
+          "label": "카드사 선택",
+          "placeholder": "카드사를 선택해주세요",
+          "options": [
+            { "label": "카드사를 선택해주세요", "value": "" },
+            { "label": "삼성카드", "value": "samsung" },
+            { "label": "현대카드", "value": "hyundai" },
+            { "label": "신한카드", "value": "shinhan" },
+            { "label": "KB국민카드", "value": "kb" },
+            { "label": "롯데카드", "value": "lotte" },
+            { "label": "NH농협카드", "value": "nh" }
+          ]
+        },
+        "installment": {
+          "label": "할부 선택",
+          "placeholder": "할부 기간을 선택해주세요",
+          "options": [
+            { "label": "일시불", "value": "0" },
+            { "label": "2개월", "value": "2" },
+            { "label": "3개월", "value": "3" },
+            { "label": "6개월", "value": "6" },
+            { "label": "12개월", "value": "12" }
+          ]
+        }
+      },
+      "bank": {
+        "select": {
+          "label": "입금 은행",
+          "placeholder": "은행을 선택해주세요",
+          "options": [
+            { "label": "은행을 선택해주세요", "value": "" },
+            { "label": "국민은행", "value": "kb" },
+            { "label": "신한은행", "value": "shinhan" },
+            { "label": "우리은행", "value": "woori" },
+            { "label": "하나은행", "value": "hana" },
+            { "label": "농협은행", "value": "nh" }
+          ]
+        },
+        "depositor": {
+          "label": "입금자명",
+          "placeholder": "입금자명을 입력해주세요"
+        }
+      }
+    },
+    "agreements": {
+      "agreeAll": "전체 약관 동의",
+      "terms": {
+        "label": "이용약관 동의",
+        "required": "[필수]",
+        "content": "제1조 (목적)\n본 약관은 회사가 운영하는 온라인 쇼핑몰에서 제공하는 서비스와 이를 이용하는 회원의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.\n\n제2조 (정의)\n1. '쇼핑몰'이란 회사가 상품을 회원에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 상품을 거래할 수 있도록 설정한 가상의 영업장을 말합니다.\n2. '회원'이란 쇼핑몰에 개인정보를 제공하여 회원등록을 한 자로서, 쇼핑몰의 정보를 지속적으로 제공받으며 쇼핑몰이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다."
+      },
+      "privacy": {
+        "label": "비회원 개인정보 수집 이용 동의",
+        "required": "[필수]",
+        "content": "수집하는 개인정보 항목\n- 필수항목: 이름, 이메일, 연락처, 배송지 주소\n- 선택항목: 배송 요청사항\n\n개인정보의 수집 및 이용목적\n- 주문 및 결제 처리\n- 상품 배송 및 배송 조회\n- 주문 확인 및 고객 문의 응대\n\n개인정보의 보유 및 이용기간\n- 전자상거래 등에서의 소비자보호에 관한 법률에 따라 5년간 보관"
+      }
+    }
+  },
+  "summary": {
+    "title": "결제정보",
+    "productTotal": "상품 금액",
+    "shippingFee": "배송비",
+    "discount": "상품 할인",
+    "couponDiscount": "쿠폰 할인",
+    "pointUsed": "포인트 사용",
+    "totalPayment": "총 결제 금액",
+    "currency": "원",
+    "freeShipping": "무료"
+  },
+  "submit": {
+    "member": "결제하기",
+    "guest": "비회원 결제하기"
+  },
+  "couponModal": {
+    "title": "쿠폰 선택",
+    "loading": "쿠폰 목록을 불러오는 중...",
+    "empty": "적용 가능한 쿠폰이 없습니다.",
+    "minOrder": "최소 주문금액",
+    "maxDiscount": "최대 할인",
+    "currency": "원",
+    "validUntil": "까지",
+    "stackable": "프로모션 할인과 중복 적용 가능",
+    "notStackable": "프로모션 할인과 중복 적용 불가",
+    "noUse": "쿠폰 미적용",
+    "apply": "적용하기"
+  },
+  "validation": {
+    "ordererPhone": "주문자 연락처 형식이 올바르지 않습니다.",
+    "shippingPhone": "배송지 연락처 형식이 올바르지 않습니다."
+  },
+  "dummy": {
+    "products": [
+      {
+        "id": "1",
+        "name": "시그니처 글로우 세럼",
+        "option": "시그니처 글로우 세럼 30ml",
+        "price": 45000,
+        "quantity": 1,
+        "image": "/images/products/product-1.png",
+        "imageAlt": "시그니처 글로우 세럼 상품 이미지"
+      },
+      {
+        "id": "2",
+        "name": "하이드라 부스트 크림",
+        "option": "하이드라 부스트 크림 50ml",
+        "price": 38000,
+        "quantity": 1,
+        "image": "/images/products/product-1.png",
+        "imageAlt": "하이드라 부스트 크림 상품 이미지"
+      }
+    ],
+    "summary": {
+      "productTotal": 83000,
+      "shippingFee": 0,
+      "discount": 0,
+      "couponDiscount": 0,
+      "pointUsed": 0,
+      "total": 83000
+    },
+    "availablePoint": 5000
+  }
+}

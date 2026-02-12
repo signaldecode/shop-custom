@@ -1,0 +1,366 @@
+// ============================================
+// Page Styles - Coupon Download
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+@use '../tokens/layout' as *;
+
+.coupon-download-page {
+  @include container;
+  padding-top: calc(80px + #{$padding-11});
+  padding-bottom: $padding-12;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $padding-10;
+
+    @include mobile {
+      margin-bottom: $padding-8;
+    }
+  }
+
+  &__title {
+    @include typo-headline-1;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-3;
+
+    @include mobile {
+      @include typo-title-2;
+    }
+  }
+
+  &__subtitle {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    padding: $padding-12 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $padding-4;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+  }
+
+  // 등급별 쿠폰팩
+  &__grade-packs {
+    margin-top: $padding-10;
+    padding-top: $padding-10;
+    border-top: 1px solid $Border-Border-line-100;
+
+    @include mobile {
+      margin-top: $padding-8;
+      padding-top: $padding-8;
+    }
+  }
+
+  &__grade-title {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-6;
+    text-align: center;
+
+    @include mobile {
+      @include typo-title-3;
+      margin-bottom: $padding-4;
+    }
+  }
+
+  &__grade-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $padding-4;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $padding-3;
+    }
+  }
+}
+
+// 등급별 쿠폰팩 카드
+.grade-pack-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $Border-Border-line-100;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $Primary-white-color;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: $Border-Border-line-200;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  &--downloaded {
+    opacity: 0.7;
+  }
+
+  &__header {
+    padding: $padding-4;
+    background: $Primary-color;
+    color: $Primary-white-color;
+
+    @include mobile {
+      padding: $padding-3;
+    }
+  }
+
+  &__grade {
+    @include typo-title-2;
+    margin: 0;
+    font-weight: 700;
+
+    @include mobile {
+      @include typo-title-4;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+    padding: $padding-4;
+    flex: 1;
+
+    @include mobile {
+      gap: $padding-3;
+      padding: $padding-3;
+    }
+  }
+
+  &__condition {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+  }
+
+  &__benefits {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__label {
+    @include typo-body-4;
+    color: $Text-Thirty-text-color;
+    font-weight: 500;
+  }
+
+  &__value {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__coupon-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__coupon-item {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    padding: $padding-2 $padding-3;
+    background: $Bg-Primary-bg-color;
+    border-radius: 6px;
+
+    @include mobile {
+      padding: $padding-1 $padding-2;
+    }
+  }
+
+  &__coupon-name {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    font-weight: 500;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__coupon-desc {
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+
+    &::before {
+      content: '·';
+      margin-right: $padding-1;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $padding-4;
+    padding-top: 0;
+
+    @include mobile {
+      padding: $padding-3;
+      padding-top: 0;
+    }
+  }
+}
+
+.coupon-download-card {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid $Border-Border-line-100;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: $Primary-white-color;
+  transition: box-shadow 0.2s ease;
+  @include mobile {
+    flex-direction: column;
+  }
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &--downloaded {
+    opacity: 0.6;
+
+    .coupon-download-card__left {
+      background-color: $Bg-Secondary-bg-color;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $padding-2;
+    padding: $padding-5;
+    width: 100%;
+    max-width: 200px;
+    background-color: $Primary-color;
+    color: $Primary-white-color;
+
+    @include mobile {
+      max-width: 100%;
+      padding: $padding-1;
+      flex-direction: row;
+    }
+  }
+
+  &__discount {
+    @include typo-title-2;
+    font-weight: 700;
+
+    @include mobile {
+      @include typo-title-4;
+    }
+  }
+
+  &__dday {
+    @include typo-body-5;
+    padding: $padding-1 $padding-2;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: $padding-5;
+
+    @include mobile {
+      padding: $padding-2 $padding-3 0 $padding-3;
+    }
+  }
+
+  &__name {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+
+    @include mobile {
+      @include typo-title-5;
+      font-weight: 600;
+    }
+  }
+
+  &__desc {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $padding-2;
+    margin-top: $padding-1;
+  }
+
+  &__condition,
+  &__target {
+    @include typo-body-5;
+    color: $Text-Thirty-text-color;
+    padding: $padding-1 $padding-2;
+    background-color: $Bg-Secondary-bg-color;
+    border-radius: 4px;
+  }
+
+  &__valid {
+    @include typo-body-5;
+    color: $Text-Thirty-text-color;
+    margin: $padding-2 0 0;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    padding: $padding-5;
+    border-left: 1px dashed $Border-Border-line-100;
+
+    @include mobile {
+      padding: 0 $padding-3 $padding-2 $padding-3;
+      justify-content: flex-end;
+    }
+  }
+}

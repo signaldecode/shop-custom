@@ -1,0 +1,121 @@
+// ============================================
+// Base Textarea Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-textarea {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+
+  &__label {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+  }
+
+  &__required {
+    color: $Error-color;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__field {
+    width: 100%;
+    padding: $padding-4;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+    background: $Primary-white-color;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder {
+      color: $Text-Disabled-color;
+    }
+
+    &:hover:not(:disabled) {
+      border-color: $Border-Border-line-300;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $Primary-color;
+      box-shadow: 0 0 0 3px rgba(var(--theme-primary-rgb), 0.1);
+    }
+
+    &:disabled {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &__count {
+    position: absolute;
+    bottom: $padding-3;
+    right: $padding-4;
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    pointer-events: none;
+  }
+
+  &__error {
+    @include typo-body-3;
+    color: $Error-color;
+    margin: 0;
+  }
+
+  // States
+  &--error {
+    .base-textarea__field {
+      border-color: $Error-color;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($Error-color, 0.1);
+      }
+    }
+  }
+
+  &--disabled {
+    .base-textarea__label {
+      color: $Text-Disabled-color;
+    }
+  }
+
+  // Mobile optimization
+  @include mobile {
+    gap: $padding-1;
+
+    &__label {
+      @include typo-body-3;
+    }
+
+    &__field {
+      padding: $padding-3;
+      @include typo-body-3;
+      min-height: 80px;
+      border-radius: 6px;
+    }
+
+    &__count {
+      @include typo-body-5;
+      bottom: $padding-2;
+      right: $padding-3;
+    }
+
+    &__error {
+      @include typo-body-5;
+    }
+  }
+}

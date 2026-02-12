@@ -1,0 +1,96 @@
+// ============================================
+// Layout Styles - Review Page (64:6219)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.review-page {
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: $padding-6;
+    margin-bottom: $padding-9; // 36
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $padding-4;
+      margin-bottom: $padding-4;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: $padding-3; // 12
+    margin-right: auto;
+    flex-wrap: wrap;
+  }
+
+  &__filters {
+    display: flex;
+    gap: $padding-5; // 12
+    align-items: center;
+
+    @include mobile {
+      // width: 100%;
+      justify-content: flex-end;
+      > * {
+        // flex: 1;
+      }
+    }
+  }
+
+  &__select {
+    &--category {
+      width: 200px;
+    }
+
+    &--sort {
+      // width: 150px;
+      @include mobile {
+      }        
+
+    }
+
+    @include mobile {
+      // width: 100%;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 408px);
+    justify-content: space-between;
+    gap: $padding-7; // 28 (행 사이도 동일하게)
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $padding-5 $padding-4;
+    }
+  }
+
+  &__pagination {
+    margin-top: $padding-9; // 36
+    display: flex;
+    justify-content: center;
+
+    @include mobile {
+      margin-top: $padding-6;
+    }
+  }
+}
+

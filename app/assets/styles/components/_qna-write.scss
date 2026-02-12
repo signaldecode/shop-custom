@@ -1,0 +1,149 @@
+// ============================================
+// Q&A Write Page Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.qna-write-page {
+  min-height: 100vh;
+  background: $Bg-Secondary-bg-color;
+  padding: $padding-10 $padding-5;
+
+  @include mobile {
+    padding: $padding-6 $padding-4;
+  }
+
+  &__container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: $Primary-white-color;
+    border-radius: 16px;
+    padding: $padding-10;
+
+    @include mobile {
+      padding: $padding-6;
+      border-radius: 12px;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $padding-8;
+    padding-bottom: $padding-6;
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__title {
+    @include typo-title-1;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-2;
+  }
+
+  &__subtitle {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    padding: $padding-5;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 12px;
+    margin-bottom: $padding-8;
+  }
+
+  &__product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: $Primary-white-color;
+  }
+
+  &__product-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__product-label {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    display: block;
+    margin-bottom: $padding-1;
+  }
+
+  &__product-name {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__product-loading {
+    display: flex;
+    justify-content: center;
+    padding: $padding-6;
+    margin-bottom: $padding-8;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-6;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+
+    &--inline {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: $padding-2;
+    }
+  }
+
+  &__label {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+  }
+
+  &__required {
+    color: $Error-color;
+  }
+
+  &__error {
+    @include typo-body-3;
+    color: $Error-color;
+    margin: 0;
+  }
+
+  &__help {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $padding-3;
+    margin-top: $padding-4;
+
+    .base-button {
+      flex: 1;
+    }
+  }
+}

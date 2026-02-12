@@ -1,0 +1,85 @@
+{
+  "common": {
+    "currency": "원",
+    "countSuffix": "개",
+    "reviewCountSuffix": "건",
+    "close": "닫기",
+    "delete": "삭제",
+    "confirm": "확인",
+    "cancel": "취소",
+    "prev": "이전",
+    "next": "다음",
+    "search": "검색",
+    "discount": "할인",
+    "rating": "별점"
+  },
+  "productItem": {
+    "writeReview": "리뷰쓰기",
+    "viewReview": "리뷰보기",
+    "statusDelivered": "배송완료",
+    "placeholder": "item",
+    "unitPrice": "단가",
+    "quantity": "수량",
+    "total": "합계",
+    "soldOut": "품절",
+    "delete": "삭제",
+    "removeAriaLabel": "상품 삭제"
+  },
+  "loginRequiredModal": {
+    "title": "login",
+    "messageSuffix": "기능은 로그인 후 이용 가능합니다.",
+    "loginButton": "로그인하기",
+    "cancelButton": "취소"
+  },
+  "button": {
+    "label": {
+      "learnMore": "더 알아보기",
+      "submit": "확인",
+      "cancel": "취소",
+      "next": "다음",
+      "prev": "이전",
+      "purchase": "구매하기",
+      "addToCart": "장바구니 담기",
+      "login": "로그인",
+      "signup": "회원가입",
+      "search": "검색"
+    }
+  },
+  "checkbox": {
+    "label": {
+      "agreeAll": "전체 동의",
+      "agreeTerms": "이용약관 동의",
+      "agreePrivacy": "개인정보 처리방침 동의",
+      "agreeMarketing": "마케팅 정보 수신 동의",
+      "rememberMe": "로그인 상태 유지"
+    }
+  },
+  "badge": {
+    "best": "BEST",
+    "new": "NEW"
+  },
+  "toast": {
+    "selectOptionFirst": "옵션을 먼저 선택해주세요.",
+    "addedToCart": "상품이 추가되었습니다.",
+    "goToCart": "장바구니 바로가기",
+    "addedToWishlist": "상품이 추가되었습니다.",
+    "removedFromWishlist": "위시리스트에서 삭제되었습니다.",
+    "goToWishlist": "위시리스트 바로가기",
+    "error": "오류가 발생했습니다.",
+    "copied": "복사되었습니다."
+  },
+  "mypage": {
+    "title": "마이페이지",
+    "sideMenuAriaLabel": "마이페이지 사이드 메뉴",
+    "orders": "주문내역",
+    "wishlist": "위시리스트"
+  },
+  "pagination": {
+    "ariaLabel": "페이지 네비게이션"
+  },
+  "imageUpload": {
+    "placeholder": "사진 추가",
+    "uploadedImageAlt": "업로드된 이미지",
+    "fileSizeError": "파일 크기는 {size}MB 이하여야 합니다."
+  }
+}

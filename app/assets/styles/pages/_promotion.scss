@@ -1,0 +1,98 @@
+// ============================================
+// Pages - Promotion Detail
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-promotion {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.promotion-page {
+  @include container;
+  padding-top: calc(80px + 60px);
+  padding-bottom: $padding-13;
+  flex: 1;
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__loading,
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    gap: $padding-4;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $padding-8;
+  }
+
+  &__title {
+    @include typo-display-1;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-3;
+  }
+
+  &__description {
+    @include typo-body-1;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+  &__image {
+    margin-bottom: $padding-8;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__info {
+    background: $Bg-Primary-bg-color;
+    border-radius: 12px;
+    padding: $padding-6;
+  }
+
+  &__details {
+    margin: 0;
+  }
+
+  &__detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: $padding-3 0;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    dt {
+      @include typo-body-2;
+      color: $Text-Secondary-text-color;
+    }
+
+    dd {
+      @include typo-body-2;
+      color: $Text-Primary-text-color;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+// ============================================
+// Toast Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-toast-container {
+  position: fixed;
+  top: space(100);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: space(8);
+  pointer-events: none;
+}
+
+.base-toast {
+  display: flex;
+  align-items: center;
+  gap: space(12);
+  min-width: 280px;
+  max-width: 480px;
+  padding: space(16) space(20);
+  background-color: $Black-Primary-black-900;
+  color: $Primary-white-color;
+  border-radius: 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+
+  &--info,
+  &--success,
+  &--warning {
+    background-color: $Black-Primary-black-900;
+  }
+
+  &--error {
+    background-color: $Error-color;
+  }
+
+  @include mobile {
+    min-width: 90vw;
+    max-width: 90vw;
+    padding: $padding-2 $padding-4;
+  }
+
+  &__message {
+    flex: 1;
+    @include typo-body-2;
+    word-break: keep-all;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+  }
+
+  &__link {
+    margin-left: space(8);
+    color: $Primary-white-color;
+    text-decoration: underline;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: space(24);
+    height: space(24);
+    padding: 0;
+    border: none;
+    background: none;
+    color: $Primary-white-color-op70;
+    cursor: pointer;
+    border-radius: space(4);
+    transition: color 0.2s;
+
+    &:hover {
+      color: $Primary-white-color;
+    }
+  }
+}
+
+// Toast transitions
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.toast-move {
+  transition: transform 0.3s ease;
+}

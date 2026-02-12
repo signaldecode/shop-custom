@@ -1,0 +1,55 @@
+{
+  "seo": {
+    "title": "장바구니",
+    "description": "장바구니에 담긴 상품을 확인하고 주문하세요."
+  },
+  "page": {
+    "title": "장바구니"
+  },
+  "toolbar": {
+    "selectAll": "전체선택",
+    "deselectAll": "전체해제",
+    "deleteSelected": "선택삭제",
+    "deleteAll": "전체삭제"
+  },
+  "messages": {
+    "deleteSuccess": "삭제되었습니다.",
+    "soldOutAlert": "품절 상품이 있습니다."
+  },
+  "product": {
+    "currency": "원"
+  },
+  "summary": {
+    "title": "결제정보",
+    "productTotal": "주문금액",
+    "shippingFee": "배송비",
+    "discount": "할인 혜택",
+    "couponDiscount": "쿠폰 할인",
+    "pointUsed": "포인트 사용",
+    "totalPayment": "결제 예정 금액",
+    "currency": "원",
+    "freeShipping": "0원"
+  },
+  "submit": {
+    "label": "선택상품 주문하기",
+    "labelAll": "전체상품 주문하기"
+  },
+  "empty": {
+    "message": "장바구니에 담긴 상품이 없습니다.",
+    "buttonLabel": "쇼핑 계속하기"
+  },
+  "recommend": {
+    "title": "추천상품"
+  },
+  "guestModal": {
+    "title": "주문하기",
+    "message": "로그인을 하고,\n회원 혜택을 받으시겠습니까?",
+    "benefits": [
+      "적립금 적립 및 사용",
+      "쿠폰 할인 혜택",
+      "주문 내역 관리"
+    ],
+    "loginButton": "로그인",
+    "guestButton": "비회원 주문하기"
+  }
+}

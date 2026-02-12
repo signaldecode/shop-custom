@@ -1,0 +1,107 @@
+// ============================================
+// Popup Center Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.popup-center {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100vh - space(40));
+    background-color: $Primary-white-color;
+    // border-radius: space(8);
+    box-shadow: 0 space(8) space(32) rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+
+    @include mobile {
+      max-width: calc(100% - space(32));
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: space(12) space(16);
+    border-top: 1px solid $Border-Border-line-100;
+  }
+
+  &__hide,
+  &__close {
+    padding: space(8) space(16);
+    border: none;
+    background: none;
+    @include typo-body-3;
+    font-weight: get-weight('Medium');
+    color: $Text-Thirty-text-color;
+    cursor: pointer;
+    // border-radius: space(4);
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: $Bg-Primary-bg-color;
+      color: $Text-Primary-text-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Transition
+.popup-center-enter-active,
+.popup-center-leave-active {
+  transition: opacity 0.25s ease;
+
+  .popup-center__container {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+}
+
+.popup-center-enter-from,
+.popup-center-leave-to {
+  opacity: 0;
+
+  .popup-center__container {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}

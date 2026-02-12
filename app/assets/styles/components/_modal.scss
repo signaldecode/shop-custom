@@ -1,0 +1,271 @@
+// ============================================
+// Modal Component Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Base Modal
+// --------------------------------------------
+
+.base-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - space(40));
+    background-color: $Primary-white-color;
+    border-radius: space(8);
+    box-shadow: 0 space(8) space(32) rgba(0, 0, 0, 0.15);
+
+    // Size variants
+    &--small {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    &--medium {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    &--large {
+      width: 100%;
+      max-width: 1280px;
+    }
+
+    &--full {
+      width: calc(100% - space(32));
+      max-width: none;
+      height: calc(100vh - space(40));
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: space(20) space(24);
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__title {
+    margin: 0;
+    @include typo-title-4;
+    font-weight: get-weight('Bold');
+    color: $Text-Primary-text-color;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: space(32);
+    height: space(32);
+    padding: 0;
+    border: none;
+    background: none;
+    color: $Text-Primary-text-color;
+    cursor: pointer;
+    border-radius: space(4);
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: $Bg-Primary-bg-color;
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: space(24);
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: space(8);
+    padding: space(16) space(24);
+  }
+}
+
+// Modal transition
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.2s ease;
+
+  .base-modal__container {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+
+  .base-modal__container {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+// --------------------------------------------
+// Confirm Modal
+// --------------------------------------------
+
+.confirm-modal {
+  &__message {
+    margin: 0;
+    @include typo-body-1;
+    color: $Text-Primary-text-color;
+    text-align: center;
+    font-weight: get-weight('Regular');
+  }
+}
+
+// --------------------------------------------
+// Address Modal
+// --------------------------------------------
+
+.address-modal {
+  min-height: 200px;
+
+  &__loading,
+  &__error,
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: $Text-Thirty-text-color;
+    @include typo-body-3;
+  }
+
+  &__error {
+    color: $Error-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: space(12);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: space(16);
+    padding: space(16);
+    border: 1px solid $Border-Border-line-100;
+    border-radius: space(8);
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: $Primary-color;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: space(8);
+    margin-bottom: space(8);
+  }
+
+  &__name {
+    @include typo-title-5;
+    font-weight: get-weight('Bold');
+    color: $Text-Primary-text-color;
+  }
+
+  &__recipient {
+    margin: 0 0 space(4) 0;
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__address {
+    margin: 0;
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: space(8);
+    flex-shrink: 0;
+  }
+}
+
+// --------------------------------------------
+// Responsive
+// --------------------------------------------
+
+@media (max-width: 768px) {
+  .base-modal {
+    &__container {
+      margin: space(16);
+      max-height: calc(100vh - space(32));
+
+      &--small,
+      &--medium,
+      &--large {
+        max-width: calc(100% - space(32));
+      }
+    }
+
+    &__header {
+      padding: space(16);
+    }
+
+    &__body {
+      padding: space(16);
+    }
+
+    &__footer {
+      padding: space(12) space(16);
+    }
+  }
+
+  .address-modal {
+    &__item {
+      flex-direction: column;
+      gap: space(12);
+    }
+
+    &__actions {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+}

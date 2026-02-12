@@ -1,0 +1,137 @@
+// ============================================
+// Components - MyPage Side Tabs (Accordion)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-side-tabs {
+  width: 100%;
+
+  &__title {
+    @include typo-headline-3;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-5;
+
+    @include mobile-xs {
+      display: none;
+    }
+  }
+
+  &__groups {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-7; // 28
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2; // 8
+  }
+
+  &__group-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-3 0; // 12
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+  }
+
+  &__group-left {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    min-width: 0;
+  }
+
+  &__group-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    color: $Text-Primary-text-color;
+  }
+
+  &__group-label {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    color: $Text-Primary-text-color;
+  }
+
+  &__chevron--open {
+    transform: rotate(180deg);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: $padding-3 $padding-2; // 12 8
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: left;
+    text-decoration: none;
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+
+    &:hover {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Primary-text-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background: $Bg-Primary-bg-color;
+      color: $Text-Primary-text-color;
+      font-weight: 500;
+    }
+
+    &--disabled {
+      color: $Text-Disabled-color;
+      cursor: not-allowed;
+
+      &:hover {
+        background: transparent;
+        color: $Text-Disabled-color;
+      }
+    }
+  }
+}
+

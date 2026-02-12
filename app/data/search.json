@@ -1,0 +1,14 @@
+{
+  "seo": {
+    "title": "검색 결과",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "상품 검색 결과 페이지입니다."
+  },
+  "page": {
+    "titleWithQuery": "검색 결과",
+    "titleWithoutQuery": "검색",
+    "countSuffix": "개의 상품",
+    "emptyResult": "검색 결과가 없습니다.",
+    "emptyQuery": "검색어를 입력해주세요."
+  }
+}

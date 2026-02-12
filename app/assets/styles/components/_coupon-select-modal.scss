@@ -1,0 +1,123 @@
+// ============================================
+// Coupon Select Modal
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.coupon-select-modal {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-5;
+
+  &__loading,
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+
+    @include mobile {
+      max-height: 300px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    padding: $padding-5;
+    background: $Bg-Primary-bg-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: $Border-Border-line-200;
+    }
+
+    &--selected {
+      border-color: $Primary-color;
+      background: $Primary-color;
+
+      .coupon-select-modal__discount,
+      .coupon-select-modal__name,
+      .coupon-select-modal__condition,
+      .coupon-select-modal__valid,
+      .coupon-select-modal__stackable,
+      .coupon-select-modal__amount {
+        color: $Bg-Primary-bg-color;
+      }
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+  }
+
+  &__discount {
+    @include typo-title-4;
+    color: $Primary-color;
+  }
+
+  &__name {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__condition,
+  &__valid {
+    @include typo-body-4;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__stackable {
+    @include typo-body-4;
+    color: $Success-color;
+
+    &--no {
+      color: $Text-Disabled-color;
+    }
+  }
+
+  &__amount {
+    flex-shrink: 0;
+    @include typo-title-4;
+    color: $Primary-color;
+    font-weight: 500;
+  }
+
+  &__footer {
+    display: flex;
+    gap: $padding-3;
+    padding-top: $padding-4;
+    border-top: 1px solid $Border-Border-line-100;
+
+    > button {
+      flex: 1;
+    }
+  }
+}

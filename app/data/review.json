@@ -1,0 +1,151 @@
+{
+  "seo": {
+    "title": "고객 리뷰",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "고객님들의 생생한 상품 리뷰를 확인해보세요."
+  },
+  "page": {
+    "title": "고객 리뷰",
+    "subtitle": "고객님들의 생생한 상품 리뷰를 확인해보세요."
+  },
+  "tabs": [
+    { "label": "전체", "value": "all" },
+    { "label": "포토", "value": "photo" },
+    { "label": "베스트", "value": "best" }
+  ],
+  "filters": {
+    "category": {
+      "label": "카테고리",
+      "placeholder": "전체"
+    },
+    "sort": {
+      "label": "정렬",
+      "options": [
+        { "label": "최신순", "value": "LATEST" },
+        { "label": "별점순", "value": "RATING" },
+        { "label": "추천순", "value": "HELPFUL" }
+      ]
+    }
+  },
+  "card": {
+    "verifiedLabel": "구매인증",
+    "bestLabel": "BEST",
+    "helpfulLabel": "도움이 됐어요",
+    "viewProductLabel": "상품 보기"
+  },
+  "pagination": {
+    "prevLabel": "이전",
+    "nextLabel": "다음"
+  },
+  "empty": {
+    "message": "리뷰가 없습니다."
+  },
+  "dummy": {
+    "reviews": [
+      {
+        "id": "r1",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "발림성이 가볍고 끈적임 없이 바로 흡수돼서 아침 메이크업 전에 사용하기 좋아요. 민감한 피부인데도 트러블 없이 잘 맞아서 재구매 예정입니다.",
+        "username": "GlowMina",
+        "date": "2025.05.22",
+        "isBest": true,
+        "images": ["/images/instagram/1.png"],
+        "otherImages": ["/images/instagram/1.png", "/images/instagram/2.png", "/images/instagram/3.png", "/images/instagram/4.png", "/images/products/product-1.png"],
+        "product": {
+          "id": "p1",
+          "name": "일루미엘 AC 폼클렌저 12ml",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      },
+      {
+        "id": "r2",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "수분감이 오래 유지되고 향이 자극적이지 않아서 매일 쓰기 좋아요. 피부결도 정돈되는 느낌입니다.",
+        "username": "PureJ",
+        "date": "2025.05.22",
+        "isBest": false,
+        "images": ["/images/instagram/1.png"],
+        "product": {
+          "id": "p1",
+          "name": "일루미엘 AC 폼클렌저 12ml",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      },
+      {
+        "id": "r3",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "텍스처가 가벼워서 여름에도 부담이 없고, 메이크업 전에 사용해도 밀림이 없어요.",
+        "username": "Sokha",
+        "date": "2025.05.22",
+        "isBest": false,
+        "images": ["/images/instagram/2.png"],
+        "product": {
+          "id": "p1",
+          "name": "일루미엘 AC 폼클렌저 12ml",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      },
+      {
+        "id": "r4",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "사진 없는 리뷰 예시입니다. 사진이 없으면 텍스트 영역이 카드 상단(이미지 영역)을 꽉 채우도록 해야 합니다. 줄 수가 늘어나도 읽기 편해요.",
+        "username": "HoneyBloom",
+        "date": "2025.05.22",
+        "isBest": true,
+        "images": [],
+        "product": {
+          "id": "p2",
+          "name": "시그니처 글로우 세럼",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      },
+      {
+        "id": "r5",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "흡수력이 빠르고 다음날 피부가 매끈해지는 느낌이 있어요.",
+        "username": "SoftAura",
+        "date": "2025.05.22",
+        "isBest": false,
+        "images": ["/images/instagram/3.png"],
+        "product": {
+          "id": "p2",
+          "name": "시그니처 글로우 세럼",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      },
+      {
+        "id": "r6",
+        "rating": 5,
+        "scoreText": "5.0",
+        "content": "피부에 얇게 밀착되는 느낌이 좋아서 데일리로 쓰고 있어요.",
+        "username": "DewW",
+        "date": "2025.05.22",
+        "isBest": false,
+        "images": ["/images/instagram/4.png"],
+        "product": {
+          "id": "p1",
+          "name": "일루미엘 AC 폼클렌저 12ml",
+          "thumb": "/images/products/product-1.png",
+          "rating": 4.9,
+          "reviewCountText": "20건"
+        }
+      }
+    ]
+  }
+}
+

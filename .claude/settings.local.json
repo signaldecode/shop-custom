@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(cat:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx sass:*)",
+      "Bash(git merge:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(pnpm run dev)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(node -e:*)",
+      "Bash(pkill -f \"nuxt\\\\|node\")",
+      "Bash(pnpm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(grep:*)",
+      "Bash(npx nuxi prepare:*)",
+      "Bash(npx nuxi dev)",
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+      "Bash(npx vue-tsc:*)"
+=======
+      "Bash(npx vue-tsc:*)",
+      "Bash(find:*)",
+      "Bash(du:*)",
+      "Bash(npx nuxi build:*)",
+      "Bash(xargs:*)"
+>>>>>>> Stashed changes
+=======
+      "Bash(npx vue-tsc:*)",
+      "Bash(find:*)",
+      "Bash(du:*)",
+      "Bash(npx nuxi build:*)"
+>>>>>>> main
+    ]
+  }
+}

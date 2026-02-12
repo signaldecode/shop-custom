@@ -1,0 +1,380 @@
+// ============================================
+// Components - MyPage Dashboard (Right / Fixed)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-12; // 100
+
+  @include mobile-xs {
+    gap: 30px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-7; // 28
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-9; // 36
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 16px;
+    background: $Primary-white-color;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $padding-5;
+    }
+
+    @include mobile-xs {
+      padding: $padding-5 $padding-4;
+      gap: $padding-4;
+      border-radius: 12px;
+    }
+  }
+
+  &__profile-left {
+    display: flex;
+    align-items: center;
+    gap: $padding-4; // 16
+
+    @include mobile-xs {
+      gap: $padding-3;
+    }
+  }
+
+  &__avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: $Black-Primary-black-50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $Text-Thirty-text-color;
+    flex: 0 0 88px;
+
+    @include mobile-xs {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+    }
+  }
+
+  &__greet {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3; // 12
+    min-width: 0;
+
+    @include mobile-xs {
+      gap: $padding-2;
+    }
+  }
+
+  &__greet-title {
+    @include typo-title-3;
+    color: $Text-Primary-text-color;
+    margin: 0;
+
+    @include mobile-xs {
+      @include typo-title-5;
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  &__greet-sub {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+
+    @include mobile-xs {
+      font-size: 12px;
+    }
+  }
+
+  &__join {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+
+    @include mobile-xs {
+      font-size: 12px;
+    }
+  }
+
+  &__join-divider {
+    width: 1px;
+    height: 12px;
+    background: $Border-Border-line-100;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $padding-5; // 20
+
+    @include tablet {
+      gap: $padding-3;
+    }
+
+    @include mobile-xs {
+      gap: $padding-2;
+    }
+  }
+
+  &__stat {
+    background: $Bg-Primary-bg-color;
+    border-radius: 10px;
+    padding: $padding-6; // 24
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include mobile-xs {
+      padding: 7px;
+      gap: $padding-5;
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__stat-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+
+    @include mobile-xs {
+      font-size: 12px;
+    }
+  }
+
+  &__stat-value {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: $padding-1;
+    @include typo-title-1;
+    color: $Primary-color;
+    margin: 0;
+
+    @include mobile-xs {
+      @include typo-title-4;
+      color: $Primary-color;
+      font-size: 14px;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      overflow: hidden;
+      max-width: 100%;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5; // 20
+  }
+
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+    margin: 0;
+    color: $Text-Primary-text-color;
+  }
+
+  &__section-title-main {
+    @include typo-title-2;
+
+    @include mobile-xs {
+      font-size: 18px;
+    }
+  }
+
+  &__section-title-sub {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__view-all {
+    @include typo-button-2;
+    color: $Text-Primary-text-color;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: $Primary-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__order-status {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $padding-10;
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include mobile-xs {
+      gap: $padding-8;
+    }
+  }
+
+  &__status-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 126px;
+
+    @include tablet {
+      justify-content: center;
+      width: 100%;
+    }
+
+    @include mobile {
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    @include mobile-xs {
+      gap: 2%;
+      justify-content: space-between;
+    }
+  }
+
+  &__status-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: '>';
+      position: absolute;
+      right: -52px;
+      top: 43px;
+      transform: translateY(-50%);
+      @include typo-title-3;
+      color: $Text-Thirty-text-color;
+
+      @include mobile {
+        right: -20px;
+        @include typo-body-1;
+      }
+
+      @include mobile-xs {
+        top: 33px;
+      }
+    }
+  }
+
+  &__status-step {
+    width: 86px;
+    height: 86px;
+    border-radius: 10px;
+    background: $Bg-Primary-bg-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include typo-title-1;
+    color: $Text-Primary-text-color;
+
+    @include mobile-xs {
+      width: 58px;
+      height: 58px;
+      font-size: 18px;
+    }
+  }
+
+  &__status-label {
+    margin-top: $padding-3;
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    text-align: center;
+    width: 86px;
+
+    @include mobile-xs {
+      width: 63px;
+      font-size: 12px;
+    }
+  }
+
+  &__status-side {
+    width: 196px;
+    flex: 0 0 196px;
+
+    @include tablet {
+      width: 100%;
+      flex: 1 1 auto;
+      display: flex;
+      gap: $padding-3;
+    }
+  }
+
+  &__status-side-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-3 0;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    @include tablet {
+      flex: 1;
+    }
+  }
+
+  &__status-side-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+
+    @include mobile-xs {
+      font-size: 12px;
+    }
+  }
+
+  &__status-side-value {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0;
+
+    @include mobile-xs {
+      font-size: 12px;
+    }
+  }
+
+  &__orders {
+    border-top: 2px solid $Border-Border-line-200;
+  }
+}
+

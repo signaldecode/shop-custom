@@ -1,0 +1,56 @@
+// layout/grid tokens (PC)
+// 기준: 12 columns, column 106px, gutter 28px (1580 컨테이너 기준)
+// 추천 사용처: 1580 메인/리스트, 1340 마이페이지, 1280 상세·CS, 1000 회원가입·주문완료
+
+@use 'sass:map';
+
+//레이아웃 그리드
+// 사용예시
+// .page-main {
+//     @include layout-container('1580');
+//     @include grid-12(layout-token('1580', gutter));
+//   }
+
+//   .card {
+//     @include grid-column-span(4);
+//   }
+
+$layout-presets: (
+  '1660': (
+    container: 1660px,
+    columns: 12,
+    column: 106px,
+    gutter: 28px,
+    padding: 0 40px
+  ),
+  '1340': (
+    container: 1340px
+  ),
+  '1280': (
+    container: 1280px
+  ),
+  '1000': (
+    container: 1000px
+  )
+);
+
+@function layout-token($preset, $key) {
+  @return map.get(map.get($layout-presets, $preset), $key);
+}
+
+@mixin layout-container($preset) {
+  max-width: layout-token($preset, container);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin grid-12($gutter: layout-token('1580', gutter)) {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: $gutter;
+}
+
+@mixin grid-column-span($span) {
+  grid-column: span $span;
+}

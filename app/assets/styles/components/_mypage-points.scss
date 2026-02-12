@@ -1,0 +1,268 @@
+// ============================================
+// Components - MyPage Points
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-points {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-8;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $padding-4;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    @include typo-headline-2;
+    margin: 0;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.8px;
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  // 보유 적립금 카드
+  &__balance-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-6 $padding-8;
+    background: $Bg-Primary-bg-color;
+    border-radius: 12px;
+
+    @include mobile {
+      padding: $padding-3 $padding-4;
+    }
+  }
+
+  &__balance-label {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__balance-value {
+    @include typo-headline-1;
+    color: $Primary-color;
+    margin: 0;
+    font-weight: 700;
+
+    @include mobile {
+      @include typo-headline-4;
+    }
+  }
+
+  // 필터
+  &__filter {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+  }
+
+  &__filter-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__filter-select {
+    padding: $padding-2 $padding-4;
+    padding-right: $padding-8;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 6px;
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    background: $Primary-white-color;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $padding-3 center;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: $Primary-color;
+    }
+  }
+
+  // 테이블
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__thead {
+    border-top: 2px solid $Text-Primary-text-color;
+    border-bottom: 1px solid $Border-Border-line-200;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__th {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    font-weight: 500;
+    padding: $padding-4 $padding-3;
+    text-align: left;
+
+    &--amount,
+    &--status {
+      text-align: center;
+    }
+  }
+
+  &__tbody {
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__tr {
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @include mobile {
+      display: flex;
+      flex-wrap: wrap;
+      padding: $padding-4 0;
+      gap: $padding-2;
+    }
+  }
+
+  &__td {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    padding: $padding-4 $padding-3;
+    vertical-align: middle;
+
+    @include mobile {
+      padding: 0;
+    }
+
+    &--date {
+      width: 120px;
+      color: $Text-Secondary-text-color;
+
+      @include mobile {
+        width: 100%;
+        order: 1;
+        @include typo-body-4;
+      }
+    }
+
+    &--description {
+      @include mobile {
+        width: 100%;
+        order: 2;
+        @include typo-body-3;
+        font-weight: 500;
+      }
+    }
+
+    &--amount {
+      width: 120px;
+      text-align: center;
+      font-weight: 600;
+
+      @include mobile {
+        width: auto;
+        order: 3;
+        text-align: left;
+        @include typo-body-3;
+      }
+
+      &.positive {
+        color: $Primary-color;
+      }
+
+      &.negative {
+        color: $Error-color;
+      }
+    }
+
+    &--status {
+      width: 80px;
+      text-align: center;
+
+      @include mobile {
+        width: auto;
+        order: 4;
+        text-align: left;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__status-badge {
+    display: inline-block;
+    padding: $padding-1 $padding-2;
+    border-radius: 4px;
+    @include typo-body-4;
+    font-weight: 500;
+
+    &--earned {
+      background: rgba(var(--theme-primary-rgb), 0.1);
+      color: $Primary-color;
+    }
+
+    &--used {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Secondary-text-color;
+    }
+
+    &--cancelled,
+    &--expired {
+      background: rgba($Error-color, 0.1);
+      color: $Error-color;
+    }
+  }
+
+  // 로딩
+  &__loading {
+    padding: $padding-12 0;
+    text-align: center;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+  }
+
+  // 빈 상태
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-12 $padding-6;
+    text-align: center;
+    gap: $padding-2;
+  }
+
+  &__empty-title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__empty-desc {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+}

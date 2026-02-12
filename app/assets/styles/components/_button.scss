@@ -1,0 +1,205 @@
+// ============================================
+// 버튼 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Button Base
+// --------------------------------------------
+
+.base-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-radius: 4px;
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // --------------------------------------------
+  // Size Variants
+  // --------------------------------------------
+
+  &--size-big {
+    padding: $padding-4;
+    @include typo-button-2;
+
+    @include mobile {
+      height: 36px;
+      padding: 0 $padding-3;
+    }
+  }
+
+  &--size-small {
+    padding: $padding-2 $padding-3;
+    @include typo-button-2;
+
+    @include mobile {
+      height: 36px;
+      padding: 0 $padding-3;
+    }
+  }
+
+  // --------------------------------------------
+  // Style: Line
+  // --------------------------------------------
+
+  &--style-line {
+    background: transparent;
+    border: 1px solid;
+
+    // Color: White
+    &.base-button--color-white {
+      border-color: $Black-Primary-black-400;
+      color: $Primary-white-color;
+
+      &:hover:not(:disabled) {
+        background: $Primary-white-color;
+        color: $Text-Primary-text-color;
+        border-color: $Primary-white-color;
+      }
+    }
+
+    // Color: Black
+    &.base-button--color-black {
+      border-color: $Border-Border-line-200;
+      color: $Text-Primary-text-color;
+
+      &:hover:not(:disabled) {
+        background: $Text-Primary-text-color;
+        color: $Primary-white-color;
+      }
+    }
+
+    // Color: Green
+    &.base-button--color-green {
+      border-color: $Primary-color;
+      color: $Primary-color;
+
+      &:hover:not(:disabled) {
+        background: $Primary-color;
+        color: $Primary-white-color;
+      }
+    }
+
+    // Color: Light
+    &.base-button--color-light {
+      border-color: $Border-Border-line-100;
+      color: $Text-Primary-text-color;
+
+      &:hover:not(:disabled) {
+        border-color: $Border-Border-line-200;
+        background: $Bg-Secondary-bg-color;
+      }
+    }
+  }
+
+  // --------------------------------------------
+  // Style: Bg
+  // --------------------------------------------
+
+  &--style-bg {
+    border: none;
+
+    // Color: White
+    &.base-button--color-white {
+      background: $Primary-white-color;
+      color: $Text-Primary-text-color;
+
+      &:hover:not(:disabled) {
+        background: $Black-Primary-black-100;
+      }
+    }
+
+    // Color: Black
+    &.base-button--color-black {
+      background: $Text-Primary-text-color;
+      color: $Primary-white-color;
+
+      &:hover:not(:disabled) {
+        background: $Black-Primary-black-800;
+      }
+    }
+
+    // Color: Light
+    &.base-button--color-light {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Secondary-text-color;
+
+      &:hover:not(:disabled) {
+        background: $Black-Primary-black-50;
+        color: $Text-Primary-text-color;
+      }
+    }
+
+    // Color: Green
+    &.base-button--color-green {
+      background: $Primary-color;
+      color: $Primary-white-color;
+
+      &:hover:not(:disabled) {
+        background: var(--theme-primary-900);
+      }
+    }
+  }
+
+  // --------------------------------------------
+  // Style: Ghost (텍스트만, 배경/테두리 없음)
+  // --------------------------------------------
+
+  &--style-ghost {
+    background: transparent;
+    border: none;
+    padding: $padding-2;
+
+    // Color: Black
+    &.base-button--color-black {
+      color: $Text-Primary-text-color;
+
+      &:hover:not(:disabled) {
+        color: $Text-Secondary-text-color;
+      }
+    }
+
+    // Color: Green
+    &.base-button--color-green {
+      color: $Primary-color;
+
+      &:hover:not(:disabled) {
+        color: var(--theme-primary-900);
+      }
+    }
+
+    // Color: Light
+    &.base-button--color-light {
+      color: $Text-Secondary-text-color;
+
+      &:hover:not(:disabled) {
+        color: $Text-Primary-text-color;
+      }
+    }
+  }
+
+  // --------------------------------------------
+  // Full Width
+  // --------------------------------------------
+
+  &--full {
+    width: 100%;
+  }
+}

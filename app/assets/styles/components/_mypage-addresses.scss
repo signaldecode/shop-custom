@@ -1,0 +1,112 @@
+// ============================================
+// Components - MyPage Addresses
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-addresses {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    margin-bottom: $padding-7;
+  }
+
+  &__title {
+    @include typo-title-1;
+    margin: 0;
+    color: $Text-Primary-text-color;
+  }
+
+  &__loading,
+  &__error {
+    padding: $padding-11 0;
+    text-align: center;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $padding-5;
+    padding: $padding-6 0;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    &:first-child {
+      border-top: 1px solid $Border-Border-line-100;
+    }
+  }
+
+  &__info {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__name-wrap {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    margin-bottom: $padding-1;
+  }
+
+  &__name {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+  }
+
+  &__recipient {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0 0 $padding-1;
+  }
+
+  &__address {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+    display: flex;
+    gap: $padding-2;
+    align-items: flex-start;
+  }
+
+  @include mobile {
+    &__header {
+      height: auto;
+      margin-bottom: $padding-5;
+    }
+
+    &__title {
+      @include typo-title-4;
+    }
+
+    &__item {
+      flex-direction: column;
+      gap: $padding-3;
+    }
+
+    &__actions {
+      align-self: flex-end;
+    }
+  }
+}

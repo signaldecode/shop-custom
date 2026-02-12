@@ -1,0 +1,25 @@
+{
+  "success": {
+    "seo": {
+      "title": "결제 처리 중",
+      "description": "결제를 승인하고 있습니다."
+    },
+    "message": "결제를 처리하고 있습니다.",
+    "description": "잠시만 기다려주세요.",
+    "errorTitle": "결제 승인 실패",
+    "errorDescription": "결제 승인 중 문제가 발생했습니다.",
+    "retryButton": "다시 시도",
+    "homeButton": "홈으로"
+  },
+  "fail": {
+    "seo": {
+      "title": "결제 실패",
+      "description": "결제 처리 중 문제가 발생했습니다."
+    },
+    "title": "결제에 실패했습니다",
+    "description": "아래 사유를 확인 후 다시 시도해주세요.",
+    "errorLabel": "실패 사유",
+    "retryButton": "주문서로 돌아가기",
+    "homeButton": "홈으로"
+  }
+}

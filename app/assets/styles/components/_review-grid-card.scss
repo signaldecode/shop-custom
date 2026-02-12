@@ -1,0 +1,563 @@
+// ============================================
+// Components - Review Grid Card (Review Page)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.review-grid-card {
+  width: 408px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 4px;
+    border-radius: 10px;
+  }
+
+  &__hero {
+    width: 408px;
+    height: 408px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__hero-text {
+    width: 100%;
+    height: 100%;
+    padding: $padding-9; // 36
+    display: flex;
+    align-items: center;
+  }
+
+  &__hero-content {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
+  }
+
+  &__body {
+    padding-top: $padding-4; // 16
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3; // 12
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: $padding-1; // 4
+  }
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__score-text {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+  }
+
+  &__content {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $padding-2; // 8
+  }
+
+  &__username {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+  }
+
+  &__date {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+
+    &::before {
+      content: '';
+      width: 1px;
+      height: 12px;
+      background: $Border-Border-line-100;
+      display: inline-block;
+      margin-right: $padding-2;
+      vertical-align: middle;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $Border-Border-line-100;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: $padding-3; // 12
+  }
+
+  &__thumb {
+    width: 94px;
+    height: 94px;
+    border-radius: 4px;
+    background: rgba(17, 0, 0, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__product-texts {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+    min-width: 0;
+  }
+
+  &__product-name {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__product-sub {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+  }
+
+  &__product-rating {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+  }
+
+  &__product-rating-text {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+  }
+
+  &__product-sub-divider {
+    width: 1px;
+    height: 12px;
+    background: $Border-Border-line-100;
+  }
+
+  &__product-count {
+    @include typo-body-3;
+    color: $Text-Disabled-color;
+  }
+
+  @include tablet {
+    width: 100%;
+
+    &__hero {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    &__hero-text {
+      padding: $padding-6;
+    }
+
+    &__hero-content {
+      -webkit-line-clamp: 8;
+    }
+
+    &__thumb {
+      width: 72px;
+      height: 72px;
+
+      img {
+        width: 45px;
+        height: 56px;
+      }
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+
+    &__hero {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    &__hero-text {
+      padding: $padding-4;
+    }
+
+    &__hero-content {
+      @include typo-body-4;
+      -webkit-line-clamp: 6;
+    }
+
+    &__body {
+      padding-top: $padding-3;
+      gap: $padding-2;
+    }
+
+    &__score-text {
+      @include typo-title-5;
+    }
+
+    &__stars {
+      .base-icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &__content {
+      @include typo-body-4;
+      -webkit-line-clamp: 2;
+    }
+
+    &__username {
+      @include typo-body-4;
+    }
+
+    &__date {
+      @include typo-body-5;
+    }
+
+    &__divider {
+      display: none;
+    }
+
+    &__product {
+      display: none;
+    }
+  }
+}
+
+// Review Detail Modal (67:6166)
+.review-modal {
+  .base-modal__container {
+    max-width: 1040px;
+    border-radius: 16px;
+  }
+
+  .base-modal__body {
+    padding: 24px;
+    max-height: calc(100vh - 80px);
+    overflow: auto;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+
+    &--no-image {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__left {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.06);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: $padding-3;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background 0.2s;
+
+    &--active {
+      background: $Primary-white-color;
+    }
+  }
+
+  &__right {
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__score-text {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+  }
+
+  &__close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 36px;
+    color: $Text-Thirty-text-color;
+    border-radius: 9999px;
+
+    &:hover {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Primary-text-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__username {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+  }
+
+  &__date {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__divider {
+    height: 1px;
+    background: $Border-Border-line-100;
+  }
+
+  &__content {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 150px;
+    padding-bottom: 24px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+    margin-top: auto;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $Border-Border-line-100;
+    }
+  }
+
+  &__product-thumb {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: $Primary-white-color;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__product-name {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  @include tablet {
+    &__layout {
+      grid-template-columns: 1fr;
+    }
+
+    &__left {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    &__right {
+      min-height: auto;
+    }
+  }
+
+  @include mobile {
+    .base-modal__container {
+      border-radius: 12px;
+    }
+
+    .base-modal__body {
+      padding: $padding-4;
+    }
+
+    &__layout {
+      gap: $padding-4;
+    }
+
+    &__left {
+      border-radius: 8px;
+    }
+
+    &__right {
+      gap: $padding-3;
+    }
+
+    &__score-text {
+      @include typo-title-5;
+    }
+
+    &__stars .base-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    &__close {
+      width: 28px;
+      height: 28px;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    &__username {
+      @include typo-title-5;
+    }
+
+    &__date {
+      @include typo-body-4;
+    }
+
+    &__title {
+      @include typo-title-5;
+    }
+
+    &__content {
+      @include typo-body-3;
+      min-height: 80px;
+      padding-bottom: $padding-4;
+    }
+
+    &__product {
+      padding: $padding-3;
+      gap: $padding-2;
+    }
+
+    &__product-thumb {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__product-name {
+      @include typo-title-6;
+    }
+  }
+}
+

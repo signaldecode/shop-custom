@@ -1,0 +1,30 @@
+{
+  "seo": {
+    "title": "FAQ",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "자주 묻는 질문과 답변을 확인하세요."
+  },
+  "page": {
+    "title": "FAQ"
+  },
+  "tabs": {
+    "allLabel": "전체",
+    "allValue": "",
+    "ariaLabel": "FAQ 카테고리 필터"
+  },
+  "list": {
+    "questionPrefix": "Q.",
+    "answerPrefix": "A."
+  },
+  "empty": {
+    "message": "등록된 FAQ가 없습니다."
+  },
+  "pagination": {
+    "prevLabel": "이전",
+    "nextLabel": "다음"
+  },
+  "error": {
+    "loadFailed": "FAQ를 불러오는데 실패했습니다.",
+    "categoryFailed": "카테고리를 불러오는데 실패했습니다."
+  }
+}

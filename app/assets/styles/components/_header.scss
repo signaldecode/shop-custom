@@ -1,0 +1,356 @@
+// ============================================
+// 헤더 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 80px;
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, height 0.3s ease;
+
+  @include mobile {
+    height: 60px;
+
+    .base-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  // Scrolled state
+  &--scrolled {
+    background: $Primary-white-color;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    .header__menu-btn,
+    .header__nav-link,
+    .header__action-btn,
+    .header__login-link {
+      color: $Text-Primary-text-color;
+
+      .base-icon {
+        color: $Text-Primary-text-color;
+      }
+    }
+
+
+    .header__action-btn:focus-visible {
+      outline-color: $Primary-color;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: $padding-5 $container-padding;
+    max-width: $container-max-width;
+    width: 100%;
+
+    @include tablet {
+      padding: $padding-5 $padding-6;
+    }
+
+    @include mobile {
+      height: 100%;
+      padding: 0 $padding-3;
+    }
+
+    @include mobile-xs {
+      height: 100%;
+      padding: 0 $padding-3;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: $padding-6;
+
+    @include tablet {
+      gap: $padding-6;
+    }
+
+    @include mobile {
+      gap: $padding-3;
+    }
+  }
+
+  &__menu-btn {
+    display: none;
+    padding: $padding-3;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $Primary-white-color;
+    transition: color 0.3s ease;
+
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .base-icon {
+      color: $Primary-white-color;
+      transition: color 0.3s ease;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__logo-img {
+    height: 30px;
+    width: auto;
+
+    @include mobile {
+      height: 18px;
+    }
+  }
+
+  &__nav {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: $padding-10;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include tablet {
+      gap: $padding-6;
+    }
+  }
+
+  &__nav-link {
+    @include typo-title-5;
+    color: $Primary-white-color;
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.2s ease;
+    letter-spacing: -0.4px;
+
+    @include tablet {
+      font-size: $Title-title-5-Font-size;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+
+    @include mobile {
+      gap: $padding-3;
+    }
+
+    @include mobile-xs {
+      gap: $padding-2;
+    }
+  }
+
+  &__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-2;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $Primary-white-color;
+    transition: color 0.3s ease, opacity 0.2s ease;
+
+    .base-icon {
+      color: $Primary-white-color;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-white-color;
+      outline-offset: 2px;
+      transition: outline-color 0.3s ease;
+    }
+  }
+
+  // Login link (비로그인 상태)
+  &__login-link {
+    @include typo-title-5;
+    color: $Primary-white-color;
+    text-decoration: none;
+    padding: $padding-2;
+    transition: color 0.3s ease, opacity 0.2s ease;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // User dropdown wrapper
+  &__user-wrapper {
+    position: relative;
+  }
+
+  // User dropdown menu
+  &__user-menu {
+    position: absolute;
+    top: calc(100% + $padding-2);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 110px;
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 101;
+
+    @include mobile {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+  }
+
+  &__user-menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    color: $Text-Primary-text-color;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: $Bg-Primary-bg-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: -2px;
+    }
+
+    & + & {
+      border-top: 1px solid $Border-Border-line-100;
+    }
+  }
+}
+
+// Dropdown transition
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+}
+
+// ============================================
+// Mobile Navigation (Full Screen)
+// ============================================
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    background: $Primary-white-color;
+    padding: 72px $padding-6 $padding-6;
+    overflow-y: auto;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__link {
+    display: block;
+    padding: $padding-3 0;
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &.router-link-active {
+      color: $Primary-color;
+    }
+  }
+}
+
+// Mobile nav transition
+.mobile-nav-enter-active {
+  transition: opacity 0.3s ease;
+
+  .mobile-nav__content {
+    transition: transform 0.3s ease;
+  }
+}
+
+.mobile-nav-leave-active {
+  transition: opacity 0.3s ease;
+
+  .mobile-nav__content {
+    transition: transform 0.3s ease;
+  }
+}
+
+.mobile-nav-enter-from,
+.mobile-nav-leave-to {
+  opacity: 0;
+
+  .mobile-nav__content {
+    transform: translateX(-100%);
+  }
+}

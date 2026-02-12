@@ -1,0 +1,117 @@
+// ============================================
+// Component Styles - Input (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-input {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+
+  // --------------------------------------------
+  // Label
+  // --------------------------------------------
+
+  &__label {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    font-weight: 500;
+  }
+
+  &__required {
+    color: $Primary-color;
+    margin-left: 2px;
+  }
+
+  // --------------------------------------------
+  // Input Field
+  // --------------------------------------------
+
+  &__field {
+    width: 100%;
+    height: 52px;
+    padding: 0 $padding-4;
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &::placeholder {
+      color: $Text-Thirty-text-color;
+    }
+
+    &:hover:not(:disabled):not(:read-only) {
+      border-color: $Border-Border-line-200;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $Text-Primary-text-color;
+    }
+
+    &:disabled {
+      background: $Bg-Primary-bg-color;
+      border-color: $Border-Border-line-100;
+      cursor: not-allowed;
+      color: $Text-Disabled-color;
+    }
+
+    &:read-only {
+      background: $Bg-Primary-bg-color;
+      cursor: default;
+    }
+  }
+
+  // --------------------------------------------
+  // Error State
+  // --------------------------------------------
+
+  &--error {
+    .base-input__field {
+      border-color: $Error-color;
+
+      &:focus {
+        border-color: $Error-color;
+      }
+    }
+  }
+
+  &__error {
+    @include typo-body-3;
+    color: $Error-color;
+    margin: 0;
+  }
+
+  // --------------------------------------------
+  // Disabled State
+  // --------------------------------------------
+
+  &--disabled {
+    .base-input__label {
+      color: $Text-Disabled-color;
+    }
+  }
+
+  // Mobile optimization
+  @include mobile {
+    &__field {
+      height: 36px;
+      padding: 0 $padding-3;
+      @include typo-body-3;
+    }
+
+    &__label {
+      @include typo-body-4;
+    }
+
+    &__error {
+      @include typo-body-5;
+    }
+  }
+}

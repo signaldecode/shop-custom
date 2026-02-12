@@ -1,0 +1,49 @@
+{
+  "seo": {
+    "title": "공지사항",
+    "titleSuffix": " | 쇼핑몰",
+    "description": "쇼핑몰의 공지사항을 확인하세요."
+  },
+  "page": {
+    "title": "공지사항",
+    "subtitle": "쇼핑몰의 새로운 소식을 확인하세요"
+  },
+  "filters": {
+    "type": {
+      "placeholder": "전체",
+      "options": [
+        { "label": "전체", "value": "" },
+        { "label": "공지사항", "value": "NOTICE" },
+        { "label": "점검", "value": "INSPECTION" },
+        { "label": "안내", "value": "GUIDELINES" },
+        { "label": "이벤트", "value": "EVENT" }
+      ]
+    },
+    "sort": {
+      "options": [
+        { "label": "최신순", "value": "createdAt,DESC" },
+        { "label": "오래된순", "value": "createdAt,ASC" }
+      ]
+    }
+  },
+  "search": {
+    "placeholder": "검색어를 입력하세요",
+    "button": "검색"
+  },
+  "list": {
+    "pinnedLabel": "고정",
+    "viewCountSuffix": "회"
+  },
+  "empty": {
+    "message": "등록된 공지사항이 없습니다."
+  },
+  "pagination": {
+    "prevLabel": "이전",
+    "nextLabel": "다음"
+  },
+  "detail": {
+    "backButton": "목록으로",
+    "viewCountLabel": "조회수",
+    "viewCountSuffix": "회"
+  }
+}

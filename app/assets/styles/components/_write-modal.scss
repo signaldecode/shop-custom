@@ -1,0 +1,165 @@
+// ============================================
+// Review & Q&A Write Modal Styles
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// 공통 모달 스타일
+.review-write-modal,
+.qna-write-modal {
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    padding: $padding-4;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 12px;
+    margin-bottom: $padding-6;
+  }
+
+  &__product-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: $Primary-white-color;
+  }
+
+  &__product-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__product-label {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  &__product-name {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+
+    &--inline {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: $padding-2;
+    }
+  }
+
+  &__label {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+  }
+
+  &__required {
+    color: $Error-color;
+  }
+
+  &__optional {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    font-weight: 400;
+  }
+
+  &__error {
+    @include typo-body-3;
+    color: $Error-color;
+    margin: 0;
+  }
+
+  &__help {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $padding-3;
+    margin-top: $padding-2;
+    padding-top: $padding-4;
+    border-top: 1px solid $Border-Border-line-100;
+
+    .base-button {
+      flex: 1;
+    }
+
+    @include mobile {
+      gap: $padding-2;
+
+      .base-button {
+        height: 40px;
+      }
+    }
+  }
+
+  // Mobile optimization
+  @include mobile {
+    &__product {
+      gap: $padding-2;
+      padding: $padding-2;
+      border-radius: 6px;
+      margin-bottom: $padding-3;
+    }
+
+    &__product-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+    }
+
+    &__product-label {
+      @include typo-body-5;
+    }
+
+    &__product-name {
+      @include typo-body-3;
+    }
+
+    &__form {
+      gap: $padding-3;
+    }
+
+    &__field {
+      gap: $padding-1;
+    }
+
+    &__label {
+      @include typo-body-3;
+    }
+
+    &__optional {
+      @include typo-body-5;
+    }
+
+    &__error,
+    &__help {
+      @include typo-body-5;
+    }
+  }
+}

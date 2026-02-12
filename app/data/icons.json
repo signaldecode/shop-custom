@@ -1,0 +1,53 @@
+{
+  "arrow": {
+    "label": {
+      "left": "왼쪽으로 이동",
+      "right": "오른쪽으로 이동",
+      "up": "위로 이동",
+      "down": "아래로 이동"
+    }
+  },
+  "close": {
+    "label": "닫기"
+  },
+  "star": {
+    "label": {
+      "active": "별점",
+      "disabled": "빈 별점"
+    }
+  },
+  "share": {
+    "label": "공유하기"
+  },
+  "question": {
+    "label": "도움말"
+  },
+  "lock": {
+    "label": "잠금"
+  },
+  "menu": {
+    "label": "메뉴 열기"
+  },
+  "search": {
+    "label": "검색"
+  },
+  "user": {
+    "label": "마이페이지"
+  },
+  "cart": {
+    "label": "장바구니"
+  },
+  "slideButton": {
+    "label": {
+      "prev": "이전 슬라이드",
+      "next": "다음 슬라이드"
+    }
+  },
+  "social": {
+    "label": {
+      "youtube": "유튜브",
+      "instagram": "인스타그램",
+      "x": "X (트위터)"
+    }
+  }
+}

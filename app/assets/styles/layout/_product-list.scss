@@ -1,0 +1,185 @@
+// ============================================
+// Layout Styles - Product List
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.layout-product-list {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding-top: 80px;
+  }
+
+  &__inner {
+    @include container;
+    padding-top: $padding-12;
+    padding-bottom: $padding-12;
+
+    @include tablet {
+      padding-top: $padding-10;
+      padding-bottom: $padding-10;
+    }
+
+    @include mobile {
+      padding-top: $padding-2;
+      padding-bottom: $padding-8;
+    }
+  }
+
+  &__title {
+    @include typo-display-1;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-8;
+    text-align: left;
+
+    @include tablet {
+      margin-bottom: $padding-6;
+    }
+
+    @include mobile {
+      @include typo-title-3;
+      margin-bottom: $padding-5;
+    }
+  }
+
+  &__tabs {
+    margin-bottom: $padding-8;
+
+    @include mobile {
+      margin-bottom: $padding-6;
+    }
+  }
+
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-3;
+
+    @include mobile {
+      margin-bottom: $padding-6;
+    }
+  }
+
+  &__count {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__count-number {
+    color: $Primary-color;
+    font-weight: 500;
+  }
+
+  &__sort {
+    flex-shrink: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $padding-9 $padding-7;
+    margin-bottom: $padding-11;
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $padding-8 $padding-6;
+      margin-bottom: $padding-10;
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $padding-6 $padding-4;
+      margin-bottom: $padding-8;
+    }
+
+    // 빈 상태일 때 (BaseEmpty만 있을 때)
+    &:has(.base-empty) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 300px;
+    }
+  }
+
+  &__pagination {
+    margin-top: $padding-8;
+  }
+
+  // 로딩 스피너 (정중앙)
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+
+    @include mobile {
+      min-height: 300px;
+    }
+  }
+
+  // 스켈레톤 스타일
+  &__skeleton-item {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+  }
+
+  &__skeleton-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+  }
+
+  &__skeleton-text {
+    height: 16px;
+    width: 80%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+
+    &--short {
+      height: 14px;
+      width: 50%;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: 4px;
+    }
+  }
+
+  &__skeleton-price {
+    height: 20px;
+    width: 40%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+    margin-top: $padding-2;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

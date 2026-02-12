@@ -1,0 +1,120 @@
+// ============================================
+// Components - MyPage Orders
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-orders {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-9; // 36
+
+  @include mobile-xs {
+    gap: 20px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5; // 20
+  }
+
+  &__title-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: $padding-1; // 4
+
+    @include mobile-xs {
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__title {
+    @include typo-headline-2;
+    margin: 0;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.8px;
+
+    @include mobile-xs {
+      font-size: 18px;
+    }
+  }
+
+  &__subtitle {
+    @include typo-body-3;
+    margin: 0 0 2px;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    gap: $padding-3; // 12
+  }
+
+  &__tab {
+    border: 1px solid $Border-Border-line-100;
+    background: $Primary-white-color;
+    color: $Text-Primary-text-color;
+    border-radius: 9999px;
+    padding: $padding-3 $padding-6; // 12 24
+    @include typo-button-2;
+
+    @include mobile-xs {
+      padding: $padding-2 $padding-4;
+      font-size: $Body-body-4-Font-size;
+    }
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Primary-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background: $Primary-color;
+      border-color: $Primary-color;
+      color: $Primary-white-color;
+    }
+  }
+
+  &__filters {
+    background: $Bg-Primary-bg-color;
+    border-radius: 10px;
+    padding: $padding-6; // 24
+    display: grid;
+    grid-template-columns: 260px 150px 212px 212px;
+    gap: $padding-3; // 12
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-10; // 40
+  }
+
+  &__table {
+    border-top: 1px solid $Border-Border-line-200;
+  }
+
+  &__pagination {
+    margin-top: $padding-10; // 40
+  }
+
+  @include tablet {
+    &__filters {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+

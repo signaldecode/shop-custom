@@ -1,0 +1,133 @@
+// ============================================
+// Page Styles - Signup (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-signup {
+  background: $Primary-white-color;
+}
+
+.signup-page {
+  padding-top: 180px;
+  padding-bottom: 160px;
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+}
+
+.signup-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+
+  @include mobile {
+    gap: $padding-8;
+    width: 100%;
+    padding: 0 $padding-5;
+  }
+}
+
+.signup-page__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.signup-page__title {
+  @include typo-headline-1;
+  margin: 0;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+.signup-page__subtitle {
+  @include typo-body-2;
+  margin: 0;
+  color: $Text-Secondary-text-color;
+
+  @include mobile {
+    @include typo-body-3;
+  }
+}
+
+.signup-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-actions__button {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  padding: $padding-4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  @include typo-button-2;
+
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+
+  &--kakao {
+    background: #f9db00;
+    color: #3e1918;
+  }
+
+  &--naver {
+    background: #01c73c;
+    color: $Primary-white-color;
+  }
+
+  &--general {
+    background: $Text-Primary-text-color;
+    color: $Primary-white-color;
+  }
+}
+
+.signup-actions__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  &--naver {
+    width: 16px;
+    height: 16px;
+    font-weight: 900;
+    line-height: 1;
+  }
+}
+

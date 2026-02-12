@@ -1,0 +1,260 @@
+// ============================================
+// Components - Base Product Item
+// 장바구니, 주문, 주문내역 등에서 공통으로 사용하는 상품 아이템 UI
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-product-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $padding-6;
+  padding: $padding-5 0;
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  // 레이아웃 변형
+  &--vertical {
+    flex-direction: column;
+    gap: $padding-4;
+  }
+
+  // 메인 영역 (이미지 + 정보)
+  &__main {
+    display: flex;
+    align-items: flex-start;
+    gap: $padding-4;
+    flex: 1;
+    min-width: 0;
+  }
+
+  // 썸네일
+  &__thumb {
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: $Bg-Secondary-bg-color;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // 썸네일 크기 변형
+  &--thumb-small &__thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  &--thumb-medium &__thumb {
+    width: 80px;
+    height: 80px;
+  }
+
+  &--thumb-large &__thumb {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $Text-Thirty-text-color;
+    @include typo-body-3;
+  }
+
+  // 상품 정보
+  &__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+  }
+
+  &__name {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    word-break: break-word;
+  }
+
+  &__variant {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+  &__status {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+  }
+
+  &__review-btn {
+    @include typo-title-6;
+    max-width: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-1 $padding-3;
+    border: none;
+    border-radius: 4px;
+    background: $Primary-color;
+    color: $Primary-white-color;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &:hover {
+      background: var(--theme-primary-100);
+      color: $Primary-color;
+    }
+
+    &--view {
+      background: $Primary-white-color;
+      color: $Text-Secondary-text-color;
+      border: 1px solid $Border-Border-line-200;
+
+      &:hover {
+        border-color: $Primary-color;
+        color: $Primary-color;
+        background: $Primary-white-color;
+      }
+    }
+  }
+
+  // 가격 정보
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-width: 120px;
+    text-align: right;
+  }
+
+  &__price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: $padding-4;
+
+    &--total {
+      padding-top: $padding-2;
+      border-top: 1px solid $Border-Border-line-100;
+      margin-top: $padding-1;
+    }
+  }
+
+  &__price-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__price-value {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+
+    .base-product-item__price-row--total & {
+      @include typo-title-5;
+      color: $Primary-color;
+    }
+  }
+
+  // 반응형
+  @include tablet {
+    flex-direction: column;
+    gap: $padding-4;
+
+    &__thumb {
+      width: 60px;
+      height: 60px;
+    }
+
+    &__prices {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: $padding-4;
+      min-width: unset;
+    }
+
+    &__price-row {
+      gap: $padding-2;
+
+      &--total {
+        padding-top: 0;
+        border-top: none;
+        margin-top: 0;
+        padding-left: $padding-3;
+        border-left: 1px solid $Border-Border-line-100;
+      }
+    }
+  }
+
+  @include mobile {
+    gap: $padding-3;
+    padding: $padding-3 0;
+
+    &__main {
+      gap: $padding-2;
+    }
+
+    &__thumb {
+      width: 70px;
+      height: 70px;
+    }
+
+    &__name {
+      @include typo-title-6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__variant {
+      @include typo-body-4;
+    }
+
+    &__prices {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $padding-2;
+      min-width: unset;
+    }
+
+    &__price-label {
+      @include typo-body-4;
+    }
+
+    &__price-value {
+      @include typo-body-4;
+
+      .base-product-item__price-row--total & {
+        @include typo-title-6;
+      }
+    }
+
+    &__price-row {
+      gap: $padding-1;
+
+      &--total {
+        padding-top: 0;
+        border-top: none;
+        margin-top: 0;
+        padding-left: $padding-2;
+        border-left: 1px solid $Border-Border-line-100;
+      }
+    }
+  }
+}

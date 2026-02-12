@@ -1,0 +1,273 @@
+// ============================================
+// 검색 헤더 or 모바일 플로팅 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Base Search Input
+// --------------------------------------------
+
+.base-search-input {
+  width: 100%;
+
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    padding: $padding-3 0;
+    border-bottom: 1px solid $Border-Border-line-200;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+
+    &::placeholder {
+      color: $Text-Secondary-text-color;
+    }
+  }
+
+  &__search {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-2;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $Text-Secondary-text-color;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  &__close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-2;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: $Text-Secondary-text-color;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+  }
+}
+
+// --------------------------------------------
+// Header Search - Desktop (inline expanding)
+// --------------------------------------------
+
+.header__search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    position: static;
+  }
+}
+
+.header__search-desktop {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+
+  @include tablet {
+    width: 220px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+
+  .base-search-input__form {
+    background: transparent;
+    //border-radius: 4px;
+    padding: $padding-2 $padding-3;
+  }
+}
+
+// Desktop expand animation (right to left)
+.search-expand-enter-active,
+.search-expand-leave-active {
+  transition: opacity 0.25s ease, width 0.25s ease, transform 0.25s ease;
+  transform-origin: right center;
+}
+
+.search-expand-enter-from,
+.search-expand-leave-to {
+  opacity: 0;
+  width: 0;
+  transform: translateY(-50%) scaleX(0);
+}
+
+.search-expand-enter-to,
+.search-expand-leave-from {
+  opacity: 1;
+  transform: translateY(-50%) scaleX(1);
+}
+
+// --------------------------------------------
+// Header Search - Mobile (floating popup)
+// --------------------------------------------
+
+.header__search-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  @include mobile {
+    display: block;
+  }
+
+  &-inner {
+    position: relative;
+    z-index: 2;
+    padding: $padding-6 $padding-4;
+    background: $Primary-white-color;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+    .base-search-input__form {
+      border-bottom-color: $Border-Border-line-100;
+    }
+  }
+
+  &-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Mobile popup animation
+.search-popup-enter-active,
+.search-popup-leave-active {
+  transition: opacity 0.3s ease;
+
+  .header__search-mobile-inner {
+    transition: transform 0.3s ease;
+  }
+}
+
+.search-popup-enter-from,
+.search-popup-leave-to {
+  opacity: 0;
+
+  .header__search-mobile-inner {
+    transform: translateY(-100%);
+  }
+}
+
+.search-popup-enter-to,
+.search-popup-leave-from {
+  opacity: 1;
+
+  .header__search-mobile-inner {
+    transform: translateY(0);
+  }
+}
+
+// --------------------------------------------
+// Search Results Page
+// --------------------------------------------
+
+.page-search {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding-top: 80px;
+  }
+
+  &__container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: $padding-10 20px;
+
+    @include mobile {
+      padding: $padding-8 $padding-4;
+    }
+  }
+
+  &__header {
+    margin-bottom: $padding-8;
+  }
+
+  &__title {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-2;
+    font-weight: 400;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  &__count {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $padding-9 $padding-7;
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $padding-6 $padding-4;
+    }
+  }
+
+  &__empty {
+    padding: $padding-12 0;
+    text-align: center;
+
+    p {
+      @include typo-body-2;
+      color: $Text-Thirty-text-color;
+    }
+  }
+}

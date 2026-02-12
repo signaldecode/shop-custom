@@ -1,0 +1,119 @@
+// ============================================
+// 탭 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-tabs {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid $Border-Border-line-100;
+  border-radius: 8px;
+  overflow: hidden;
+  background: $Primary-white-color;
+  flex-shrink: 0;
+
+  @include mobile {
+    border-radius: 6px;
+  }
+
+  &--default {
+    // Default styles already applied above
+  }
+
+  &--chip {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    gap: $padding-3;
+    overflow: visible;
+    flex-wrap: wrap;
+
+    @include mobile {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding: $padding-1;
+      margin: -#{$padding-1};
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .base-tabs__tab {
+        flex-shrink: 0;
+      }
+    }
+
+    .base-tabs__tab {
+      border: 1px solid $Border-Border-line-100;
+      border-radius: 999px;
+      padding: $padding-2 $padding-5;
+
+      @include mobile {
+        padding: $padding-1 $padding-4;
+      }
+
+      &:hover {
+        border-color: $Primary-color;
+      }
+
+      &--active {
+        border-color: $Primary-color;
+      }
+    }
+  }
+
+  &__tab {
+    @include typo-title-6;
+    position: relative;
+    padding: $padding-3 $padding-6;
+    background: transparent;
+    border: none;
+    // border-right: 1px solid $Border-Border-line-100;
+    color: $Text-Thirty-text-color;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    @include mobile {
+      padding: $padding-2 $padding-4;
+      font-size: 13px;
+    }
+
+    @include mobile-xs {
+      padding: $padding-2 $padding-3;
+      font-size: 12px;
+    }
+
+    &:last-child {
+    }
+
+    &:hover {
+      color: $Primary-color;
+      background: var(--theme-primary-50);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: -2px;
+    }
+
+    &--active {
+      color: $Primary-white-color;
+      background: $Primary-color;
+
+      &:hover {
+        background: var(--theme-primary-900);
+        color: $Primary-white-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,503 @@
+// ============================================
+// Components - MyPage Coupons
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-coupons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-6;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @include typo-headline-2;
+    margin: 0;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.8px;
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  // 탭
+  &__tabs {
+    display: flex;
+    gap: $padding-1;
+    border-bottom: 1px solid $Border-Border-line-100;
+    @include mobile {
+      justify-content: space-between;
+    }
+  }
+
+  &__tab {
+    padding: $padding-2 $padding-4;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    @include mobile {
+      padding: $padding-1 $padding-3;
+    }
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+
+    &--active {
+      color: $Primary-color;
+      border-bottom-color: $Primary-color;
+      font-weight: 600;
+    }
+  }
+
+  &__tab-count {
+    margin-left: $padding-1;
+    @include typo-body-4;
+  }
+
+  // 쿠폰 리스트
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+  }
+
+  // 쿠폰 카드
+  &__card {
+    display: flex;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: $Primary-color;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    &--disabled {
+      opacity: 0.6;
+      cursor: default;
+
+      &:hover {
+        border-color: $Border-Border-line-100;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__card-discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    padding: $padding-4;
+    background: $Primary-color;
+    color: $Primary-white-color;
+
+    @include mobile {
+      width: 100%;
+      max-width: 120px;
+      padding: $padding-3;
+    }
+
+    .mypage-coupons__card--disabled & {
+      background: $Text-Disabled-color;
+    }
+  }
+
+  &__discount-value {
+    @include typo-headline-2;
+    font-weight: 700;
+    line-height: 1.2;
+
+    @include mobile {
+      @include typo-headline-4;
+    }
+  }
+
+  &__discount-type {
+    @include typo-body-4;
+    opacity: 0.9;
+  }
+
+  &__card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+    padding: $padding-4;
+    min-width: 0;
+
+    @include mobile {
+      padding: $padding-3;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $padding-2;
+  }
+
+  &__card-name {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+  }
+
+  &__card-badge {
+    flex-shrink: 0;
+    padding: $padding-1 $padding-2;
+    border-radius: 4px;
+    @include typo-body-4;
+    font-weight: 500;
+
+    &--available {
+      background: rgba(var(--theme-primary-rgb), 0.1);
+      color: $Primary-color;
+    }
+
+    &--used {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Secondary-text-color;
+    }
+
+    &--expired {
+      background: rgba($Error-color, 0.1);
+      color: $Error-color;
+    }
+  }
+
+  &__card-desc {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__card-types {
+    display: flex;
+    gap: $padding-1;
+  }
+
+  &__card-type {
+    display: inline-block;
+    padding: 2px $padding-2;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 4px;
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__card-conditions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $padding-2;
+  }
+
+  &__card-condition {
+    @include typo-body-4;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+  }
+
+  &__card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $padding-2;
+    margin-top: auto;
+  }
+
+  &__card-target {
+    display: inline-block;
+    padding: 2px $padding-2;
+    background: $Bg-Primary-bg-color;
+    border-radius: 4px;
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__card-expiry {
+    @include typo-body-4;
+    color: $Text-Thirty-text-color;
+
+    &--soon {
+      color: $Error-color;
+      font-weight: 500;
+    }
+  }
+
+  // 로딩
+  &__loading {
+    padding: $padding-12 0;
+    text-align: center;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+  }
+
+  // 빈 상태
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-12 $padding-6;
+    text-align: center;
+    gap: $padding-2;
+  }
+
+  &__empty-title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__empty-desc {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+}
+
+// 쿠폰 상세 모달
+.coupon-detail {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-5;
+
+  &__header {
+    display: flex;
+    gap: $padding-4;
+    padding-bottom: $padding-5;
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    background: $Primary-color;
+    color: $Primary-white-color;
+    border-radius: 12px;
+    flex-shrink: 0;
+    @include mobile {
+      width: 100px;
+      height: 70px;
+    }
+  }
+
+  &__discount-value {
+    @include typo-headline-2;
+    font-weight: 700;
+    line-height: 1.2;
+    @include mobile {
+      @include typo-title-3;
+    }
+  }
+
+  &__discount-type {
+    @include typo-body-4;
+    opacity: 0.9;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $padding-2;
+  }
+
+  &__name {
+    @include typo-title-3;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    @include mobile {
+      @include typo-title-4;
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    width: fit-content;
+    padding: $padding-1 $padding-2;
+    border-radius: 4px;
+    @include typo-body-4;
+    font-weight: 500;
+
+    &--available {
+      background: rgba(var(--theme-primary-rgb), 0.1);
+      color: $Primary-color;
+    }
+
+    &--used {
+      background: $Bg-Secondary-bg-color;
+      color: $Text-Secondary-text-color;
+    }
+
+    &--expired {
+      background: rgba($Error-color, 0.1);
+      color: $Error-color;
+    }
+  }
+
+  // 쿠폰 설명
+  &__description {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    padding: $padding-3 $padding-4;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 8px;
+  }
+
+  // 쿠폰 코드
+  &__code {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding-3 $padding-4;
+    background: $Bg-Primary-bg-color;
+    border-radius: 8px;
+  }
+
+  &__code-label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__code-value {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+  }
+
+  &__code-text {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    font-family: monospace;
+    @include mobile {
+      @include typo-title-6;
+    }
+  }
+
+  &__code-copy {
+    padding: $padding-1 $padding-2;
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+
+    &:hover {
+      background: $Bg-Secondary-bg-color;
+      border-color: $Border-Border-line-200;
+    }
+
+    &--copied {
+      background: $Primary-color;
+      border-color: $Primary-color;
+      color: $Primary-white-color;
+    }
+  }
+
+  // 상세 조건
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+  }
+
+  &__section-title {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    padding-bottom: $padding-2;
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__row {
+    display: flex;
+    gap: $padding-4;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $padding-1;
+    }
+  }
+
+  &__label {
+    width: 120px;
+    flex-shrink: 0;
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+
+    @include mobile {
+      width: 100%;
+      @include typo-body-4;
+    }
+  }
+
+  &__value {
+    flex: 1;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  // 유의사항
+  &__notice {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    white-space: pre-line;
+    line-height: 1.6;
+  }
+
+  // 액션
+  &__actions {
+    padding-top: $padding-3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $padding-2;
+  }
+}

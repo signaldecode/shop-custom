@@ -1,0 +1,37 @@
+// ============================================
+// 빈 상태일 때 영역 전체 텍스트 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+
+.base-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $padding-6;
+  padding: $padding-section $padding-10;
+  margin: 0;
+  width: 100%;
+  min-height: 360px;
+  text-align: center;
+  grid-column: 1 / -1; // 그리드 레이아웃에서 전체 열 차지
+
+  &__icon {
+    color: $Black-Primary-black-400;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__message {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+    text-align: center;
+  }
+}

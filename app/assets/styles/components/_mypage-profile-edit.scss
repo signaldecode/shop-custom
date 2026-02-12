@@ -1,0 +1,301 @@
+// ============================================
+// Components - MyPage Profile Edit
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-profile-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-10; // 40 (섹션 간)
+
+  &__section {
+    border-bottom: 1px solid $Border-Border-line-100;
+    padding-bottom: $padding-10; // 40
+  }
+
+  &__section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $padding-6;
+    padding-bottom: $padding-5; // 20
+
+    @include mobile-xs {
+      align-items: center;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__title {
+    @include typo-headline-2;
+    margin: 0;
+    color: $Text-Primary-text-color;
+    letter-spacing: -0.8px;
+
+    @include mobile-xs {
+      font-size: 20px;
+    }
+  }
+
+  &__required-note {
+    @include typo-body-3;
+    margin: 0;
+    color: $Primary-color;
+  }
+
+  &__section-body {
+    border-top: 2px solid $Border-Border-line-200;
+    padding: $padding-10 0; // 40
+    display: flex;
+    flex-direction: column;
+    gap: $padding-8; // 32
+
+    @include mobile-xs {
+      padding: 20px 0;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: $padding-6; // 24
+  }
+
+  &__label {
+    @include typo-title-6;
+    width: 120px;
+    margin: 0;
+    color: $Text-Primary-text-color;
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    white-space: nowrap;
+
+    &--multiline {
+      white-space: pre-line;
+    }
+  }
+
+  &__password-btn {
+    .base-button {
+      padding: $padding-3 $padding-5;
+    }
+  }
+
+  &__req {
+    color: $Primary-color;
+  }
+
+  &__field {
+    width: 600px;
+    max-width: 100%;
+  }
+
+  &__triple {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    max-width: 480px;
+
+    .base-select,
+    .base-input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  &__dash {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+    flex-shrink: 0;
+
+    &::before {
+      content: '-';
+    }
+  }
+
+  &__email {
+    display: grid;
+    grid-template-columns: 212px 12px 212px 140px;
+    align-items: center;
+    gap: $padding-2; // 8
+  }
+
+  &__at {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    text-align: center;
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2; // 8
+  }
+
+  &__address-top {
+    display: flex;
+    align-items: center;
+    gap: $padding-2; // 8
+  }
+
+  &__zipcode {
+    width: 260px;
+  }
+
+  &__zipcode-btn {
+    width: 140px;
+
+    .base-button {
+      width: 100%;
+      padding: $padding-4; // 16
+    }
+  }
+
+  &__checks {
+    display: flex;
+    align-items: center;
+    gap: $padding-6; // 24
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $padding-6;
+    padding-top: $padding-6;
+
+    @include mobile-xs {
+      padding-top: 0;
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+  }
+
+  &__bottom-actions {
+    display: flex;
+    align-items: center;
+    gap: $padding-3; // 12
+
+    .base-button {
+      width: 200px;
+      padding: $padding-4; // 16
+    }
+
+    @include mobile-xs {
+      flex-direction: column-reverse;
+
+      .base-button {
+        width: 100%;
+      }
+    }
+  }
+
+  @include tablet {
+    &__row {
+      flex-direction: column;
+      gap: $padding-3;
+    }
+
+    &__label {
+      width: 100%;
+    }
+
+    &__field {
+      width: 100%;
+    }
+
+    &__triple {
+      max-width: 100%;
+      gap: $padding-1;
+
+      .base-select,
+      .base-input {
+        flex: 1;
+      }
+    }
+
+    &__dash {
+      @include typo-body-3;
+    }
+
+    &__email {
+      grid-template-columns: 1fr;
+    }
+
+    &__address-top {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__zipcode,
+    &__zipcode-btn {
+      width: 100%;
+    }
+
+    &__bottom {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+
+    &__bottom-actions {
+      flex-direction: column-reverse;
+
+      .base-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// 비밀번호 변경 모달 폼
+.password-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-5;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__label {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+  }
+}
+
+// 회원탈퇴 모달
+.withdraw-modal-content {
+  text-align: center;
+
+  p {
+    @include typo-body-2;
+    margin: 0;
+    color: $Text-Primary-text-color;
+
+    &:first-child {
+      margin-bottom: $padding-2;
+    }
+  }
+}
+
+.withdraw-modal,
+.password-modal {
+  .base-modal__footer {
+    gap: $padding-5;
+
+    .base-button--size-small {
+      padding: $padding-2 0;
+      width: 40%;
+      font-size: $Button-button-1-Font-size;
+    }
+  }
+}
+

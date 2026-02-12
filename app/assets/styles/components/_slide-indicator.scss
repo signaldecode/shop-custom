@@ -1,0 +1,53 @@
+// ============================================
+// 슬라이드 인디케이터 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.slide-indicator {
+  display: flex;
+  align-items: center;
+  gap: $padding-4;
+
+  @include mobile {
+    gap: $padding-3;
+  }
+
+  &__current {
+    @include typo-title-5;
+    color: rgba($Primary-white-color, 0.6);
+    letter-spacing: -0.4px;
+  }
+
+  &__total {
+    @include typo-title-5;
+    color: $Primary-white-color;
+    letter-spacing: -0.4px;
+  }
+
+  &__bar {
+    width: 100px;
+    height: 2px;
+    background: rgba($Primary-white-color, 0.6);
+    border-radius: 9999px;
+    overflow: hidden;
+
+    @include mobile {
+      width: 80px;
+    }
+
+    @include mobile-xs {
+      width: 60px;
+    }
+  }
+
+  &__progress {
+    height: 100%;
+    background: $Primary-white-color;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+  }
+}

@@ -1,0 +1,224 @@
+// ============================================
+// Page Styles - Login (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-login {
+  background: $Primary-white-color;
+}
+
+.login-page {
+  padding-top: 180px; // Figma: top 180 (header 포함)
+  padding-bottom: 160px;
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    padding-top: calc(60px + #{$padding-8});
+    padding-bottom: $padding-10;
+  }
+}
+
+.login-page__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+
+  @include mobile {
+    gap: $padding-8;
+    width: 100%;
+    padding: 0 $padding-5;
+  }
+}
+
+.login-page__title {
+  @include typo-headline-1;
+  margin: 0;
+  text-align: center;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+.login-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.login-tabs__tab {
+  @include typo-title-5;
+  padding: $padding-4 10px;
+
+  @include mobile {
+    @include typo-title-6;
+  }
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: $Text-Disabled-color;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+
+  &--active {
+    color: $Text-Primary-text-color;
+    border-color: $Border-Border-line-200;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+
+  @include mobile {
+    gap: $padding-8;
+  }
+}
+
+.login-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.login-form__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.login-form__links {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-form__link {
+  @include typo-body-3;
+  color: $Text-Primary-text-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+}
+
+.login-form__divider {
+  width: 1px;
+  height: 12px;
+  background: $Border-Border-line-100;
+}
+
+.login-form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-form__signup {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-form__signup-text {
+  @include typo-body-3;
+  color: $Text-Thirty-text-color;
+}
+
+.login-form__signup-link {
+  @include typo-title-6;
+  color: $Text-Primary-text-color;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.login-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login-social__button {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+
+  &--naver {
+    background: #03c75a; // Naver brand
+    color: $Primary-white-color;
+    font-family: Pretendard, system-ui, -apple-system, sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &--google {
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-300;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+  }
+
+  &--kakao {
+    background: #fee500; // Kakao brand
+    color: #191919;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+  }
+}
+

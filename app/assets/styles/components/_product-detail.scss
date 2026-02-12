@@ -1,0 +1,1433 @@
+// ============================================
+// 상품 상세
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Page Layout (1320px = 1280px + 20px * 2)
+// --------------------------------------------
+
+.page-product-detail {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding-top: 80px;
+    @include mobile {
+      padding-top: 60px;
+    }
+  }
+
+  &__loading,
+  &__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px - 200px);
+  }
+
+  &__error {
+    @include typo-body-1;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include mobile {
+      padding: 0 $padding-4;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Hero
+// --------------------------------------------
+
+.product-detail-hero {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-12 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $padding-8;
+
+  @include tablet {
+    gap: $padding-6;
+    padding: $padding-8 20px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: $padding-6;
+    padding: $padding-6 $padding-4;
+  }
+
+  // Gallery
+  &__gallery {
+    position: relative;
+    max-width: 626px;
+    width: 100%;
+  }
+
+  &__main-image {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: $Bg-Secondary-bg-color;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    @include mobile {
+      display: none;
+    }
+
+    &--prev {
+      left: $padding-4;
+    }
+
+    &--next {
+      right: $padding-4;
+    }
+  }
+
+  // Dots Indicator
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: $padding-6;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $Border-Border-line-100;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &--active {
+      background: $Border-Border-line-200;
+    }
+  }
+
+  // Info Section
+  &__info {
+    width: 598px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $padding-3;
+  }
+
+  &__title-wrap {
+    flex: 1;
+  }
+
+  &__name {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-2;
+    font-weight: 600;
+
+    @include mobile {
+      @include typo-title-4;
+      font-weight: 600;
+    }
+  }
+
+  &__subtitle {
+    @include typo-body-2;
+    color: $Text-Thirty-text-color;
+    margin: 0;
+    line-height: 1.5;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__share {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $Text-Thirty-text-color;
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  // Price
+  &__price-wrap {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    margin-bottom: $padding-3;
+  }
+
+  &__price {
+    @include typo-title-2;
+    color: $Text-Primary-text-color;
+    font-weight: 700;
+
+    @include mobile {
+      @include typo-title-4;
+      font-weight: 700;
+    }
+  }
+
+  &__price-wrap .base-badge {
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__original-price {
+    @include typo-body-2;
+    color: $Text-Disabled-color;
+    text-decoration: line-through;
+
+    @include mobile {
+      @include typo-title-6;
+      text-decoration: line-through;
+    }
+  }
+
+  // Promotion
+  &__promotion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $padding-2;
+    margin-bottom: $padding-3;
+    padding: $padding-2 $padding-3;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 4px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: $padding-1;
+    }
+  }
+
+  &__promotion-name {
+    @include typo-body-2;
+    color: $Primary-color;
+    font-weight: 500;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__promotion-date {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  // Rating
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+    margin-bottom: $padding-6;
+    padding-bottom: $padding-6;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    @include mobile {
+      .base-rating .base-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      .base-rating__value,
+      .base-rating__count {
+        @include typo-body-4;
+      }
+
+      .base-rating__divider {
+        @include typo-body-4;
+      }
+    }
+  }
+
+  &__rating-stars {
+    display: flex;
+    gap: 2px;
+
+    .base-icon {
+      @include mobile {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__rating-value {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    margin-left: $padding-1;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__review-count {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  // Options Table
+  &__options-table {
+    margin-bottom: $padding-6;
+  }
+
+  &__option-row {
+    display: flex;
+    align-items: flex-start;
+    padding: $padding-2 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  &__option-label {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    width: 70px;
+    flex-shrink: 0;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  &__option-value {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    flex: 1;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+
+  // Select
+  &__select-wrap {
+    margin-bottom: $padding-3;
+  }
+
+  // Options Wrap (옵션 그룹 컨테이너)
+  &__options-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+    margin-bottom: $padding-4;
+  }
+
+  // Option Group (개별 옵션 그룹)
+  &__option-group {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__option-group-label {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    font-weight: 500;
+
+    @include mobile {
+      @include typo-title-6;
+      font-weight: 500;
+    }
+  }
+
+  &__option-required {
+    color: $Primary-color;
+    margin-left: 2px;
+  }
+
+  // Selected Option Box
+  &__selected-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-4;
+    background: $Bg-Primary-bg-color;
+    border-radius: 4px;
+    margin-bottom: $padding-3;
+  }
+
+  &__selected-info {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-1;
+  }
+
+  &__selected-name {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__selected-price {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    font-weight: 600;
+
+    @include mobile {
+      @include typo-title-6;
+      font-weight: 600;
+    }
+  }
+
+  &__selected-actions {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+  }
+
+  // Total
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-4 0;
+    border-top: 1px solid $Border-Border-line-100;
+    margin-bottom: $padding-4;
+  }
+
+  &__total-label {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+
+  &__total-price {
+    @include typo-title-1;
+    color: $Text-Primary-text-color;
+    font-weight: 700;
+
+    @include mobile {
+      @include typo-title-4;
+      font-weight: 700;
+    }
+  }
+
+  // Actions
+  &__actions {
+    display: flex;
+    gap: $padding-2;
+  }
+
+  &__wishlist {
+    width: 52px;
+    height: 52px;
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
+    flex-shrink: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $Primary-white-color;
+    border: 1px solid $Border-Border-line-200;
+    color: $Text-Primary-text-color;
+
+    &:hover {
+      background-color: $Bg-Primary-bg-color;
+    }
+  }
+
+  &__cart {
+    flex: 1;
+    height: 52px;
+
+    @include mobile {
+      height: 40px;
+    }
+    background-color: $Primary-white-color;
+    border: 1px solid $Border-Border-line-200;
+    color: $Text-Primary-text-color;
+
+    &:hover {
+      background-color: $Bg-Primary-bg-color;
+    }
+  }
+
+  &__buy {
+    flex: 1;
+    height: 52px;
+
+    @include mobile {
+      height: 40px;
+    }
+    background-color: $Border-Border-line-200;
+    border: 1px solid $Border-Border-line-200;
+    color: $Primary-white-color;
+
+    &:hover {
+      background-color: $Black-Primary-black-800;
+      border-color: $Black-Primary-black-800;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Tabs (Sticky)
+// --------------------------------------------
+
+.product-detail-tabs {
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+  @include mobile {
+    top: 60px;
+  }
+
+  &__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 $padding-2;
+
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: $Bg-Secondary-bg-color;
+    border-radius: 6px;
+    height: 64px;
+
+    @include mobile {
+      height: 54px;
+    }
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-1;
+  }
+
+  &__button {
+    width: 100%;
+    height: calc(64px - #{$padding-1} * 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include typo-body-2;
+    
+    @include mobile {
+       @include typo-body-3;
+       height: calc(54px - #{$padding-1} * 2);
+
+    }
+    color: $Text-Disabled-color;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+
+    &:hover {
+      color: $Text-Secondary-text-color;
+    }
+
+    &--active {
+      color: $Text-Primary-text-color;
+      background: $Primary-white-color;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Content (상세 이미지)
+// --------------------------------------------
+
+.product-detail-content {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-10 20px;
+
+  @include mobile {
+    padding: $padding-8 $padding-4;
+  }
+
+  &__body {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+
+    &--expanded {
+      max-height: none;
+    }
+  }
+
+  &__html {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    p, div {
+      margin: 0;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 860px;
+    display: block;
+  }
+
+  &__more {
+    display: flex;
+    justify-content: center;
+    padding-top: $padding-8;
+    background: transparent;
+  }
+
+  &__more-btn {
+    min-width: 200px;
+
+    @include mobile {
+      height: 40px;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Info (상품정보고시)
+// --------------------------------------------
+
+.product-detail-info {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-10 20px;
+  // border-top: 2px solid $Bg-Secondary-bg-color;
+
+  @include mobile {
+    padding: $padding-8 $padding-4;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-6;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $padding-2;
+    }
+  }
+
+  &__title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  &__notice {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid $Border-Border-line-200;
+  }
+
+  &__row {
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__label {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    padding: $padding-4 $padding-6;
+    width: 180px;
+    background: $Bg-Primary-bg-color;
+    text-align: left;
+    font-weight: 400;
+    vertical-align: middle;
+
+    @include mobile {
+      @include typo-body-4;
+      width: 100px;
+      padding: $padding-3 $padding-4;
+    }
+  }
+
+  &__value {
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    padding: $padding-4 $padding-6;
+    line-height: 1.6;
+    vertical-align: middle;
+
+    @include mobile {
+      @include typo-body-4;
+      padding: $padding-3 $padding-4;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Reviews (상품리뷰)
+// --------------------------------------------
+
+.product-detail-reviews {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-10 20px;
+  // border-top: 2px solid $Bg-Secondary-bg-color;
+
+  @include mobile {
+    padding: $padding-8 $padding-4;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-6;
+  }
+
+  &__title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  // Summary Cards
+  &__summary {
+    display: flex;
+    gap: $padding-7;
+    margin-bottom: $padding-6;
+
+    @include mobile {
+      gap: $padding-4;
+    }
+  }
+
+  &__summary-item {
+    flex: 1;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $padding-4;
+    background: $Bg-Primary-bg-color;
+    border-radius: 10px;
+
+    @include mobile {
+      height: 140px;
+      gap: $padding-3;
+      padding: $padding-3 0;
+    }
+
+    &:last-child {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__summary-value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: $padding-2;
+    @include typo-headline-2;
+    @include mobile {
+      @include typo-title-4;
+    }
+  }
+
+  &__avg-stars {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+
+    .base-icon {
+      width: 30px;
+      height: 30px;
+      @include mobile {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__avg-score {
+    color: $Primary-color;
+  }
+
+  &__avg-max {
+    color: $Text-Disabled-color;
+  }
+
+  &__total-count {
+    color: $Primary-color;
+  }
+
+  &__total-unit {
+    color: $Text-Disabled-color;
+  }
+
+  .icon-review {
+    @include mobile {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  // Distribution Chart (Vertical Bars)
+  &__distribution {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: $padding-4;
+  }
+
+  &__dist-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $padding-2;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__dist-track {
+    width: 16px;
+    height: 74px;
+    background: var(--theme-primary-50);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__dist-fill {
+    width: 100%;
+    background: $Primary-color;
+    border-radius: 4px;
+    transition: height 0.3s ease;
+  }
+
+  &__dist-label {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+  }
+
+  &__dist-count {
+    @include typo-body-3;
+    color: $Primary-white-color;
+    background: $Primary-color;
+    padding: $padding-1 $padding-2;
+    border-radius: 4px;
+    white-space: nowrap;
+    position: relative;
+    margin-bottom: $padding-1;
+
+    // 말풍선 꼬리
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: $Primary-color;
+    }
+  }
+
+  // Toolbar
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-4;
+    padding-bottom: $padding-4;
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $padding-3;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    gap: $padding-2;
+  }
+
+  &__sort {
+    flex-shrink: 0;
+  }
+
+  // List
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__empty {
+    padding: $padding-12 0;
+    text-align: center;
+  }
+
+  &__pagination {
+    margin-top: $padding-8;
+  }
+}
+
+// Write Button Content (공통)
+.write-btn-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+// Review Card
+.review-card {
+  // button reset
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+
+  max-width: 1280px;
+  padding: $padding-6 0;
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &:hover {
+    background: $Bg-Secondary-bg-color;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $Primary-color;
+    outline-offset: 2px;
+  }
+
+  // 이미지가 있을 때 가로 레이아웃
+  &--has-images {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: $padding-6;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $padding-4;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: $padding-2;
+    flex-shrink: 0;
+
+    // 이미지가 있을 때 좌측에 배치
+    .review-card--has-images & {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+
+      @include mobile {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &__image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    @include mobile {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    margin-bottom: $padding-3;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 2px;
+
+    .base-icon {
+      @include mobile {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &__username {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    font-weight: 500;
+
+    @include mobile {
+      @include typo-body-4;
+      font-weight: 500;
+    }
+  }
+
+  &__date {
+    @include typo-body-3;
+    color: $Text-Disabled-color;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+
+    &::before {
+      content: '·';
+      margin: 0 $padding-1;
+    }
+  }
+
+  &__title {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-2;
+    font-weight: 600;
+  }
+
+  &__content {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    line-height: 1.7;
+    margin: 0;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Q&A
+// --------------------------------------------
+
+.product-detail-qna {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-10 20px;
+  // border-top: 2px solid $Bg-Secondary-bg-color;
+
+  @include mobile {
+    padding: $padding-8 $padding-4;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $padding-6;
+  }
+
+  &__title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  &__write-btn {
+    flex-shrink: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $Border-Border-line-200;
+  }
+
+  &__empty {
+    padding: $padding-12 0;
+    text-align: center;
+  }
+
+  &__pagination {
+    margin-top: $padding-8;
+  }
+}
+
+// Q&A Item (상품 상세 전용)
+.pd-qna-item {
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &--expanded {
+    // background: $Bg-Primary-bg-color;
+    margin: 0 (-$padding-2);
+    padding: 0 $padding-2;
+  }
+
+  &--secret {
+    .pd-qna-item__header {
+      cursor: default;
+    }
+  }
+
+  // Header (클릭 영역)
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    padding: $padding-7 0;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+
+    @include mobile {
+      padding: $padding-5 0;
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  &__category {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    width: 60px;
+    flex-shrink: 0;
+
+    @include mobile {
+      @include typo-body-4;
+      width: auto;
+    }
+  }
+
+  &__title {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    svg {
+      flex-shrink: 0;
+      color: $Text-Disabled-color;
+    }
+  }
+
+  &__badge {
+    flex-shrink: 0;
+
+    @include mobile {
+      transform: scale(0.85);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    gap: $padding-2;
+    flex-shrink: 0;
+    margin: 0;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__username {
+    @include typo-body-3;
+    color: $Text-Disabled-color;
+  }
+
+  &__date {
+    @include typo-body-3;
+    color: $Text-Disabled-color;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    color: $Text-Disabled-color;
+
+    @include mobile {
+      width: 14px;
+      height: 14px;
+    }
+    margin-left: auto;
+  }
+
+  // Content (펼쳐지는 영역)
+  &__content {
+    padding: 0 0 $padding-5;
+  }
+
+  &__question,
+  &__answer,
+  &__no-answer {
+    padding: $padding-4;
+    margin-bottom: $padding-3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__question {
+    background: $Primary-white-color;
+    border-top: 1px solid $Border-Border-line-100;
+    padding: $padding-10 $padding-2;
+  }
+
+  &__answer {
+    background: var(--theme-primary-50);
+    // border: 1px solid var(--theme-primary-200);
+  }
+
+  &__no-answer {
+    background: $Bg-Secondary-bg-color;
+  }
+
+  &__label {
+    @include typo-body-3;
+    color: $Text-Thirty-text-color;
+    display: block;
+    margin-bottom: $padding-2;
+    font-weight: 500;
+
+    @include mobile {
+      @include typo-body-4;
+      font-weight: 500;
+    }
+
+    &--answer {
+      color: $Primary-color;
+    }
+  }
+
+  &__text {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    line-height: 1.7;
+    margin: 0;
+    white-space: pre-line;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+
+    &--empty {
+      color: $Text-Disabled-color;
+    }
+  }
+
+  &__answer-date {
+    @include typo-body-3;
+    color: $Text-Disabled-color;
+    display: block;
+    margin-top: $padding-2;
+
+    @include mobile {
+      @include typo-body-4;
+    }
+  }
+}
+
+// --------------------------------------------
+// Product Detail Guide (구매안내)
+// --------------------------------------------
+
+.product-detail-guide {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: $padding-10 20px;
+
+  @include mobile {
+    padding: $padding-8 $padding-4;
+  }
+
+  &__title {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-6;
+    font-weight: 600;
+
+    @include mobile {
+      @include typo-title-5;
+      font-weight: 600;
+      margin-bottom: $padding-5;
+    }
+  }
+
+  &__section {
+    margin-bottom: $padding-6;
+
+    @include mobile {
+      margin-bottom: $padding-5;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-3;
+    font-weight: 600;
+
+    @include mobile {
+      @include typo-body-2;
+      font-weight: 600;
+    }
+  }
+
+  &__section-content {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    line-height: 1.8;
+    white-space: pre-line;
+
+    @include mobile {
+      @include typo-body-3;
+      line-height: 1.7;
+    }
+  }
+}

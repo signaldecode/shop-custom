@@ -1,0 +1,108 @@
+// ============================================
+// 상품 카드 뱃지 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+
+  // --------------------------------------------
+  // Size Variants
+  // --------------------------------------------
+
+  &--size-md {
+    padding: $padding-1 $padding-2;
+    @include typo-body-3;
+
+    @include mobile-xs {
+      padding: 2px $padding-1;
+      font-size: 11px;
+    }
+  }
+
+  &--size-sm {
+    padding: 2px $padding-1;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+
+    @include mobile-xs {
+      padding: 1px 4px;
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+
+  &--size-product {
+    // min-width: 66px;
+    height: 28px;
+    padding: 0 $padding-2;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 600;
+
+    @include mobile {
+      min-width: auto;
+      height: 20px;
+      line-height: 20px;
+      font-size: 11px;
+      padding: 0 $padding-1;
+    }
+  }
+
+  // --------------------------------------------
+  // Color Variants
+  // --------------------------------------------
+
+  &--variant-primary {
+    background: $Primary-color;
+    color: $Primary-white-color;
+  }
+
+  &--variant-secondary {
+    background: $Black-Primary-black-200;
+    color: $Text-Secondary-text-color;
+  }
+
+  &--variant-best {
+    background: var(--theme-primary-100);
+    color: var(--theme-primary-900);
+  }
+
+  &--variant-best-dark {
+    background: $Border-Border-line-200;
+    color: $Primary-white-color;
+  }
+
+  &--variant-new {
+    background: $Black-Primary-black-900;
+    color: $Primary-white-color;
+  }
+
+  &--variant-sale {
+    background: $Error-color;
+    color: $Primary-white-color;
+  }
+
+  &--variant-discount {
+    background: $Primary-color;
+    color: $Primary-white-color;
+  }
+
+  &--variant-success {
+    background: var(--theme-primary-100);
+    color: var(--theme-primary-900);
+  }
+
+  &--variant-default {
+    background: $Bg-Secondary-bg-color;
+    color: $Text-Thirty-text-color;
+  }
+}

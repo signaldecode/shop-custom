@@ -1,0 +1,167 @@
+// ============================================
+// Pages - FAQ
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.page-faq {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-page {
+  @include container;
+  padding-top: calc(80px + 101px);
+  padding-bottom: $padding-13;
+
+  @include mobile {
+    padding-top: calc(60px + 60px);
+  }
+
+  &__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: $padding-8;
+  }
+
+  &__title {
+    @include typo-display-1;
+    margin: 0;
+    color: $Text-Primary-text-color;
+  }
+
+  &__subtitle {
+    @include typo-body-1;
+    color: $Text-Secondary-text-color;
+    margin: $padding-2 0 0;
+  }
+
+  &__tabs {
+    margin-bottom: $padding-9;
+
+    @include mobile {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__list {
+    border-top: 2px solid $Text-Primary-text-color;
+  }
+
+  &__pagination {
+    margin-top: $padding-9;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// FAQ 아이템 (아코디언)
+.faq-item {
+  border-bottom: 1px solid $Border-Border-line-100;
+
+  &--open {
+    .faq-item__question {
+      color: $Primary-color;
+    }
+
+    .faq-item__arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    width: 100%;
+    padding: $padding-5 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: -2px;
+    }
+
+    @include mobile {
+      gap: $padding-3;
+      padding: $padding-4 0;
+    }
+  }
+
+  &__prefix {
+    @include typo-body-2;
+    font-weight: 600;
+    color: $Primary-color;
+    flex-shrink: 0;
+
+    &--answer {
+      color: $Text-Thirty-text-color;
+    }
+  }
+
+  &__question {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+
+    @include mobile {
+      @include typo-title-6;
+    }
+  }
+
+  &__arrow {
+    color: $Text-Thirty-text-color;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  // 아코디언 본문
+  &__body {
+    padding: 0 0 $padding-6;
+  }
+
+  &__answer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: $padding-7 $padding-5;
+    background: $Bg-Primary-bg-color;
+    border-radius: 10px;
+    align-self: stretch;
+
+    @include mobile {
+      padding: $padding-5 $padding-4;
+    }
+  }
+
+  &__answer-content {
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.6;
+
+    @include mobile {
+      @include typo-body-3;
+    }
+  }
+}

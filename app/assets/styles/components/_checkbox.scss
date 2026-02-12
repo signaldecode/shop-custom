@@ -1,0 +1,263 @@
+// ============================================
+// 체크박스 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+// --------------------------------------------
+// Checkbox Base
+// --------------------------------------------
+
+.base-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: $padding-1;
+  cursor: pointer;
+  user-select: none;
+
+  // Hidden native input
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:focus-visible + .base-checkbox__box {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+
+    &:disabled + .base-checkbox__box {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:disabled ~ .base-checkbox__label {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // --------------------------------------------
+  // Checkbox Box
+  // --------------------------------------------
+
+  &__box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  // --------------------------------------------
+  // Style: Line (사각형)
+  // --------------------------------------------
+
+  &--style-line {
+    .base-checkbox__box {
+      border: 1px solid $Border-Border-line-100;
+      border-radius: 4px;
+      background: transparent;
+
+      // Checkmark icon
+      &::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+    }
+
+    // Checked state
+    .base-checkbox__input:checked + .base-checkbox__box {
+      background: $Primary-color;
+      border-color: $Primary-color;
+
+      &::after {
+        opacity: 1;
+        width: 5px;
+        height: 10px;
+        border: solid $Primary-white-color;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        margin-bottom: 2px;
+      }
+    }
+
+    // Hover state
+    &:hover .base-checkbox__box {
+      border-color: $Primary-color;
+    }
+  }
+
+  // --------------------------------------------
+  // Style: Bg (원형 라디오)
+  // --------------------------------------------
+
+  &--style-bg {
+    .base-checkbox__box {
+      border-radius: 100px;
+      background: $Border-Border-line-100;
+
+      // Inner circle
+      &::after {
+        content: '';
+        position: absolute;
+        border-radius: 100px;
+        background: $Primary-white-color;
+        transition: all 0.2s ease;
+      }
+    }
+
+    // Checked state
+    .base-checkbox__input:checked + .base-checkbox__box {
+      background: $Primary-color;
+
+      &::after {
+        background: $Primary-white-color;
+      }
+    }
+
+    // Hover state
+    &:hover .base-checkbox__box {
+      background: $Primary-color;
+    }
+  }
+
+  // --------------------------------------------
+  // Style: Circle (원형 체크박스 with 체크마크)
+  // --------------------------------------------
+
+  &--style-circle {
+    .base-checkbox__box {
+      border: 1px solid $Border-Border-line-100;
+      border-radius: 50%;
+      background: transparent;
+
+      // Checkmark icon
+      &::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+    }
+
+    // Checked state
+    .base-checkbox__input:checked + .base-checkbox__box {
+      background: $Primary-color;
+      border-color: $Primary-color;
+
+      &::after {
+        opacity: 1;
+        width: 5px;
+        height: 10px;
+        border: solid $Primary-white-color;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        margin-bottom: 2px;
+      }
+    }
+
+    // Hover state
+    &:hover .base-checkbox__box {
+      border-color: $Primary-color;
+    }
+  }
+
+  // --------------------------------------------
+  // Size Variants
+  // --------------------------------------------
+
+  &--size-big {
+    .base-checkbox__box {
+      width: 28px;
+      height: 28px;
+    }
+
+    // For bg style inner circle
+    &.base-checkbox--style-bg .base-checkbox__box::after {
+      width: 14px;
+      height: 14px;
+    }
+
+    .base-checkbox__label {
+      @include typo-title-4;
+      color: $Text-Secondary-text-color;
+    }
+  }
+
+  &--size-small {
+    .base-checkbox__box {
+      width: 20px;
+      height: 20px;
+    }
+
+    // For bg style inner circle
+    &.base-checkbox--style-bg .base-checkbox__box::after {
+      width: 10px;
+      height: 10px;
+    }
+
+    .base-checkbox__label {
+      @include typo-body-3;
+      color: $Text-Secondary-text-color;
+    }
+  }
+
+  // --------------------------------------------
+  // Label
+  // --------------------------------------------
+
+  &__label {
+    transition: color 0.2s ease;
+  }
+
+  // Checked label color change
+  .base-checkbox__input:checked ~ .base-checkbox__label {
+    color: $Text-Primary-text-color;
+  }
+
+  // Mobile optimization
+  @include mobile {
+    &--size-big {
+      .base-checkbox__box {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.base-checkbox--style-bg .base-checkbox__box::after {
+        width: 10px;
+        height: 10px;
+      }
+
+      .base-checkbox__label {
+        @include typo-body-3;
+        @include mobile {
+          @include typo-body-4;
+        }
+      }
+    }
+
+    &--size-small {
+      .base-checkbox__box {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.base-checkbox--style-bg .base-checkbox__box::after {
+        width: 8px;
+        height: 8px;
+      }
+
+      .base-checkbox__label {
+        @include typo-body-4;
+      }
+    }
+  }
+}

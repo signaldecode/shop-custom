@@ -1,0 +1,30 @@
+// ============================================
+// Component Styles - Address Input
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/breakpoints' as *;
+
+.address-input {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+}
+
+.address-input__row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.address-input__zip {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.address-input__btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}

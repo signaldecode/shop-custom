@@ -1,0 +1,104 @@
+// ============================================
+// 페이지네이션 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.base-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $padding-2;
+
+  @include mobile {
+    gap: $padding-1;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: $Text-Secondary-text-color;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    @include mobile {
+      width: 28px;
+      height: 28px;
+
+      .base-icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &:hover {
+      color: $Text-Primary-text-color;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $padding-1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    @include mobile {
+      width: 28px;
+      height: 28px;
+      @include typo-body-4;
+    }
+
+    &:hover:not(&--active) {
+      color: $Text-Primary-text-color;
+    }
+
+    &--active {
+      background: $Primary-color;
+      color: $Primary-white-color;
+      font-weight: 500;
+    }
+  }
+
+  &__ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+
+    @include mobile {
+      width: 28px;
+      height: 28px;
+      @include typo-body-4;
+    }
+  }
+}

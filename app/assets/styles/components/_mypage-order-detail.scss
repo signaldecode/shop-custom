@@ -1,0 +1,192 @@
+// ============================================
+// Components - MyPage Order Detail
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.mypage-order-detail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-11; // 60
+
+  &__section {
+    border-bottom: 1px solid $Border-Border-line-100;
+  }
+
+  &__section--compact {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 44px;
+    margin-bottom: $padding-5; // 20
+  }
+
+  &__title {
+    @include typo-title-1;
+    margin: 0;
+    color: $Text-Primary-text-color;
+  }
+
+  &__body {
+    border-top: 1px solid $Border-Border-line-200;
+    padding: $padding-8 0; // 32
+  }
+
+  &__body--table {
+    padding: 0;
+  }
+
+  &__table {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5; // 20
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: $padding-6; // 24
+  }
+
+  &__th {
+    width: 120px;
+    flex: 0 0 120px;
+    @include typo-body-2;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
+  &__td {
+    @include typo-title-5;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    min-width: 0;
+  }
+
+  &__product-table {
+    border-top: 1px solid $Border-Border-line-200;
+  }
+
+  &__chips {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__chip {
+    @include typo-button-2;
+    padding: $padding-2 $padding-3; // 8 12
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    background: $Primary-white-color;
+    color: $Text-Primary-text-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Border-Border-line-200;
+      background: $Bg-Secondary-bg-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+  }
+
+  // 주문상품정보 - BaseProductItem 사용
+  &__body--products {
+    padding: 0;
+  }
+
+  &__product-list {
+    // border-top: 1px solid $Border-Border-line-200;
+  }
+
+  &__product-item {
+    border-bottom: 1px solid $Border-Border-line-100;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__product-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+
+
+  }
+
+  &__product-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: $padding-3 $padding-4;
+    background-color: $Bg-Primary-bg-color;
+  }
+
+  @include tablet {
+    gap: $padding-10; // 40
+
+    &__row {
+      flex-direction: column;
+      gap: $padding-2;
+    }
+
+    &__th {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+  }
+
+  &__cancel-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__tracking-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include mobile {
+    gap: $padding-8;
+
+    &__header {
+      height: auto;
+      margin-bottom: $padding-3;
+    }
+
+    &__title {
+      @include typo-title-4;
+    }
+
+    &__body {
+      padding: $padding-5 0;
+    }
+
+    &__table {
+      gap: $padding-3;
+    }
+
+    &__th {
+      @include typo-body-4;
+    }
+
+    &__td {
+      @include typo-title-6;
+    }
+  }
+}
+

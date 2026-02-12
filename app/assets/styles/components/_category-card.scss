@@ -1,0 +1,88 @@
+// ============================================
+// Component Styles - CategoryCard (Figma Sync)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.category-card {
+  width: 94px;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $padding-4;
+    text-decoration: none;
+    color: inherit;
+
+    @include mobile {
+      gap: $padding-2;
+    }
+
+    @include mobile-xs {
+      gap: $padding-1;
+    }
+  }
+
+  &__image-wrap {
+    width: 94px;
+    height: 94px;
+    border-radius: 34px;
+    overflow: hidden;
+    background: $Bg-Primary-bg-color;
+    transition: transform 0.2s ease;
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      padding: 20%;
+    }
+
+    @include mobile-xs {
+      border-radius: 50%;
+      padding: 18%;
+    }
+  }
+
+  &__link:hover &__image-wrap {
+    transform: scale(1.02);
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  &__label {
+    @include typo-title-4;
+    color: $Text-Primary-text-color;
+    margin: 0;
+    text-align: center;
+    letter-spacing: -0.45px;
+    word-break: keep-all;
+
+    @include mobile {
+      @include typo-title-6;
+      letter-spacing: -0.3px;
+    }
+
+    @include mobile-xs {
+      font-size: $Body-body-4-Font-size;
+      letter-spacing: -0.2px;
+    }
+  }
+}

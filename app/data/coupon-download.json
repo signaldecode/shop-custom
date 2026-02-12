@@ -1,0 +1,39 @@
+{
+  "seo": {
+    "title": "쿠폰 다운로드",
+    "description": "다양한 할인 쿠폰을 다운로드 받으세요."
+  },
+  "page": {
+    "title": "쿠폰 다운로드",
+    "subtitle": "지금 바로 쿠폰을 다운로드 받고 할인 혜택을 누려보세요!",
+    "downloadAllButton": "전체 다운받기"
+  },
+  "gradePacks": {
+    "title": "등급별 쿠폰팩",
+    "condition": "등급 조건",
+    "benefits": "혜택",
+    "downloadButton": "쿠폰팩 다운받기",
+    "downloadedButton": "다운로드 완료"
+  },
+  "coupon": {
+    "downloadButton": "다운로드",
+    "downloadedButton": "다운완료",
+    "validUntil": "까지",
+    "validFromDownload": "다운로드 후",
+    "validDaysSuffix": "일 이내",
+    "dDay": "D-",
+    "minOrder": "이상 구매 시",
+    "allProducts": "전체 상품",
+    "loginRequired": "로그인 후 다운로드 가능합니다."
+  },
+  "messages": {
+    "downloadSuccess": "쿠폰이 다운로드되었습니다.",
+    "downloadError": "쿠폰 다운로드에 실패했습니다.",
+    "alreadyDownloaded": "이미 다운로드한 쿠폰입니다.",
+    "loginRequired": "로그인이 필요합니다."
+  },
+  "empty": {
+    "title": "현재 받을 수 있는 쿠폰이 없어요.",
+    "description": ""
+  }
+}

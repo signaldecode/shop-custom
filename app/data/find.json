@@ -1,0 +1,98 @@
+{
+  "seo": {
+    "findId": {
+      "title": "아이디 찾기 | 쇼핑몰",
+      "description": "아이디 찾기 페이지입니다."
+    },
+    "findPassword": {
+      "title": "비밀번호 찾기 | 쇼핑몰",
+      "description": "비밀번호 찾기 페이지입니다."
+    }
+  },
+  "findId": {
+    "title": "아이디 찾기",
+    "form": {
+      "name": {
+        "label": "이름",
+        "placeholder": "이름을 입력해주세요"
+      },
+      "mobile": {
+        "label": "휴대폰 번호"
+      },
+      "code": {
+        "label": "인증번호",
+        "placeholder": "인증번호 6자리를 입력해주세요"
+      }
+    },
+    "buttons": {
+      "sendCode": "인증번호 발송",
+      "resendCode": "재발송",
+      "verify": "확인",
+      "login": "로그인하기"
+    },
+    "result": {
+      "title": "아이디 찾기 결과",
+      "found": "회원님의 계정 정보입니다.",
+      "notFound": "일치하는 회원정보가 없습니다."
+    },
+    "options": {
+      "mobilePrefix": [
+        { "label": "010", "value": "010" },
+        { "label": "011", "value": "011" },
+        { "label": "016", "value": "016" },
+        { "label": "017", "value": "017" },
+        { "label": "018", "value": "018" },
+        { "label": "019", "value": "019" }
+      ]
+    },
+    "messages": {
+      "nameRequired": "이름을 입력해주세요.",
+      "phoneRequired": "휴대폰 번호를 입력해주세요.",
+      "codeRequired": "인증번호를 입력해주세요.",
+      "codeSent": "인증번호가 발송되었습니다.",
+      "codeSendFailed": "인증번호 발송에 실패했습니다.",
+      "codeExpired": "인증번호가 만료되었습니다. 다시 발송해주세요."
+    }
+  },
+  "findPassword": {
+    "title": "비밀번호 찾기",
+    "form": {
+      "email": {
+        "label": "이메일",
+        "placeholder": "가입한 이메일을 입력해주세요"
+      },
+      "code": {
+        "label": "인증번호",
+        "placeholder": "인증번호 6자리를 입력해주세요"
+      },
+      "newPassword": {
+        "label": "새 비밀번호",
+        "placeholder": "새 비밀번호를 입력해주세요"
+      },
+      "newPasswordConfirm": {
+        "label": "새 비밀번호 확인",
+        "placeholder": "새 비밀번호를 다시 입력해주세요"
+      }
+    },
+    "buttons": {
+      "sendCode": "인증번호 발송",
+      "resendCode": "재발송",
+      "resetPassword": "비밀번호 변경",
+      "login": "로그인하기"
+    },
+    "result": {
+      "title": "비밀번호 변경 완료",
+      "success": "비밀번호가 성공적으로 변경되었습니다."
+    },
+    "messages": {
+      "emailRequired": "이메일을 입력해주세요.",
+      "codeRequired": "인증번호를 입력해주세요.",
+      "passwordRequired": "새 비밀번호를 입력해주세요.",
+      "passwordConfirmRequired": "비밀번호 확인을 입력해주세요.",
+      "passwordMismatch": "비밀번호가 일치하지 않습니다.",
+      "codeSent": "인증번호가 발송되었습니다.",
+      "codeSendFailed": "인증번호 발송에 실패했습니다.",
+      "resetFailed": "비밀번호 변경에 실패했습니다."
+    }
+  }
+}

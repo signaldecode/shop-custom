@@ -1,0 +1,195 @@
+// ============================================
+// Components - Claim Modal
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/breakpoints' as *;
+
+.claim-modal {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-5;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+  }
+
+  &__label {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+  }
+
+  &__select,
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: $padding-3 $padding-4;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    background: $Primary-white-color;
+    transition: border-color 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $Primary-color;
+    }
+
+    &::placeholder {
+      color: $Text-Disabled-color;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $padding-4 center;
+    padding-right: $padding-10;
+    cursor: pointer;
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  &__radio-group {
+    display: flex;
+    gap: $padding-5;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    cursor: pointer;
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+
+    input[type='radio'] {
+      width: 18px;
+      height: 18px;
+      accent-color: $Primary-color;
+      cursor: pointer;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $padding-3;
+  }
+
+  &__product-list {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-2;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  &__product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $padding-3;
+    padding: $padding-3;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 8px;
+    background: $Primary-white-color;
+    transition: border-color 0.2s, background 0.2s;
+
+    &--selected {
+      border-color: $Primary-color;
+      background: $Bg-Primary-bg-color;
+    }
+  }
+
+  &__product-check {
+    display: flex;
+    align-items: center;
+    gap: $padding-3;
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+
+    input[type='checkbox'] {
+      width: 18px;
+      height: 18px;
+      accent-color: $Primary-color;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+  }
+
+  &__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__product-name {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__product-variant {
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__product-qty {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+    flex-shrink: 0;
+  }
+
+  &__qty-label {
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__qty-select {
+    width: 60px;
+    padding: $padding-1 $padding-2;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    @include typo-body-3;
+    color: $Text-Primary-text-color;
+    background: $Primary-white-color;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: $Primary-color;
+    }
+  }
+
+  @include mobile {
+    &__radio-group {
+      flex-direction: column;
+      gap: $padding-3;
+    }
+
+    &__actions {
+      flex-direction: column;
+
+      .base-button {
+        width: 100%;
+      }
+    }
+  }
+}

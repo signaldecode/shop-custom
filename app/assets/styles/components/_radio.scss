@@ -1,0 +1,170 @@
+// ============================================
+// 라디오 버튼 스타일
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/typography' as *;
+
+.base-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  // Hidden native input
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:focus-visible + .base-radio__circle {
+      outline: 2px solid $Primary-color;
+      outline-offset: 2px;
+    }
+
+    &:disabled + .base-radio__circle {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:disabled ~ .base-radio__label {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // --------------------------------------------
+  // Default Variant
+  // --------------------------------------------
+
+  &--default {
+    gap: $padding-2;
+
+    .base-radio__circle {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $Border-Border-line-100;
+      border-radius: 50%;
+      background: $Primary-white-color;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: $Primary-color;
+        transition: transform 0.2s ease;
+      }
+    }
+
+    .base-radio__label {
+      @include typo-body-2;
+      color: $Text-Secondary-text-color;
+      transition: color 0.2s ease;
+    }
+
+    // Checked state
+    &.base-radio--checked {
+      .base-radio__circle {
+        border-color: $Primary-color;
+
+        &::after {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      .base-radio__label {
+        color: $Text-Primary-text-color;
+      }
+    }
+
+    // Hover state
+    &:hover:not(.base-radio--disabled) {
+      .base-radio__circle {
+        border-color: $Primary-color;
+      }
+    }
+  }
+
+  // --------------------------------------------
+  // Box Variant
+  // --------------------------------------------
+
+  &--box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    padding: $padding-3 $padding-5;
+    background: $Primary-white-color;
+    border: 1px solid $Border-Border-line-100;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    .base-radio__circle {
+      display: none;
+    }
+
+    .base-radio__label {
+      @include typo-body-2;
+      color: $Text-Secondary-text-color;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    // Checked state
+    &.base-radio--checked {
+      border-color: $Text-Primary-text-color;
+      background: $Primary-white-color;
+
+      .base-radio__label {
+        color: $Text-Primary-text-color;
+        font-weight: 500;
+      }
+    }
+
+    // Hover state
+    &:hover:not(.base-radio--disabled):not(.base-radio--checked) {
+      border-color: $Border-Border-line-200;
+    }
+
+    // Disabled state
+    &.base-radio--disabled {
+      background: $Bg-Primary-bg-color;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// --------------------------------------------
+// Radio Group
+// --------------------------------------------
+
+.base-radio-group {
+  display: flex;
+  gap: $padding-4;
+
+  &--vertical {
+    flex-direction: column;
+    gap: $padding-3;
+  }
+
+  &--grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $padding-3;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -1,0 +1,146 @@
+// ============================================
+// Page Styles - Find (ID/Password)
+// ============================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/typography' as *;
+@use '../tokens/spacing' as *;
+@use '../tokens/breakpoints' as *;
+
+.find {
+  padding-top: $padding-13 + $padding-5;
+  padding-bottom: $padding-13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mobile {
+    padding-top: calc(#{$padding-11} + #{$padding-8});
+    padding-bottom: $padding-10;
+    padding-left: $padding-5;
+    padding-right: $padding-5;
+  }
+}
+
+.find__inner {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: $padding-11;
+
+  @include mobile {
+    gap: $padding-8;
+  }
+}
+
+.find__title {
+  @include typo-headline-1;
+  margin: 0;
+  text-align: center;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+.find__form {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-6;
+
+  @include mobile {
+    gap: $padding-4;
+  }
+}
+
+.find__field {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-2;
+}
+
+.find__label {
+  @include typo-body-3;
+  color: $Text-Primary-text-color;
+}
+
+.find__button {
+  margin-top: $padding-4;
+}
+
+// 휴대폰 번호 입력 영역
+.find__mobile-row {
+  display: flex;
+  align-items: center;
+  gap: $padding-2;
+}
+
+.find__mobile-prefix {
+  width: $padding-12;
+  flex-shrink: 0;
+}
+
+.find__mobile-input {
+  flex: 1;
+}
+
+.find__mobile-dash {
+  color: $Text-Thirty-text-color;
+}
+
+// 결과 화면
+.find__result {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.find__result-title {
+  @include typo-headline-3;
+  color: $Text-Primary-text-color;
+  margin-bottom: $padding-6;
+
+  @include mobile {
+    @include typo-title-3;
+  }
+}
+
+.find__result-found {
+  @include typo-body-2;
+  color: $Text-Primary-text-color;
+  margin-bottom: $padding-4;
+}
+
+.find__result-not-found {
+  @include typo-body-2;
+  color: $Error-color;
+  margin-bottom: $padding-8;
+}
+
+// 결과 accounts 목록
+.find__accounts {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-4;
+  margin-bottom: $padding-8;
+  text-align: left;
+}
+
+.find__account-item {
+  padding: $padding-4;
+  border: 1px solid $Border-Border-line-300;
+  border-radius: $padding-2;
+}
+
+.find__account-email {
+  @include typo-body-2;
+  font-weight: 600;
+  color: $Text-Primary-text-color;
+  margin-bottom: $padding-1;
+}
+
+.find__account-provider {
+  @include typo-body-3;
+  color: $Text-Thirty-text-color;
+}
