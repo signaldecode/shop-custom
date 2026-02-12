@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
       const modifiedCookie = cookie
         .replace(/;\s*Secure/gi, '')
         .replace(/SameSite=None/gi, 'SameSite=Lax')
-        .replace(/Path=\/api\/v1/gi, 'Path=/')
+        .replace(/Path=\/api[^;]*/gi, 'Path=/')  // /api/v1, /api/auth 등 모두 처리
         .replace(/Domain=[^;]+;?/gi, '')  // 도메인 제거 (현재 도메인 사용)
 
       appendResponseHeader(event, 'Set-Cookie', modifiedCookie)
@@ -88,7 +88,7 @@ export default defineEventHandler(async (event) => {
       const modifiedCookie = cookie
         .replace(/;\s*Secure/gi, '')
         .replace(/SameSite=None/gi, 'SameSite=Lax')
-        .replace(/Path=\/api\/v1/gi, 'Path=/')
+        .replace(/Path=\/api[^;]*/gi, 'Path=/')  // /api/v1, /api/auth 등 모두 처리
         .replace(/Domain=[^;]+;?/gi, '')
 
       appendResponseHeader(event, 'Set-Cookie', modifiedCookie)

@@ -90,11 +90,14 @@ export const useApi = () => {
     } catch (error) {
       // 클라이언트에서만 토큰 갱신 처리
       if (import.meta.client && !isRetry) {
+        const authStore = useAuthStore()
+        const wasLoggedIn = authStore.isLoggedIn // 에러 발생 전 로그인 상태 확인
         const status = error?.statusCode || error?.data?.statusCode || error?.response?.status || error?.status
         const errorCode = error?.data?.data?.error?.code || error?.response?._data?.data?.error?.code
 
-        // 401 + AUTH_016 (액세스 토큰 만료/없음) → refresh 시도
-        if (status === 401 && errorCode === 'AUTH_016') {
+        // 401 + AUTH_016 (액세스 토큰 만료/없음) + 기존 로그인 상태 → refresh 시도
+        // 비로그인 상태에서 발생한 401은 정상 (모달 표시 안 함)
+        if (status === 401 && errorCode === 'AUTH_016' && wasLoggedIn) {
           try {
             await refreshToken()
             // 갱신 성공 시 원래 요청 재시도
@@ -108,8 +111,8 @@ export const useApi = () => {
           }
         }
 
-        // 401 + AUTH_002 (토큰 만료) → 바로 세션 만료 처리 (이미 refresh 실패한 상태)
-        if (status === 401 && errorCode === 'AUTH_002') {
+        // 401 + AUTH_002 (토큰 만료) + 기존 로그인 상태 → 바로 세션 만료 처리
+        if (status === 401 && errorCode === 'AUTH_002' && wasLoggedIn) {
           const message = error?.data?.data?.error?.message
             || error?.response?._data?.data?.error?.message
             || '세션이 만료되었습니다.'

@@ -10,6 +10,20 @@ const { applyTheme, theme } = useTheme()
 const authStore = useAuthStore()
 const sessionExpiredModalData = uiData.sessionExpiredModal
 
+// 모달 표시 조건: sessionExpired가 true이고, 실제로 로그인했던 적이 있는 경우만
+const showSessionExpiredModal = computed({
+  get: () => {
+    // SSR에서는 항상 false (클라이언트에서만 표시)
+    if (import.meta.server) return false
+    // 로그인 기록이 없으면 모달 표시 안 함
+    if (!localStorage.getItem('isLoggedIn')) return false
+    return authStore.sessionExpired
+  },
+  set: (val) => {
+    authStore.sessionExpired = val
+  }
+})
+
 const handleSessionExpiredConfirm = () => {
   authStore.logout()
   navigateTo('/login')
@@ -101,7 +115,7 @@ const headerVariant = computed(() => {
 
     <!-- 세션 만료 모달 -->
     <BaseModal
-      v-model="authStore.sessionExpired"
+      v-model="showSessionExpiredModal"
       :title="sessionExpiredModalData.title"
       size="small"
       :close-on-backdrop="false"
