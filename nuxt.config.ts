@@ -85,8 +85,6 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: 'vercel',
-    // Vercel provider는 외부 CDN 이미지에만 사용
     // 로컬 이미지는 <img> 태그 또는 provider="" 사용
     screens: {
       xs: 320,
@@ -99,7 +97,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel',
+    preset: 'aws-amplify',
     compressPublicAssets: true,
     minify: true,
     routeRules: {
