@@ -4,7 +4,9 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null,
     isLoggedIn: false,
-    loading: false
+    loading: false,
+    sessionExpired: false,
+    sessionExpiredMessage: ''
   }),
 
   actions: {
@@ -17,6 +19,18 @@ export const useAuthStore = defineStore('auth', {
     },
 
     logout() {
+      this.user = null
+      this.isLoggedIn = false
+      this.sessionExpired = false
+      this.sessionExpiredMessage = ''
+      if (import.meta.client) {
+        localStorage.removeItem('isLoggedIn')
+      }
+    },
+
+    setSessionExpired(message = '') {
+      this.sessionExpired = true
+      this.sessionExpiredMessage = message
       this.user = null
       this.isLoggedIn = false
       if (import.meta.client) {

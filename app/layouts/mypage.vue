@@ -14,7 +14,10 @@ const isAuthChecked = ref(false)
 
 // 클라이언트에서 로그인 상태 확인
 onMounted(async () => {
-  await authStore.ensureUser()
+  // SSR에서 이미 로그인 확인됐으면 API 호출 스킵
+  if (!authStore.isLoggedIn) {
+    await authStore.ensureUser()
+  }
   isAuthChecked.value = true
   if (!authStore.isLoggedIn) {
     showLoginModal.value = true
@@ -71,7 +74,7 @@ const groups = computed(() => {
           />
         </aside>
 
-        <section :key="route.fullPath" class="mypage-layout__content">
+        <section class="mypage-layout__content">
           <slot />
         </section>
       </div>

@@ -35,15 +35,12 @@ onMounted(async () => {
     orderItems.value = items
   }
 
-  // 회원인 경우 사용자 정보 및 기본 배송지 가져오기
+  // 회원인 경우 배송지 목록 가져오기
   if (isMember.value) {
-    // 사용자 정보 및 배송지 목록 동시 조회
-    await Promise.all([
-      authStore.fetchUser(),
-      fetchAddresses()
-    ])
+    // 배송지 목록 조회 (user 정보는 SSR에서 이미 가져옴)
+    await fetchAddresses()
 
-    // 주문자 정보 채우기
+    // 주문자 정보 채우기 (SSR에서 가져온 user 정보 사용)
     if (authStore.user) {
       orderer.name = authStore.user.name || ''
       orderer.phone = authStore.user.phone || ''

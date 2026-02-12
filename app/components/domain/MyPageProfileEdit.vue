@@ -56,54 +56,51 @@ const isSocialUser = ref(false)
 // 회원탈퇴 모달
 const showWithdrawModal = ref(false)
 
-// 유저 정보 불러오기
-const fetchUserInfo = async () => {
-  try {
-    isLoading.value = true
-    const res = await get('/users/me')
-    if (res.success && res.data) {
-      const user = res.data
+// 유저 정보로 폼 초기화 (authStore.user 사용)
+const initFormFromUser = (user) => {
+  if (!user) return
 
-      form.id = user.email || ''
-      form.name = user.name || ''
-      form.gender = user.gender || 'MALE'
+  form.id = user.email || ''
+  form.name = user.name || ''
+  form.gender = user.gender || 'MALE'
 
-      // 소셜 유저 판단
-      isSocialUser.value = !!user.provider && user.provider !== "LOCAL"
+  // 소셜 유저 판단
+  isSocialUser.value = !!user.provider && user.provider !== "LOCAL"
 
-      // phone: "01012345678" → 하이픈 포맷으로 변환
-      if (user.phone) {
-        form.phone = formatPhoneNumber(user.phone)
-      }
-
-      // birthDate: "1990-01-15" → { year, month, day }
-      if (user.birthDate) {
-        const parts = user.birthDate.split('-')
-        if (parts.length === 3) {
-          form.birth.year = parts[0]
-          form.birth.month = parts[1]
-          form.birth.day = parts[2]
-        }
-      }
-
-      // 주소 (defaultAddress 객체에서 가져옴)
-      if (user.defaultAddress) {
-        form.postalCode = user.defaultAddress.postalCode || ''
-        form.address1 = user.defaultAddress.address1 || ''
-        form.address2 = user.defaultAddress.address2 || ''
-      }
-
-      // 마케팅 동의 (userAgreements에서 policyId 3번 찾기)
-      if (user.userAgreements && Array.isArray(user.userAgreements)) {
-        const marketingAgreement = user.userAgreements.find(a => a.policyId === 3)
-        form.marketingAgreed = marketingAgreement?.isAgreed || false
-      }
-    }
-  } catch (error) {
-    console.error('회원정보 조회 실패:', error)
-  } finally {
-    isLoading.value = false
+  // phone: "01012345678" → 하이픈 포맷으로 변환
+  if (user.phone) {
+    form.phone = formatPhoneNumber(user.phone)
   }
+
+  // birthDate: "1990-01-15" → { year, month, day }
+  if (user.birthDate) {
+    const parts = user.birthDate.split('-')
+    if (parts.length === 3) {
+      form.birth.year = parts[0]
+      form.birth.month = parts[1]
+      form.birth.day = parts[2]
+    }
+  }
+
+  // 주소 (defaultAddress 객체에서 가져옴)
+  if (user.defaultAddress) {
+    form.postalCode = user.defaultAddress.postalCode || ''
+    form.address1 = user.defaultAddress.address1 || ''
+    form.address2 = user.defaultAddress.address2 || ''
+  }
+
+  // 마케팅 동의 (userAgreements에서 policyId 3번 찾기)
+  if (user.userAgreements && Array.isArray(user.userAgreements)) {
+    const marketingAgreement = user.userAgreements.find(a => a.policyId === 3)
+    form.marketingAgreed = marketingAgreement?.isAgreed || false
+  }
+}
+
+// 유저 정보 불러오기 (SSR에서 가져온 데이터 사용)
+const fetchUserInfo = () => {
+  isLoading.value = true
+  initFormFromUser(authStore.user)
+  isLoading.value = false
 }
 
 onMounted(() => {

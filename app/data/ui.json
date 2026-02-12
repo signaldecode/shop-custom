@@ -81,5 +81,10 @@
     "placeholder": "사진 추가",
     "uploadedImageAlt": "업로드된 이미지",
     "fileSizeError": "파일 크기는 {size}MB 이하여야 합니다."
+  },
+  "sessionExpiredModal": {
+    "title": "세션 만료",
+    "defaultMessage": "세션이 만료되었습니다. 다시 로그인해주세요.",
+    "confirmButton": "로그인하기"
   }
 }

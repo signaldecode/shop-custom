@@ -57,13 +57,12 @@ export const useApi = () => {
   }
 
   /**
-   * 로그아웃 처리
+   * 세션 만료 처리
    */
-  const handleLogout = () => {
+  const handleSessionExpired = (message) => {
     if (import.meta.client) {
       const authStore = useAuthStore()
-      authStore.logout()
-      navigateTo('/login')
+      authStore.setSessionExpired(message)
     }
   }
 
@@ -91,19 +90,30 @@ export const useApi = () => {
     } catch (error) {
       // 클라이언트에서만 토큰 갱신 처리
       if (import.meta.client && !isRetry) {
-        const status = error?.response?.status || error?.status
-        const errorCode = error?.response?._data?.error?.code || error?.data?.error?.code
+        const status = error?.statusCode || error?.data?.statusCode || error?.response?.status || error?.status
+        const errorCode = error?.data?.data?.error?.code || error?.response?._data?.data?.error?.code
 
-        // 401 + AUTH_002 (토큰 만료) 시 갱신 시도
-        if (status === 401 && errorCode === 'AUTH_002') {
+        // 401 + AUTH_016 (액세스 토큰 만료/없음) → refresh 시도
+        if (status === 401 && errorCode === 'AUTH_016') {
           try {
             await refreshToken()
             // 갱신 성공 시 원래 요청 재시도
             return await apiFetch(endpoint, options, true)
-          } catch {
-            // 갱신 실패 시 로그아웃
-            handleLogout()
+          } catch (refreshError) {
+            // 갱신 실패 시 세션 만료 처리 (AUTH_002: 리프레시 토큰도 만료)
+            const message = refreshError?.data?.data?.error?.message
+              || refreshError?.response?._data?.data?.error?.message
+              || '세션이 만료되었습니다.'
+            handleSessionExpired(message)
           }
+        }
+
+        // 401 + AUTH_002 (토큰 만료) → 바로 세션 만료 처리 (이미 refresh 실패한 상태)
+        if (status === 401 && errorCode === 'AUTH_002') {
+          const message = error?.data?.data?.error?.message
+            || error?.response?._data?.data?.error?.message
+            || '세션이 만료되었습니다.'
+          handleSessionExpired(message)
         }
       }
 

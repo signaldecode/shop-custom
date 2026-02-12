@@ -1,8 +1,8 @@
-export default defineNuxtPlugin(async () => {
-  // localStorage 플래그 없으면 API 호출 스킵
-  const hasLoginFlag = localStorage.getItem('isLoggedIn') === 'true'
-  if (!hasLoginFlag) return
-
+export default defineNuxtPlugin(() => {
   const authStore = useAuthStore()
-  await authStore.fetchUser()
+
+  // SSR에서 이미 로그인 확인됐으면 localStorage 동기화
+  if (authStore.isLoggedIn) {
+    localStorage.setItem('isLoggedIn', 'true')
+  }
 })

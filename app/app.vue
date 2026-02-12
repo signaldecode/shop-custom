@@ -1,9 +1,19 @@
 <script setup>
 import mainData from '~/data/main.json'
+import uiData from '~/data/ui.json'
 
 const route = useRoute()
 const { faviconUrl, shopName, seoInfo, headerMenu, fetchShopInfo } = useShopInfo()
 const { applyTheme, theme } = useTheme()
+
+// 세션 만료 모달
+const authStore = useAuthStore()
+const sessionExpiredModalData = uiData.sessionExpiredModal
+
+const handleSessionExpiredConfirm = () => {
+  authStore.logout()
+  navigateTo('/login')
+}
 
 // 테마 복원 인라인 스크립트 (CSS 렌더링 전에 실행되어 깜빡임 방지)
 useHead({
@@ -88,5 +98,29 @@ const headerVariant = computed(() => {
       <NuxtPage />
     </NuxtLayout>
     <BaseToast />
+
+    <!-- 세션 만료 모달 -->
+    <BaseModal
+      v-model="authStore.sessionExpired"
+      :title="sessionExpiredModalData.title"
+      size="small"
+      :close-on-backdrop="false"
+      :close-on-esc="false"
+      :show-close="false"
+    >
+      <p class="session-expired-modal__message">
+        {{ authStore.sessionExpiredMessage || sessionExpiredModalData.defaultMessage }}
+      </p>
+      <template #footer>
+        <BaseButton
+          variant="primary"
+          size="large"
+          full-width
+          @click="handleSessionExpiredConfirm"
+        >
+          {{ sessionExpiredModalData.confirmButton }}
+        </BaseButton>
+      </template>
+    </BaseModal>
   </div>
 </template>
