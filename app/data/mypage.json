@@ -36,17 +36,10 @@
           "label": "배송지 관리",
           "href": "/mypage/addresses"
         },
-        { "id": "points", "label": "적립금", "href": "/mypage/points" },
         {
           "id": "coupons",
           "label": "쿠폰",
           "href": "/mypage/coupons"
-        },
-        {
-          "id": "grade",
-          "label": "회원등급",
-          "href": "/mypage/grade",
-          "disabled": false
         }
       ]
     }

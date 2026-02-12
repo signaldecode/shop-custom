@@ -33,7 +33,7 @@ const handleGeneral = () => {
         </div>
 
         <div class="signup-actions">
-          <button
+          <!-- <button
             type="button"
             class="signup-actions__button signup-actions__button--kakao"
             @click="handleKakao"
@@ -56,7 +56,7 @@ const handleGeneral = () => {
           >
             <span class="signup-actions__icon signup-actions__icon--naver" aria-hidden="true">N</span>
             {{ signupData.index.buttons.naver }}
-          </button>
+          </button> -->
 
           <button
             type="button"

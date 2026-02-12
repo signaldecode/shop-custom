@@ -186,7 +186,7 @@ const handleGuestLookup = async () => {
               }}</NuxtLink>
             </p>
           </div>
-
+<!--
           <div class="login-social" :aria-label="loginData.social.ariaLabel">
             <button
               type="button"
@@ -234,7 +234,7 @@ const handleGuestLookup = async () => {
                 />
               </svg>
             </button>
-          </div>
+          </div> -->
         </form>
 
         <!-- 비회원 주문조회 폼 -->

@@ -718,6 +718,66 @@ $header-height: 80px;
     gap: $padding-10;
   }
 
+  &__bank-transfer {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: $padding-8;
+    background: $Bg-Primary-bg-color;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  &__bank-transfer-title {
+    @include typo-title-3;
+    color: $Text-Primary-text-color;
+    margin: 0 0 $padding-2;
+  }
+
+  &__bank-transfer-desc {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+    margin: 0 0 $padding-6;
+  }
+
+  &__bank-transfer-info {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-3;
+    margin: 0;
+    padding: $padding-5;
+    background: $Primary-white-color;
+    border-radius: 8px;
+  }
+
+  &__bank-transfer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    dt {
+      @include typo-body-3;
+      color: $Text-Secondary-text-color;
+    }
+
+    dd {
+      @include typo-body-2;
+      color: $Text-Primary-text-color;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+
+  &__bank-transfer-amount {
+    @include typo-title-4;
+    color: $Primary-color !important;
+  }
+
+  &__bank-transfer-notice {
+    @include typo-body-4;
+    color: $Text-Disabled-color;
+    margin: $padding-4 0 0;
+  }
+
   &__buttons {
     display: flex;
     justify-content: center;

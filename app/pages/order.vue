@@ -7,7 +7,6 @@ const router = useRouter()
 const authStore = useAuthStore()
 const { warning } = useToast()
 const { getOrderItems, clearOrderItems, createOrder } = useOrder()
-const { requestPayment } = usePayments()
 const { fetchAddresses, defaultAddress } = useAddress()
 const { removeFromCart } = useCart()
 const { freeShippingAmount, baseShippingFee } = useShopInfo()
@@ -252,37 +251,23 @@ const handleSubmit = async () => {
   const result = await createOrder(orderPayload)
 
   if (result.success) {
-    // 주문 생성 성공 → 결제 정보 sessionStorage에 저장 (승인 페이지에서 사용)
-    if (import.meta.client) {
-      sessionStorage.setItem('paymentOrder', JSON.stringify({
-        orderId: result.orderId,
-        orderNumber: result.orderNumber,
-        amount: summary.value.total,
-        cartItemIds: orderItems.value.map(item => item.cartItemId).filter(Boolean)
-      }))
+    // 장바구니에서 주문한 경우 해당 아이템 제거
+    const cartItemIds = orderItems.value.map(item => item.cartItemId).filter(Boolean)
+    for (const cartItemId of cartItemIds) {
+      await removeFromCart(cartItemId)
     }
 
-    // 주문명 생성
-    const firstProduct = orderProducts.value[0]?.name || ''
-    const orderName = orderProducts.value.length > 1
-      ? `${firstProduct} 외 ${orderProducts.value.length - 1}건`
-      : firstProduct
+    // 주문 아이템 정리
+    clearOrderItems()
 
-    // 토스페이먼츠 결제창 호출
-    const origin = window.location.origin
-    const paymentResult = await requestPayment({
-      amount: summary.value.total,
-      orderId: result.orderNumber,
-      orderName,
-      customerName: orderer.name || shipping.recipient,
-      customerEmail: orderer.email || '',
-      customerKey: authStore.isLoggedIn ? `user_${authStore.user?.id}` : null,
-      successUrl: `${origin}/payment/success`,
-      failUrl: `${origin}/payment/fail`
+    // 주문 완료 페이지로 이동
+    router.push({
+      path: '/order-complete',
+      query: {
+        orderNumber: result.orderNumber,
+        amount: summary.value.total
+      }
     })
-
-    // 사용자가 결제창을 닫은 경우
-    if (paymentResult?.cancelled) return
   } else {
     warning(result.error)
   }

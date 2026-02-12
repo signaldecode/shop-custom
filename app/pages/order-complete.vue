@@ -9,6 +9,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+const { bankInfo } = useShopInfo()
 
 // SEO
 useHead({ title: orderCompleteData.seo.title })
@@ -30,6 +31,21 @@ const orderNumber = computed(() => {
   const num = route.query.orderNumber
   if (!num || num === 'null' || num === 'undefined') return null
   return num
+})
+const amount = computed(() => {
+  const amt = route.query.amount
+  if (!amt || amt === 'null' || amt === 'undefined') return 0
+  return Number(amt)
+})
+
+// 계좌 정보
+const bankAccount = computed(() => {
+  const info = bankInfo.value || {}
+  return {
+    bankName: info.bankName || '',
+    accountNumber: info.bankAccount || '',
+    accountHolder: info.bankHolder || ''
+  }
 })
 
 // 주문 상세 페이지로 이동
@@ -103,6 +119,29 @@ const goToCategory = () => {
           <span class="order-complete-page__order-number-hint">{{ orderCompleteData.page.copyHint }}</span>
         </button>
       </div>
+
+      <!-- 무통장 입금 안내 -->
+      <section v-if="amount > 0" class="order-complete-page__bank-transfer">
+        <h2 class="order-complete-page__bank-transfer-title">{{ orderCompleteData.bankTransfer.title }}</h2>
+        <p class="order-complete-page__bank-transfer-desc">{{ orderCompleteData.bankTransfer.description }}</p>
+        <dl class="order-complete-page__bank-transfer-info">
+          <div class="order-complete-page__bank-transfer-row">
+            <dt>{{ orderCompleteData.bankTransfer.amountLabel }}</dt>
+            <dd class="order-complete-page__bank-transfer-amount">
+              {{ amount.toLocaleString() }}{{ orderCompleteData.bankTransfer.currency }}
+            </dd>
+          </div>
+          <div class="order-complete-page__bank-transfer-row">
+            <dt>{{ orderCompleteData.bankTransfer.bankLabel }}</dt>
+            <dd>{{ bankAccount.bankName }} {{ bankAccount.accountNumber }}</dd>
+          </div>
+          <div class="order-complete-page__bank-transfer-row">
+            <dt>{{ orderCompleteData.bankTransfer.accountHolderLabel }}</dt>
+            <dd>{{ bankAccount.accountHolder }}</dd>
+          </div>
+        </dl>
+        <p class="order-complete-page__bank-transfer-notice">{{ orderCompleteData.bankTransfer.notice }}</p>
+      </section>
 
       <!-- 버튼 영역 -->
       <div class="order-complete-page__buttons">
