@@ -22,8 +22,8 @@ const form = reactive({
   code: "",
 });
 
-const step = ref(1); // 1: 정보 입력, 2: 인증번호입력, 3: 결과
-const codeSent = ref(false);
+const step = ref(1); // 1: 정보 입력, 3: 결과
+// const codeSent = ref(false); // 인증번호 방식 주석 처리
 const accounts = ref([]);
 const notFound = ref(false);
 
@@ -32,8 +32,9 @@ const getPhone = () => {
   return `${form.mobilePrefix}-${form.mobile1}-${form.mobile2}`;
 };
 
-// 인증번호 발송
-const handleSendCode = async () => {
+// 아이디 찾기 (POST /auth/find-email)
+const pending = ref(false);
+const handleFindId = async () => {
   if (!form.name) {
     alert(pageData.messages.nameRequired);
     return;
@@ -43,39 +44,12 @@ const handleSendCode = async () => {
     return;
   }
 
-  try {
-    const res = await post("/auth/find-email/send", {
-      name: form.name,
-      phone: getPhone(),
-    });
-
-    if (res.success) {
-      codeSent.value = true;
-      step.value = 2;
-      alert(pageData.messages.codeSent);
-      if (res.data.code) {
-        form.code = res.data.code;
-      }
-    } else {
-      alert(pageData.messages.codeSendFailed);
-    }
-  } catch (error) {
-    alert(error.data?.error?.messages || pageData.messages.codeSendFailed);
-  }
-};
-
-// 인증번호 확인
-const handleVerify = async () => {
-  if (!form.code) {
-    alert(pageData.messages.codeRequired);
-    return;
-  }
+  pending.value = true;
 
   try {
-    const res = await post("/auth/find-email/verify", {
+    const res = await post("/auth/find-email", {
       name: form.name,
       phone: getPhone(),
-      code: form.code,
     });
 
     if (res.success && res.data?.accounts?.length > 0) {
@@ -90,8 +64,71 @@ const handleVerify = async () => {
     accounts.value = [];
     notFound.value = true;
     step.value = 3;
+  } finally {
+    pending.value = false;
   }
 };
+
+// 인증번호 발송 (주석 처리)
+// const handleSendCode = async () => {
+//   if (!form.name) {
+//     alert(pageData.messages.nameRequired);
+//     return;
+//   }
+//   if (!form.mobile1 || !form.mobile2) {
+//     alert(pageData.messages.phoneRequired);
+//     return;
+//   }
+//
+//   try {
+//     const res = await post("/auth/find-email/send", {
+//       name: form.name,
+//       phone: getPhone(),
+//     });
+//
+//     if (res.success) {
+//       codeSent.value = true;
+//       step.value = 2;
+//       alert(pageData.messages.codeSent);
+//       if (res.data.code) {
+//         form.code = res.data.code;
+//       }
+//     } else {
+//       alert(pageData.messages.codeSendFailed);
+//     }
+//   } catch (error) {
+//     alert(error.data?.error?.messages || pageData.messages.codeSendFailed);
+//   }
+// };
+
+// 인증번호 확인 (주석 처리)
+// const handleVerify = async () => {
+//   if (!form.code) {
+//     alert(pageData.messages.codeRequired);
+//     return;
+//   }
+//
+//   try {
+//     const res = await post("/auth/find-email/verify", {
+//       name: form.name,
+//       phone: getPhone(),
+//       code: form.code,
+//     });
+//
+//     if (res.success && res.data?.accounts?.length > 0) {
+//       accounts.value = res.data.accounts;
+//       notFound.value = false;
+//     } else {
+//       accounts.value = [];
+//       notFound.value = true;
+//     }
+//     step.value = 3;
+//   } catch (error) {
+//     accounts.value = [];
+//     notFound.value = true;
+//     step.value = 3;
+//   }
+// };
 
 // 로그인 페이지로
 const goLogin = () => {
@@ -102,19 +139,18 @@ const goLogin = () => {
   <div class="find">
     <div class="find__inner">
       <h1 class="find__title">{{ pageData.title }}</h1>
-      <!-- Step 1,2 : 입력 폼 -->
-      <form v-if="step !== 3" class="find__form" @submit.prevent>
+      <!-- Step 1: 입력 폼 -->
+      <form v-if="step !== 3" class="find__form" @submit.prevent="handleFindId">
         <!-- 이름 -->
         <div class="find__field">
           <label class="find__label">{{ pageData.form.name.label }}</label>
           <BaseInput
             v-model="form.name"
             :placeholder="pageData.form.name.placeholder"
-            :disabled="codeSent"
           />
         </div>
 
-        <!-- 휴대폰 번호 + 발송 버튼 -->
+        <!-- 휴대폰 번호 -->
         <div class="find__field">
           <label class="find__label">{{ pageData.form.mobile.label }}</label>
           <div class="find__mobile-row">
@@ -123,7 +159,6 @@ const goLogin = () => {
                 v-model="form.mobilePrefix"
                 :options="pageData.options.mobilePrefix"
                 variant="box"
-                :disabled="codeSent"
               />
             </div>
             <span class="find__mobile-dash" aria-hidden="true">-</span>
@@ -132,7 +167,6 @@ const goLogin = () => {
                 v-model="form.mobile1"
                 type="tel"
                 maxlength="4"
-                :disabled="codeSent"
               />
             </div>
             <span class="find__mobile-dash" aria-hidden="true">-</span>
@@ -141,37 +175,52 @@ const goLogin = () => {
                 v-model="form.mobile2"
                 type="tel"
                 maxlength="4"
-                :disabled="codeSent"
               />
             </div>
           </div>
-          <div class="find__button">
-            <BaseButton
-              type="button"
-              :label="
-                codeSent
-                  ? pageData.buttons.resendCode
-                  : pageData.buttons.sendCode
-              "
-              variant="bg"
-              color="green"
-              size="big"
-              full
-              @click="handleSendCode"
-            />
-          </div>
         </div>
-        <!-- 인증번호 (step 2에서만 표시) -->
-        <div v-if="step === 2" class="find__field">
+
+        <!-- 아이디 찾기 버튼 -->
+        <div class="find__button">
+          <BaseButton
+            type="submit"
+            :label="pageData.buttons.findId"
+            variant="bg"
+            color="green"
+            size="big"
+            full
+            :disabled="pending"
+          />
+        </div>
+
+        <!-- 인증번호 발송 버튼 (주석 처리) -->
+        <!-- <div class="find__button">
+          <BaseButton
+            type="button"
+            :label="
+              codeSent
+                ? pageData.buttons.resendCode
+                : pageData.buttons.sendCode
+            "
+            variant="bg"
+            color="green"
+            size="big"
+            full
+            @click="handleSendCode"
+          />
+        </div> -->
+
+        <!-- 인증번호 (step 2에서만 표시) - 주석 처리 -->
+        <!-- <div v-if="step === 2" class="find__field">
           <label class="find__label">{{ pageData.form.code.label }}</label>
           <BaseInput
             v-model="form.code"
             :placeholder="pageData.form.code.placeholder"
           />
-        </div>
+        </div> -->
 
-        <!-- 확인 버튼 (step 2에서만 표시) -->
-        <div v-if="step === 2" class="find__button">
+        <!-- 확인 버튼 (step 2에서만 표시) - 주석 처리 -->
+        <!-- <div v-if="step === 2" class="find__button">
           <BaseButton
             type="button"
             :label="pageData.buttons.verify"
@@ -181,7 +230,7 @@ const goLogin = () => {
             full
             @click="handleVerify"
           />
-        </div>
+        </div> -->
       </form>
       <!-- Step 3: 결과 화면 -->
       <div v-else class="find__result">

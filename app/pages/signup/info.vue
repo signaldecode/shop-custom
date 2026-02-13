@@ -154,10 +154,10 @@ const validateForm = () => {
     alert(signupData.info.messages.emailInvalid);
     return false;
   }
-  if (!emailVerification.isVerified) {
-    alert(signupData.info.messages.emailNotVerified);
-    return false;
-  }
+  // if (!emailVerification.isVerified) {
+  //   alert(signupData.info.messages.emailNotVerified);
+  //   return false;
+  // }
   if (!validateRequired(form.password)) {
     alert("비밀번호를 입력해주세요.");
     return false;
@@ -291,7 +291,7 @@ const handleComplete = async () => {
                           autocomplete="email"
                         />
                       </div>
-                      <BaseButton
+                      <!-- <BaseButton
                         type="button"
                         variant="bg"
                         color="green"
@@ -301,7 +301,7 @@ const handleComplete = async () => {
                         @click="sendVerificationCode"
                       >
                         {{ signupData.info.buttons.sendCode }}
-                      </BaseButton>
+                      </BaseButton> -->
                     </div>
                     <p
                       v-if="emailVerification.message"

@@ -25,6 +25,7 @@
       }
     },
     "buttons": {
+      "findId": "아이디 찾기",
       "sendCode": "인증번호 발송",
       "resendCode": "재발송",
       "verify": "확인",
@@ -61,9 +62,13 @@
         "label": "이메일",
         "placeholder": "가입한 이메일을 입력해주세요"
       },
-      "code": {
-        "label": "인증번호",
-        "placeholder": "인증번호 6자리를 입력해주세요"
+      "name": {
+        "label": "이름",
+        "placeholder": "이름을 입력해주세요"
+      },
+      "phone": {
+        "label": "전화번호",
+        "placeholder": "전화번호를 입력해주세요 (예: 010-1234-5678)"
       },
       "newPassword": {
         "label": "새 비밀번호",
@@ -75,8 +80,6 @@
       }
     },
     "buttons": {
-      "sendCode": "인증번호 발송",
-      "resendCode": "재발송",
       "resetPassword": "비밀번호 변경",
       "login": "로그인하기"
     },
@@ -86,12 +89,11 @@
     },
     "messages": {
       "emailRequired": "이메일을 입력해주세요.",
-      "codeRequired": "인증번호를 입력해주세요.",
+      "nameRequired": "이름을 입력해주세요.",
+      "phoneRequired": "전화번호를 입력해주세요.",
       "passwordRequired": "새 비밀번호를 입력해주세요.",
       "passwordConfirmRequired": "비밀번호 확인을 입력해주세요.",
       "passwordMismatch": "비밀번호가 일치하지 않습니다.",
-      "codeSent": "인증번호가 발송되었습니다.",
-      "codeSendFailed": "인증번호 발송에 실패했습니다.",
       "resetFailed": "비밀번호 변경에 실패했습니다."
     }
   }
