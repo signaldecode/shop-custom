@@ -20,31 +20,64 @@ useSeoMeta({
   ogImage: orderCompleteData.seo.ogImage
 })
 
-// URL에서 주문 정보 가져오기
+// sessionStorage에서 주문 완료 데이터 가져오기
+const orderData = ref(null)
+
+onMounted(() => {
+  const cached = sessionStorage.getItem('orderCompleteData')
+  if (cached) {
+    try {
+      orderData.value = JSON.parse(cached)
+      sessionStorage.removeItem('orderCompleteData')
+    } catch (e) {
+      // 파싱 실패 시 무시
+    }
+  }
+})
+
+// URL에서 주문 정보 가져오기 (fallback)
 const orderId = computed(() => {
+  if (orderData.value?.orderId) return orderData.value.orderId
   const id = route.query.orderId
   if (!id || id === 'null' || id === 'undefined') return null
   return id
 })
 const orderNumber = computed(() => {
+  if (orderData.value?.orderNumber) return orderData.value.orderNumber
   const num = route.query.orderNumber
   if (!num || num === 'null' || num === 'undefined') return null
   return num
 })
 const amount = computed(() => {
+  if (orderData.value?.grandTotal) return Number(orderData.value.grandTotal)
   const amt = route.query.amount
   if (!amt || amt === 'null' || amt === 'undefined') return 0
   return Number(amt)
 })
 
-// 계좌 정보
+// 계좌 정보 (API 응답 우선, shop-info fallback)
 const bankAccount = computed(() => {
-  const info = bankInfo.value || {}
+  const transferInfo = orderData.value?.bankTransferInfo
+  const shopInfo = bankInfo.value || {}
   return {
-    bankName: info.bankName || '',
-    accountNumber: info.bankAccount || '',
-    accountHolder: info.bankHolder || ''
+    bankName: transferInfo?.bankName || shopInfo.bankName || '',
+    accountNumber: transferInfo?.accountNumber || shopInfo.bankAccount || '',
+    accountHolder: transferInfo?.accountHolder || shopInfo.bankHolder || ''
   }
+})
+
+// 입금 기한
+const depositDeadline = computed(() => {
+  const deadline = orderData.value?.depositDeadline
+  if (!deadline) return ''
+  const date = new Date(deadline)
+  return date.toLocaleString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
 })
 
 // 주문 상세 페이지로 이동
@@ -137,6 +170,10 @@ const goToCategory = () => {
           <div class="order-complete-page__bank-transfer-row">
             <dt>{{ orderCompleteData.bankTransfer.accountHolderLabel }}</dt>
             <dd>{{ bankAccount.accountHolder }}</dd>
+          </div>
+          <div v-if="depositDeadline" class="order-complete-page__bank-transfer-row">
+            <dt>{{ orderCompleteData.bankTransfer.depositDeadlineLabel }}</dt>
+            <dd class="order-complete-page__bank-transfer-deadline">{{ depositDeadline }}</dd>
           </div>
         </dl>
         <p class="order-complete-page__bank-transfer-notice">{{ orderCompleteData.bankTransfer.notice }}</p>

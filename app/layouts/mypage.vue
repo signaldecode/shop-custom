@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import mypageData from '~/data/mypage.json'
 import IconCart from '~/components/ui/icons/IconCart.vue'
 import IconReview from '~/components/ui/icons/IconReview.vue'
@@ -79,8 +78,6 @@ const groups = computed(() => {
         </section>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
 
     <!-- 로그인 필요 모달 -->
     <LoginRequiredModal

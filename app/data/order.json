@@ -77,6 +77,15 @@
       "searchAddress": "주소 검색",
       "selectAddress": "배송지 선택"
     },
+    "depositor": {
+      "title": "입금자 정보",
+      "fields": {
+        "name": {
+          "label": "입금자명",
+          "placeholder": "입금자명을 입력해주세요"
+        }
+      }
+    },
     "guestPassword": {
       "title": "비회원 주문조회 비밀번호",
       "description": "비회원 주문조회 시 사용할 비밀번호를 입력해주세요.",
@@ -207,7 +216,11 @@
   },
   "validation": {
     "ordererPhone": "주문자 연락처 형식이 올바르지 않습니다.",
-    "shippingPhone": "배송지 연락처 형식이 올바르지 않습니다."
+    "shippingPhone": "배송지 연락처 형식이 올바르지 않습니다.",
+    "recipient": "수령인 이름을 입력해주세요.",
+    "phone": "배송지 연락처를 입력해주세요.",
+    "address": "배송지 주소를 입력해주세요.",
+    "depositor": "입금자명을 입력해주세요."
   },
   "dummy": {
     "products": [

@@ -19,6 +19,7 @@
     "amountLabel": "입금 금액",
     "bankLabel": "입금 계좌",
     "accountHolderLabel": "예금주",
+    "depositDeadlineLabel": "입금 기한",
     "currency": "원",
     "notice": "입금자명은 주문자명과 동일해야 합니다."
   },

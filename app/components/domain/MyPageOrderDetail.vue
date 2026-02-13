@@ -8,15 +8,34 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['cancel', 'reviewSubmitted'])
+const emit = defineEmits(['cancel', 'reviewSubmitted', 'claimSubmitted'])
 
 const labels = mypageData.pages.orderDetail.labels
 const detail = computed(() => props.order || null)
+
+// 클레임(반품) 모달
+const showClaimModal = ref(false)
+const selectedClaimItem = ref(null)
+
+const openClaimModal = (item) => {
+  selectedClaimItem.value = item
+  showClaimModal.value = true
+}
+
+const handleClaimSubmitted = () => {
+  emit('claimSubmitted')
+}
 
 // PENDING, PAID 상태에서만 취소 가능
 const canCancel = computed(() => {
   const status = detail.value?.orderStatus
   return status === 'PENDING' || status === 'PAID'
+})
+
+// 주문이 배송완료 상태인지 체크 (반품 가능)
+const canClaim = computed(() => {
+  const status = detail.value?.orderStatus
+  return status === 'DELIVERED'
 })
 
 // 리뷰 작성 모달
@@ -88,14 +107,23 @@ const handleReviewSubmitted = () => {
       </div>
     </section>
 
-    <!-- 주문취소 버튼 -->
-    <div v-if="canCancel" class="mypage-order-detail__cancel-action">
+    <!-- 주문 액션 버튼 (취소/반품) -->
+    <div v-if="canCancel || canClaim" class="mypage-order-detail__order-actions">
       <BaseButton
+        v-if="canCancel"
         :label="labels.cancelButton"
-        variant="bg"
-        color="green"
+        variant="line"
+        color="black"
         size="small"
         @click="emit('cancel', detail.orderNo)"
+      />
+      <BaseButton
+        v-if="canClaim"
+        :label="labels.returnButton"
+        variant="line"
+        color="black"
+        size="small"
+        @click="openClaimModal(null)"
       />
     </div>
 
@@ -141,6 +169,26 @@ const handleReviewSubmitted = () => {
           <div v-if="detail.payment.paidAt && detail.payment.paidAt !== '-'" class="mypage-order-detail__row">
             <dt class="mypage-order-detail__th">{{ labels.paidAt }}</dt>
             <dd class="mypage-order-detail__td">{{ detail.payment.paidAt }}</dd>
+          </div>
+          <div v-if="detail.depositorName && detail.depositorName !== '-'" class="mypage-order-detail__row">
+            <dt class="mypage-order-detail__th">{{ labels.depositorName }}</dt>
+            <dd class="mypage-order-detail__td">{{ detail.depositorName }}</dd>
+          </div>
+          <div v-if="detail.payment.bankName" class="mypage-order-detail__row">
+            <dt class="mypage-order-detail__th">{{ labels.bankName }}</dt>
+            <dd class="mypage-order-detail__td">{{ detail.payment.bankName }}</dd>
+          </div>
+          <div v-if="detail.payment.accountNumber" class="mypage-order-detail__row">
+            <dt class="mypage-order-detail__th">{{ labels.accountNumber }}</dt>
+            <dd class="mypage-order-detail__td">{{ detail.payment.accountNumber }}</dd>
+          </div>
+          <div v-if="detail.payment.accountHolder" class="mypage-order-detail__row">
+            <dt class="mypage-order-detail__th">{{ labels.accountHolder }}</dt>
+            <dd class="mypage-order-detail__td">{{ detail.payment.accountHolder }}</dd>
+          </div>
+          <div v-if="detail.payment.depositDeadline && detail.payment.depositDeadline !== '-'" class="mypage-order-detail__row">
+            <dt class="mypage-order-detail__th">{{ labels.depositDeadline }}</dt>
+            <dd class="mypage-order-detail__td">{{ detail.payment.depositDeadline }}</dd>
           </div>
         </dl>
         <div v-if="detail.payment.receiptUrl" class="mypage-order-detail__tracking-action">
@@ -189,7 +237,7 @@ const handleReviewSubmitted = () => {
                 @view-review="openViewReviewModal(p)"
               />
             </NuxtLink>
-          </div>
+            </div>
         </div>
       </div>
     </section>
@@ -293,6 +341,14 @@ const handleReviewSubmitted = () => {
     <ReviewDetailModal
       v-model="showReviewDetailModal"
       :review="selectedReview"
+    />
+
+    <!-- 반품 신청 모달 -->
+    <ClaimModal
+      v-model="showClaimModal"
+      :order="detail"
+      :item="selectedClaimItem"
+      @submitted="handleClaimSubmitted"
     />
   </section>
 </template>

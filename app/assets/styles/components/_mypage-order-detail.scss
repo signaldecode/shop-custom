@@ -136,6 +136,14 @@
     background-color: $Bg-Primary-bg-color;
   }
 
+  &__claim-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $padding-2;
+    padding: $padding-3 $padding-4;
+    background-color: $Bg-Primary-bg-color;
+  }
+
   @include tablet {
     gap: $padding-10; // 40
 
@@ -153,6 +161,12 @@
   &__cancel-action {
     display: flex;
     justify-content: flex-end;
+  }
+
+  &__order-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $padding-2;
   }
 
   &__tracking-action {

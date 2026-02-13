@@ -132,6 +132,11 @@
         "cardNumber": "카드번호",
         "paymentStatus": "결제상태",
         "paidAt": "결제일시",
+        "depositorName": "입금자명",
+        "bankName": "입금은행",
+        "accountNumber": "계좌번호",
+        "accountHolder": "예금주",
+        "depositDeadline": "입금기한",
         "receiptButton": "영수증보기",
         "productInfo": "주문상품정보",
         "shippingInfo": "배송정보",
@@ -153,7 +158,8 @@
         "cancelSuccess": "주문이 취소되었습니다.",
         "cancelFail": "주문 취소에 실패했습니다.",
         "reviewButton": "리뷰쓰기",
-        "viewReviewButton": "리뷰보기"
+        "viewReviewButton": "리뷰보기",
+        "returnButton": "반품신청"
       }
     },
     "wishlist": {

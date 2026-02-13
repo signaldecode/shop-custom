@@ -108,6 +108,10 @@ const payment = reactive({
   depositor: ''
 })
 
+const depositor = reactive({
+  name: ''
+})
+
 const coupon = reactive({
   point: ''
 })
@@ -203,16 +207,39 @@ const handleSubmit = async () => {
     return
   }
 
-  // 연락처 유효성 검사
   // 비회원인 경우 주문자 연락처도 검사
   if (!isMember.value && !validate('phone', orderer.phone.replace(/-/g, ''))) {
     warning(orderData.validation?.ordererPhone || '주문자 연락처 형식이 올바르지 않습니다.')
     return
   }
 
-  // 배송지 연락처 검사
+  // 수령인 이름 검사
+  if (!shipping.recipient?.trim()) {
+    warning(orderData.validation?.recipient || '수령인 이름을 입력해주세요.')
+    return
+  }
+
+  // 배송지 연락처 입력 여부 검사
+  if (!shipping.phone?.trim()) {
+    warning(orderData.validation?.phone || '배송지 연락처를 입력해주세요.')
+    return
+  }
+
+  // 배송지 연락처 형식 검사
   if (!validate('phone', shipping.phone.replace(/-/g, ''))) {
     warning(orderData.validation?.shippingPhone || '배송지 연락처 형식이 올바르지 않습니다.')
+    return
+  }
+
+  // 배송지 주소 검사
+  if (!shipping.zipcode?.trim() || !shipping.address?.trim()) {
+    warning(orderData.validation?.address || '배송지 주소를 입력해주세요.')
+    return
+  }
+
+  // 입금자명 검사
+  if (!depositor.name?.trim()) {
+    warning(orderData.validation?.depositor || '입금자명을 입력해주세요.')
     return
   }
 
@@ -230,6 +257,7 @@ const handleSubmit = async () => {
       address1: shipping.address,
       address2: shipping.addressDetail
     },
+    depositorName: depositor.name,
     expectedAmount: summary.value.total,
     customerNote: shipping.memo === 'custom' ? shipping.customMemo : shipping.memo,
     orderChannel: 'WEB'
@@ -259,12 +287,23 @@ const handleSubmit = async () => {
     // 주문 아이템 정리
     clearOrderItems()
 
+    // 주문 완료 정보를 sessionStorage에 저장
+    const orderCompleteData = {
+      orderId: result.data?.orderId || result.orderId,
+      orderNumber: result.data?.orderNumber || result.orderNumber,
+      grandTotal: result.data?.grandTotal || summary.value.total,
+      shippingAddress: result.data?.shippingAddress || null,
+      bankTransferInfo: result.data?.bankTransferInfo || null,
+      depositDeadline: result.data?.depositDeadline || null
+    }
+    sessionStorage.setItem('orderCompleteData', JSON.stringify(orderCompleteData))
+
     // 주문 완료 페이지로 이동
     router.push({
       path: '/order-complete',
       query: {
-        orderNumber: result.orderNumber,
-        amount: summary.value.total
+        orderNumber: result.data?.orderNumber || result.orderNumber,
+        amount: result.data?.grandTotal || summary.value.total
       }
     })
   } else {
@@ -311,7 +350,22 @@ const handleSubmit = async () => {
             @select-address="selectAddress"
           />
 
-          <!-- 4. 비회원 주문조회 비밀번호 (비회원만) -->
+          <!-- 4. 입금자 정보 -->
+          <section class="order-section">
+            <header class="order-section__header">
+              <h2 class="order-section__title">{{ orderData.sections.depositor.title }}</h2>
+            </header>
+            <div class="order-section__content">
+              <BaseInput
+                v-model="depositor.name"
+                :label="orderData.sections.depositor.fields.name.label"
+                :placeholder="orderData.sections.depositor.fields.name.placeholder"
+                required
+              />
+            </div>
+          </section>
+
+          <!-- 6. 비회원 주문조회 비밀번호 (비회원만) -->
           <OrderGuestPasswordSection
             v-if="!isMember"
             :model-value="guestPassword"
@@ -319,17 +373,17 @@ const handleSubmit = async () => {
             @update:model-value="val => Object.assign(guestPassword, val)"
           />
 
-          <!-- 5. 할인 / 쿠폰 -->
-          <OrderCouponSection
+          <!-- 7. 할인 / 쿠폰 -->
+          <!-- <OrderCouponSection
             v-model="coupon"
             :labels="orderData.sections.coupon"
             :selected-coupon="selectedCoupon"
             :coupon-discount="couponDiscount"
             :available-point="orderData.dummy.availablePoint"
             @open-coupon-modal="openCouponModal"
-          />
+          /> -->
 
-          <!-- 6. 결제 수단 -->
+          <!-- 8. 결제 수단 -->
           <!-- <OrderPaymentSection
             v-model="payment"
             :labels="orderData.sections.payment"

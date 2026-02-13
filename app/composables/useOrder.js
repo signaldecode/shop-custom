@@ -338,6 +338,7 @@ export const useOrder = () => {
     const paymentMethodMap = {
       CARD: '신용카드',
       BANK: '무통장입금',
+      BANK_TRANSFER: '계좌이체',
       TRANSFER: '계좌이체',
       VIRTUAL_ACCOUNT: '가상계좌',
       MOBILE_PHONE: '휴대폰',
@@ -366,6 +367,7 @@ export const useOrder = () => {
     const pay = order.payment || {}
 
     return {
+      id: order.id || order.orderId || null,
       orderNo: order.orderNumber,
       orderedAt: formatDate(order.createdAt),
       orderer: order.shippingAddress?.recipientName || order.guestEmail || '-',
@@ -374,6 +376,7 @@ export const useOrder = () => {
       statusVariant: statusVariantMap[order.orderStatus] || 'default',
       paymentStatus: order.paymentStatus,
       paymentStatusText: order.paymentStatusDescription || order.paymentStatus || '-',
+      depositorName: order.depositorName || '-',
       payment: {
         paymentNumber: pay.paymentNumber || order.paymentNumber || '-',
         totalOrder: `${(order.subtotal || 0).toLocaleString()}원`,
@@ -388,7 +391,11 @@ export const useOrder = () => {
         pgProvider: pay.pgProvider || '',
         paymentStatusDescription: pay.paymentStatusDescription || order.paymentStatusDescription || '-',
         paidAt: formatDate(pay.paidAt || order.paidAt),
-        cancelledAt: formatDate(pay.cancelledAt)
+        cancelledAt: formatDate(pay.cancelledAt),
+        bankName: pay.bankName || '',
+        accountNumber: pay.accountNumber || '',
+        accountHolder: pay.accountHolder || '',
+        depositDeadline: formatDate(pay.depositDeadline)
       },
       products: (order.items || []).map(item => {
         const unitPrice = item.unitPrice ?? item.price ?? 0

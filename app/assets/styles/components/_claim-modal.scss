@@ -8,6 +8,48 @@
 @use '../tokens/breakpoints' as *;
 
 .claim-modal {
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: $padding-4;
+    padding: $padding-4;
+    background: $Bg-Primary-bg-color;
+    border-radius: 8px;
+    margin-bottom: $padding-5;
+  }
+
+  &__product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  &__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__product-label {
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__product-name {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__product-variant {
+    @include typo-body-4;
+    color: $Text-Secondary-text-color;
+    margin: 0;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -23,6 +65,53 @@
   &__label {
     @include typo-title-6;
     color: $Text-Primary-text-color;
+  }
+
+  &__required {
+    color: $Error-color;
+    margin-left: 2px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: $padding-2;
+
+    .base-input {
+      width: 80px;
+    }
+  }
+
+  &__quantity-unit {
+    @include typo-body-2;
+    color: $Text-Primary-text-color;
+  }
+
+  &__quantity-max {
+    @include typo-body-3;
+    color: $Text-Secondary-text-color;
+  }
+
+  &__bank-info {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-4;
+    padding: $padding-4;
+    background: $Bg-Primary-bg-color;
+    border-radius: 8px;
+  }
+
+  &__bank-title {
+    @include typo-title-6;
+    color: $Text-Primary-text-color;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: $padding-3;
+    margin-top: $padding-3;
   }
 
   &__select,
@@ -113,6 +202,10 @@
     }
   }
 
+  &__products {
+    margin-bottom: $padding-5;
+  }
+
   &__product-check {
     display: flex;
     align-items: center;
@@ -130,6 +223,14 @@
     }
   }
 
+  &__product-thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
   &__product-info {
     display: flex;
     flex-direction: column;
@@ -140,9 +241,7 @@
   &__product-name {
     @include typo-body-2;
     color: $Text-Primary-text-color;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin: 0;
   }
 
   &__product-variant {
