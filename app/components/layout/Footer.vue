@@ -84,8 +84,8 @@ const phoneHref = computed(() => {
   return `tel:${csPhone.value.replace(/-/g, '')}`
 })
 
-// 로고 (API 우선)
-const logoSrc = computed(() => logoUrl.value || props.data.logo?.src || '')
+// 로고 (shop-info API만 사용, 없으면 텍스트 표시)
+const logoSrc = computed(() => logoUrl.value || '')
 
 // 저작권 (API 우선)
 const copyright = computed(() => copyrightText.value || props.data.copyright || '')
@@ -108,11 +108,12 @@ const toggleInfo = () => {
         <div class="footer__left">
           <div class="footer__logo">
             <img
+              v-if="logoSrc"
               :src="logoSrc"
               :alt="data.logo.alt"
               class="footer__logo-image"
             />
-            <span class="footer__logo-text">{{ shopName || data.logo.text }}</span>
+            <span v-else class="footer__logo-text">{{ shopName || data.logo.text }}</span>
           </div>
 
           <nav class="footer__nav" aria-label="푸터 내비게이션">

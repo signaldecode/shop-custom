@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import reviewData from '~/data/review.json'
 
 useHead({ title: reviewData.seo.title })
@@ -137,10 +136,6 @@ const openDetail = (review) => {
         :next-label="reviewData.pagination.nextLabel"
       />
     </div>
-
-    <template #footer>
-      <Footer :data="mainData.footer" />
-    </template>
   </LayoutPage>
 
     <ReviewDetailModal

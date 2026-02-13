@@ -1,5 +1,4 @@
 <script setup>
-import mainData from "~/data/main.json";
 import loginData from "~/data/login.json";
 
 useHead({ title: loginData.seo.title });
@@ -269,7 +268,5 @@ const handleGuestLookup = async () => {
         </form>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

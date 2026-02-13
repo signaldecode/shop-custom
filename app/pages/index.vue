@@ -21,6 +21,7 @@ const {
   halfBanners: apiHalfBanners,
   fullBanners: apiFullBanners,
   bannerPending,
+  pending: mainPending,
   categories,
   bestProducts: apiBestProducts,
   recommendProducts: apiRecommendProducts
@@ -37,15 +38,17 @@ const categoryItems = computed(() =>
   categories.value?.length ? categories.value : mainData.categories.items
 )
 
-// Best 상품 (API 또는 JSON 폴백)
-const bestProducts = computed(() =>
-  apiBestProducts.value?.length ? apiBestProducts.value : mainData.bestItems.products
-)
+// Best 상품 (API 로딩 중이면 빈 배열, 완료 후 API 데이터 또는 JSON 폴백)
+const bestProducts = computed(() => {
+  if (mainPending.value) return []
+  return apiBestProducts.value?.length ? apiBestProducts.value : mainData.bestItems.products
+})
 
-// 추천 상품 (API 또는 JSON 폴백)
-const mdPickProducts = computed(() =>
-  apiRecommendProducts.value?.length ? apiRecommendProducts.value : mainData.mdPick.products
-)
+// 추천 상품 (API 로딩 중이면 빈 배열, 완료 후 API 데이터 또는 JSON 폴백)
+const mdPickProducts = computed(() => {
+  if (mainPending.value) return []
+  return apiRecommendProducts.value?.length ? apiRecommendProducts.value : mainData.mdPick.products
+})
 
 // 카테고리별 상품 폴백 (API 실패 시)
 const fallbackCategoryProducts = computed(() => {
@@ -100,11 +103,13 @@ onMounted(() => {
         <SectionBestItems
           :data="mainData.bestItems"
           :products="bestProducts"
+          :loading="mainPending"
         />
 
         <SectionMdPick
           :data="mainData.mdPick"
           :products="mdPickProducts"
+          :loading="mainPending"
         />
 
         <!-- Full 배너 (클라이언트 전용) -->
@@ -137,13 +142,11 @@ onMounted(() => {
           />
         </ClientOnly>
 
-        <SectionInstagram
+        <!-- <SectionInstagram
           :data="mainData.instagram"
           :images="mainData.instagram.items"
-        />
+        /> -->
       </main>
-
-    <Footer :data="mainData.footer" />
 
     <PopupCenter
       :popups="centerPopups"

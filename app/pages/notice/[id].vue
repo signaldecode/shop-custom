@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import noticesData from '~/data/notices.json'
 
 const route = useRoute()
@@ -98,7 +97,5 @@ const labels = noticesData.detail
         </article>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

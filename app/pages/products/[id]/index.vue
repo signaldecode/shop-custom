@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import detailData from '~/data/product-detail.json'
 import uiData from '~/data/ui.json'
 
@@ -302,8 +301,6 @@ const handleQnaSubmitted = async () => {
         상품을 불러올 수 없습니다.
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
 
     <!-- 리뷰 작성 모달 -->
     <ReviewWriteModal

@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import signupData from '~/data/signup.json'
 
 useHead({ title: signupData.terms.seo.title })
@@ -287,7 +286,5 @@ const handleNext = async () => {
         </section>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

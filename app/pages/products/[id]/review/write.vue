@@ -1,6 +1,5 @@
 <script setup>
 import reviewWriteData from '~/data/review-write.json'
-import mainData from '~/data/main.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -194,7 +193,5 @@ const handleCancel = () => {
         </form>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

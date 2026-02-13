@@ -1,6 +1,5 @@
 <script setup>
 import guestOrderData from '~/data/guest-order.json'
-import mainData from '~/data/main.json'
 import mypageData from '~/data/mypage.json'
 
 useHead({ title: guestOrderData.seo.title })
@@ -68,9 +67,5 @@ const handleCancel = async (orderNo) => {
 
       <MyPageOrderDetail v-else :order="order" @cancel="handleCancel" />
     </div>
-
-    <template #footer>
-      <Footer :data="mainData.footer" />
-    </template>
   </LayoutPage>
 </template>

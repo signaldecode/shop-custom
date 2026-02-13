@@ -25,10 +25,13 @@ const router = useRouter()
 const authStore = useAuthStore()
 const { post } = useApi()
 const cart = useCart()
-const { logoUrl, isLoaded: shopInfoLoaded } = useShopInfo()
+const { logoUrl, shopName, isLoaded: shopInfoLoaded } = useShopInfo()
 
 // 로고 이미지 (API 로딩 완료 후에만 표시, fallback 없음)
 const logoSrc = computed(() => logoUrl.value || '')
+
+// 로고 텍스트 (이미지 없을 때 표시)
+const logoText = computed(() => shopName.value || '')
 
 const isScrolled = ref(false)
 const isSearchOpen = ref(false)
@@ -180,6 +183,7 @@ onUnmounted(() => {
 
         <NuxtLink to="/" class="header__logo" @click="closeMobileNav">
           <NuxtImg v-if="logoSrc" :src="logoSrc" :alt="logo.alt" class="header__logo-img" preload />
+          <span v-else-if="logoText" class="header__logo-text">{{ logoText }}</span>
         </NuxtLink>
 
         <nav class="header__nav" :aria-label="navAriaLabel">

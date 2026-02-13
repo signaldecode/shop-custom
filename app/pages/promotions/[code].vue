@@ -1,6 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
-
 const route = useRoute()
 const code = computed(() => route.params.code)
 
@@ -90,7 +88,5 @@ useSeoMeta({
         </template>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

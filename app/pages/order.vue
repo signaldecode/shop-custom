@@ -1,6 +1,5 @@
 <script setup>
 import orderData from '~/data/order.json'
-import mainData from '~/data/main.json'
 import { validate } from '~/utils/validators'
 
 const router = useRouter()
@@ -350,8 +349,6 @@ const handleSubmit = async () => {
         />
       </form>
     </main>
-
-    <Footer :data="mainData.footer" />
 
     <!-- 배송지 선택 모달 (회원만) -->
     <AddressSelectModal

@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import supportData from '~/data/support.json'
 
 const router = useRouter()
@@ -239,9 +238,5 @@ const handleLinkClick = (event, link) => {
         </NuxtLink>
       </div>
     </section>
-
-    <template #footer>
-      <Footer :data="mainData.footer" />
-    </template>
   </LayoutPage>
 </template>

@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import signupData from '~/data/signup.json'
 
 useHead({ title: signupData.done.seo.title })
@@ -90,7 +89,5 @@ const goShop = () => {
         </div>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

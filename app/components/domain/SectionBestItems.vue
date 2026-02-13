@@ -7,6 +7,10 @@ const props = defineProps({
   products: {
     type: Array,
     default: () => []
+  },
+  loading: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -66,6 +70,11 @@ const debouncedUpdate = () => {
   resizeTimer = setTimeout(updateItemWidth, 150)
 }
 
+// 스켈레톤 표시 조건: 로딩 중이거나 상품이 없음
+const showSkeleton = computed(() => {
+  return props.loading || props.products.length === 0
+})
+
 onMounted(() => {
   updateItemWidth()
   isReady.value = true
@@ -106,11 +115,12 @@ onUnmounted(() => {
         v-on="sliderSwipeEvents"
       >
         <!-- 스켈레톤 -->
-        <div v-if="!isReady" class="section-best-items__skeleton">
+        <div v-if="showSkeleton" class="section-best-items__skeleton">
           <div
             v-for="i in visibleItems"
             :key="i"
             class="section-best-items__skeleton-item"
+            :style="itemWidth ? { width: itemWidth + 'px' } : {}"
           >
             <div class="section-best-items__skeleton-image"></div>
             <div class="section-best-items__skeleton-text"></div>
@@ -119,7 +129,7 @@ onUnmounted(() => {
         </div>
         <!-- 실제 슬라이더 -->
         <div
-          v-show="isReady"
+          v-show="!showSkeleton"
           ref="sliderRef"
           class="section-best-items__slider"
           :style="sliderStyle"

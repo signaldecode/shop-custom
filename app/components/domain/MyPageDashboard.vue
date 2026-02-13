@@ -94,15 +94,14 @@ const handleSelectOrder = (order) => {
         <BaseButton :label="dashboardData.profile.editButton" variant="bg" color="black" size="small" to="/mypage/profile" />
       </div>
 
-      <div class="mypage-dashboard__stats">
+      <!-- <div class="mypage-dashboard__stats">
         <article v-for="s in stats" :key="s.id" class="mypage-dashboard__stat">
           <p class="mypage-dashboard__stat-label">
             {{ s.label }}
-            <!-- <IconQuestion size="md" decorative /> -->
           </p>
           <p class="mypage-dashboard__stat-value">{{ s.value }}</p>
         </article>
-      </div>
+      </div> -->
     </div>
 
     <section class="mypage-dashboard__section">

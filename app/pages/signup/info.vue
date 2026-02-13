@@ -1,5 +1,4 @@
 <script setup>
-import mainData from "~/data/main.json";
 import signupData from "~/data/signup.json";
 import {
   validate,
@@ -585,8 +584,6 @@ const handleComplete = async () => {
         </div>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
 
     <!-- 소셜 계정 존재 안내 모달 -->
     <BaseModal

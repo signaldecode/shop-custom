@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import searchData from '~/data/search.json'
 
 const route = useRoute()
@@ -76,7 +75,5 @@ watch(searchQuery, () => {
         </template>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

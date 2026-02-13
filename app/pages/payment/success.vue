@@ -1,6 +1,5 @@
 <script setup>
 import paymentData from '~/data/payment.json'
-import mainData from '~/data/main.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -98,7 +97,5 @@ const retry = () => navigateTo('/order', { replace: true })
         </div>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

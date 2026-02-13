@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import qnaData from '~/data/qna.json'
 
 useHead({ title: qnaData.seo.title })
@@ -102,9 +101,6 @@ const handleWriteSubmitted = () => {
         />
       </div>
 
-      <template #footer>
-        <Footer :data="mainData.footer" />
-      </template>
     </LayoutPage>
 
     <!-- 문의 작성 모달 -->

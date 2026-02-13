@@ -111,6 +111,7 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    text-decoration: none;
   }
 
   &__logo-img {
@@ -120,6 +121,24 @@
     @include mobile {
       height: 18px;
     }
+  }
+
+  &__logo-text {
+    @include typo-title-3;
+    color: $Primary-white-color;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    @include mobile {
+      @include typo-title-5;
+      font-weight: 700;
+    }
+  }
+
+  &--scrolled &__logo-text {
+    color: $Text-Primary-text-color;
   }
 
   &__nav {

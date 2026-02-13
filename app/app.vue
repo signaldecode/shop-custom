@@ -111,6 +111,7 @@ const headerVariant = computed(() => {
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
+    <Footer :data="mainData.footer" />
     <BaseToast />
 
     <!-- 세션 만료 모달 -->

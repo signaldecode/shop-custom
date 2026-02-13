@@ -1,6 +1,5 @@
 <script setup>
 import paymentData from '~/data/payment.json'
-import mainData from '~/data/main.json'
 
 const route = useRoute()
 
@@ -50,7 +49,5 @@ const goHome = () => navigateTo('/', { replace: true })
         </div>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

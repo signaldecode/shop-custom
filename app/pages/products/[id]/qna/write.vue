@@ -1,6 +1,5 @@
 <script setup>
 import qnaWriteData from '~/data/qna-write.json'
-import mainData from '~/data/main.json'
 
 const route = useRoute()
 const router = useRouter()
@@ -67,14 +66,6 @@ const handleSubmit = async () => {
   submitting.value = true
 
   try {
-    // TODO: API 연동
-    // await api.post('/qna', {
-    //   productId: productId.value,
-    //   category: category.value,
-    //   title: title.value,
-    //   content: content.value,
-    //   isSecret: isSecret.value
-    // })
 
     // 임시: 1초 딜레이 후 성공 처리
     await new Promise(resolve => setTimeout(resolve, 1000))
@@ -199,7 +190,5 @@ const handleCancel = () => {
         </form>
       </div>
     </main>
-
-    <Footer :data="mainData.footer" />
   </div>
 </template>

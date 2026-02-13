@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import categoryData from '~/data/category.json'
 
 const route = useRoute()
@@ -143,10 +142,6 @@ const totalPages = computed(() => pagination.value.totalPages)
         :next-label="categoryData.page.pagination.nextLabel"
         class="layout-product-list__pagination"
       />
-    </template>
-
-    <template #footer>
-      <Footer :data="mainData.footer" />
     </template>
   </LayoutProductList>
 </template>

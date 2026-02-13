@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import faqData from '~/data/faq.json'
 
 useHead({ title: faqData.seo.title })
@@ -85,10 +84,6 @@ onMounted(async () => {
           :next-label="faqData.pagination.nextLabel"
         />
       </div>
-
-      <template #footer>
-        <Footer :data="mainData.footer" />
-      </template>
     </LayoutPage>
   </div>
 </template>

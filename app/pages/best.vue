@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import bestData from '~/data/best.json'
 
 // SEO
@@ -65,10 +64,6 @@ const totalPages = computed(() => pagination.value.totalPages)
         :next-label="bestData.page.pagination.nextLabel"
         class="layout-product-list__pagination"
       />
-    </template>
-
-    <template #footer>
-      <Footer :data="mainData.footer" />
     </template>
   </LayoutProductList>
 </template>

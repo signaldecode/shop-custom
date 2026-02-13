@@ -1,5 +1,4 @@
 <script setup>
-import mainData from '~/data/main.json'
 import cartData from '~/data/cart.json'
 
 useHead({ title: cartData.seo.title })
@@ -354,8 +353,6 @@ const submitLabel = computed(() => {
         <p v-if="bestPending" class="cart-reco__loading">추천상품을 불러오는 중...</p>
       </section>
     </main>
-
-    <Footer :data="mainData.footer" />
 
     <FloatingPaymentBar
       :summary="summary"
